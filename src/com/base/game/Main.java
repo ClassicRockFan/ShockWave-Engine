@@ -1,14 +1,18 @@
 package com.base.game;
 
-/**
- * Created by Tyler on 3/19/2015.
- */
+
+import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
+
 public class Main {
 
     public static void main(String[] args){
 
-        System.out.println("test");
+        System.out.println("program started");
 
+        CoreEngine engine = new CoreEngine(60);
+        engine.start();
+
+        System.out.println("program ended");
     }
 
 }

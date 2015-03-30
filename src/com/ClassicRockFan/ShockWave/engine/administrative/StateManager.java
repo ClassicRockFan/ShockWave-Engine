@@ -9,12 +9,12 @@ public class StateManager {
     public static final int STATE_MENU = 1;
     public static final int STATE_RUNNING = 2;
 
-    private static int currentState = STATE_INIT;
+    private int currentState;
 
     public StateManager(int currentStateIn) {
         currentState = currentStateIn;
     }
 
-    public static int getCurrentState() {return currentState;}
-    public static void setCurrentState(int currentState) {StateManager.currentState = currentState;}
+    public int getCurrentState() {return currentState;}
+    public void setCurrentState(int currentState) { this.currentState = currentState;}
 }

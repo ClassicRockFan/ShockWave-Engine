@@ -1,12 +1,15 @@
 package com.ClassicRockFan.ShockWave.engine.core;
 
-/**
- * Created by Tyler on 3/19/2015.
- */
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+
 public class Time {
     private static final long SECOND = (long) 1000000000.0;
 
     public static double getTime() {
         return (double) System.nanoTime() / (double) SECOND;
     }
+    public static String getFormatTime(){return getFormattedTime("dd/MM/yyyy - HH:mm:ss");}
+    public static String getFormattedTime(String format){ return new SimpleDateFormat(format).format(Calendar.getInstance().getTime());}
 }
