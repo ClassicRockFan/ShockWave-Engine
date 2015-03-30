@@ -85,7 +85,7 @@ public class CoreEngine {
                         e.printStackTrace();
                     }
                 }
-                if(stateManager.getCurrentState() != StateManager.STATE_RUNNING)
+                if (stateManager.getCurrentState() != StateManager.STATE_RUNNING)
                     break;
             }
         }

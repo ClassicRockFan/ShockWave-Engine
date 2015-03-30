@@ -25,7 +25,7 @@ public class ConsoleWindow extends JFrame {
         mainField.setAutoscrolls(true);
         mainField.setForeground(Color.WHITE);
         mainField.setBackground(Color.BLACK);
-        DefaultCaret caret = (DefaultCaret)mainField.getCaret();
+        DefaultCaret caret = (DefaultCaret) mainField.getCaret();
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
         JScrollPane pane = new JScrollPane(mainField);
         pane.setBounds(0, 0, 300, 300);

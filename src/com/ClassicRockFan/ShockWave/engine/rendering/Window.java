@@ -1,80 +1,70 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.util.ArrayList;
+import com.base.engine.core.Vector2f;
 
-/**
- * Created by Tyler on 3/19/2015.
- */
-public class Window extends JFrame {
+import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
 
-    private String title;
-    private int width, height;
-    private double frameCap;
+import static org.lwjgl.opengl.GL11.glViewport;
+import static org.lwjgl.opengl.GL30.GL_DRAW_FRAMEBUFFER;
+import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 
-    public Window(String title, int width, int height, double frameCap) throws HeadlessException {
-        super(title);
+public class Window {
 
-        this.width = width;
-        this.height = height;
-        this.frameCap = frameCap;
 
-        setSize(width, height);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
-
-        addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                ArrayList<String> values = new ArrayList<String>();
-                ArrayList<String> titles = new ArrayList<String>();
-
-                int newWidth = (int) getSize().getWidth();
-                int newHeight = (int) getSize().getHeight();
-                titles.add("backColor:r");
-                titles.add("backColor:g");
-                titles.add("backColor:b");
-//                values.add(configMap.get("backColor:r"));
-//                values.add(configMap.get("backColor:g"));
-//                values.add(configMap.get("backColor:b"));
-                values.add(Integer.toString(newHeight));
-                titles.add("frameHeight");
-                values.add(Integer.toString(newWidth));
-                titles.add("frameWidth");
-//                Config.saveProp(titles, values, Launcher.mainDir + "/Configs/windowConfigs.txt");
-                System.out.println("The new size is (" + newHeight + ", " + newWidth + ")");
-            }
-        });
+    public static void createWindow(int width, int height, String title){
+        Display.setTitle(title);
+        try
+        {
+            Display.setDisplayMode(new DisplayMode(width, height));
+            Display.create();
+            Keyboard.create();
+            Mouse.create();
+        }
+        catch (LWJGLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
-    @Override
-    public int getWidth() {
-        return width;
+    public static void dispose()
+    {
+        Display.destroy();
+        Keyboard.destroy();
+        Mouse.destroy();
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+
+    public static void bindAsRenderTarget() {
+        glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+        glViewport(0, 0, getWidth(), getHeight());
     }
 
-    @Override
-    public int getHeight() {
-        return height;
+    public static void render() {
+        Display.update();
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public static boolean isCloseRequested() {
+        return Display.isCloseRequested();
     }
 
-    @Override
-    public String getTitle() {
-        return title;
+    public static int getWidth() {
+        return Display.getDisplayMode().getWidth();
     }
 
-    public double getFrameCap() {
-        return frameCap;
+    public static int getHeight() {
+        return Display.getDisplayMode().getHeight();
     }
+
+    public static String getTitle() {
+        return Display.getTitle();
+    }
+
+    public static Vector2f getCenter() {
+        return new Vector2f(getWidth() / 2, getHeight() / 2);
+    }
+
 }

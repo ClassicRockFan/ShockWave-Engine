@@ -15,28 +15,29 @@ public class Vector3f {
     public float maxVal() {
         return Math.max(x, Math.max(y, z));
     }
-    public Vector3f getBigger(Vector3f other){
+
+    public Vector3f getBigger(Vector3f other) {
         float length1 = this.length();
         float length2 = other.length();
 
-        if(length1 > length2)
+        if (length1 > length2)
             return this;
         else
             return other;
     }
 
-    public Vector3f max(Vector3f other){
-        Vector3f result = new Vector3f(0,0,0);
+    public Vector3f max(Vector3f other) {
+        Vector3f result = new Vector3f(0, 0, 0);
 
-        if(this.getX() < other.getX())
+        if (this.getX() < other.getX())
             result.setX(x);
         else
             result.setX(other.getX());
-        if(this.getY() < other.getY())
+        if (this.getY() < other.getY())
             result.setY(y);
         else
             result.setY(other.getY());
-        if(this.getZ() < other.getZ())
+        if (this.getZ() < other.getZ())
             result.setZ(z);
         else
             result.setZ(other.getZ());
@@ -107,36 +108,37 @@ public class Vector3f {
         return new Vector3f(w.getX(), w.getY(), w.getZ());
     }
 
-    public Vector3f reflect(Vector3f normal){
-        return this.sub(normal.mul((this.dot(normal)*2)));
+    public Vector3f reflect(Vector3f normal) {
+        return this.sub(normal.mul((this.dot(normal) * 2)));
     }
 
-    public void printVector(String header){
+    public void printVector(String header) {
         System.out.println(header + ": (" + getX() + ", " + getY() + ", " + getZ() + ")");
     }
 
-    public String toString(String header){
+    public String toString(String header) {
         return (header + ": (" + getX() + ", " + getY() + ", " + getZ() + ")");
     }
 
-    public Vector3f sqrt(){
-        Vector3f result = new Vector3f(0,0,0);
-        if(this.getX() < 0){
+    public Vector3f sqrt() {
+        Vector3f result = new Vector3f(0, 0, 0);
+        if (this.getX() < 0) {
             float value = this.getX() * -1;
-            result.setX((float)(-1 * Math.sqrt(value)));
-        }else{
-            result.setX((float)Math.sqrt(this.getX()));
+            result.setX((float) (-1 * Math.sqrt(value)));
+        } else {
+            result.setX((float) Math.sqrt(this.getX()));
         }
-        if(this.getY() < 0){
+        if (this.getY() < 0) {
             float value = this.getY() * -1;
             result.setY((float) (-1 * Math.sqrt(value)));
-        }else {
+        } else {
             result.setY((float) Math.sqrt(this.getY()));
-        }if(this.getZ() < 0){
+        }
+        if (this.getZ() < 0) {
             float value = this.getZ() * -1;
-            result.setZ((float)(-1 * Math.sqrt(value)));
-        }else{
-            result.setZ((float)Math.sqrt(this.getZ()));
+            result.setZ((float) (-1 * Math.sqrt(value)));
+        } else {
+            result.setZ((float) Math.sqrt(this.getZ()));
         }
         return result;
     }

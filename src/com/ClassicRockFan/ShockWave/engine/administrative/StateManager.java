@@ -15,6 +15,11 @@ public class StateManager {
         currentState = currentStateIn;
     }
 
-    public int getCurrentState() {return currentState;}
-    public void setCurrentState(int currentState) { this.currentState = currentState;}
+    public int getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(int currentState) {
+        this.currentState = currentState;
+    }
 }

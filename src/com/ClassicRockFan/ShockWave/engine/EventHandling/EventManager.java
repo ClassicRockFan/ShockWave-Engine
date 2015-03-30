@@ -14,12 +14,20 @@ public class EventManager {
         this.engine = engine;
     }
 
-    public void doEvents(){
-        for(int i = 0; i < events.size(); i++)
+    public void doEvents() {
+        for (int i = 0; i < events.size(); i++)
             events.get(i).handle();
     }
 
-    public void addEvent(Event event){events.add(event);}
-    private void clearEventsList(){events.clear();}
-    public ArrayList<Event> getEvents() {return events;}
+    public void addEvent(Event event) {
+        events.add(event);
+    }
+
+    private void clearEventsList() {
+        events.clear();
+    }
+
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
 }
