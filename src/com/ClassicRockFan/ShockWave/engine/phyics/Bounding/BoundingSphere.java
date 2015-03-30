@@ -33,17 +33,10 @@ public class BoundingSphere extends Collider {
         direction.set(direction.div(centerDistance));
 
         float distance = centerDistance - radiusDistance;
-        if (centerDistance < radiusDistance){
-            System.out.println("");
-            System.out.println("Collision occurred between spheres");
-            System.out.println("");
-        }
+
         return new IntersectData(centerDistance<radiusDistance, direction.mul(distance));
 
     }
 
-    //Getters and Setters Below
-    public void setCenter(Vector3f center) {this.center = center;}
     public float getRadius() {return radius;}
-    public void setRadius(float radius) {this.radius = radius;}
 }

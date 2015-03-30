@@ -1,4 +1,4 @@
-package com.ClassicRockFan.ShockWave.engine.EventHandling;
+package com.ClassicRockFan.ShockWave.engine.EventHandling.core;
 
 
 import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
@@ -10,7 +10,7 @@ public class Event {
     private String message;
 
     public Event(int type) {
-        this(type, Logging.LEVEL_INFO);
+        this(type, Logging.LEVEL_NULL);
     }
 
     public Event(int type, int logLevel) {
@@ -23,7 +23,7 @@ public class Event {
         this.logLevel = logLevel;
     }
 
-    public void handle() {
+    public void handle(double frameTime) {
         Logging.printLog(getMessage(), logLevel);
     }
 

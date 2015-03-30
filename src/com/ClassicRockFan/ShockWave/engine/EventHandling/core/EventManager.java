@@ -1,4 +1,4 @@
-package com.ClassicRockFan.ShockWave.engine.EventHandling;
+package com.ClassicRockFan.ShockWave.engine.EventHandling.core;
 
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 
@@ -14,9 +14,11 @@ public class EventManager {
         this.engine = engine;
     }
 
-    public void doEvents() {
+    public void doEvents(double frameTime) {
         for (int i = 0; i < events.size(); i++)
-            events.get(i).handle();
+            events.get(i).handle(frameTime);
+
+        events.clear();
     }
 
     public void addEvent(Event event) {

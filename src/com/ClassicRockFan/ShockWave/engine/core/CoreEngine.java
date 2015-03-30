@@ -1,6 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.core;
 
 
+import com.ClassicRockFan.ShockWave.engine.EventHandling.core.EventManager;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.coreEvents.InputGameEvent;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.coreEvents.UpdateGameEvent;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.physicsEvents.PhysicsOccurenceEvent;
 import com.ClassicRockFan.ShockWave.engine.administrative.ConsoleWindow;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.administrative.StateManager;
@@ -8,8 +12,6 @@ import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Window;
 import game.LauncherWindow;
-
-import java.text.DecimalFormat;
 
 public class CoreEngine {
     private static ConsoleWindow console = new ConsoleWindow();
@@ -21,7 +23,8 @@ public class CoreEngine {
     private double frameTime;
     private RenderingEngine renderingEngine;
     private PhysicsEngine physicsEngine;
-    private static StateManager stateManager;
+    private static StateManager stateManager = new StateManager(StateManager.STATE_INIT);;
+    private EventManager eventManager;
 
     private ProfileTimer sleepTimer = new ProfileTimer();
     private ProfileTimer windowSyncTimer = new ProfileTimer();
@@ -34,7 +37,7 @@ public class CoreEngine {
         this.frameTime = 1 / frameCap;
         this.game = game;
         this.game.setEngine(this);
-        this.stateManager = new StateManager(StateManager.STATE_INIT);
+        this.eventManager = new EventManager(this);
     }
 
     public static ConsoleWindow getConsole() {
@@ -66,6 +69,7 @@ public class CoreEngine {
     }
 
     private void run() {
+        ProfileTimer eventTimer = new ProfileTimer();
         while(true) {
             if (stateManager.getCurrentState() == StateManager.STATE_RUNNING) {
                 System.out.println("Starting the CoreEngine");
@@ -76,7 +80,6 @@ public class CoreEngine {
 
                 Window.createWindow(width, height, title);
 
-                DecimalFormat df = new DecimalFormat("#.0000");
                 this.physicsEngine = new PhysicsEngine(this);
                 this.renderingEngine = new RenderingEngine(this);
                 isRunning = true;
@@ -108,34 +111,27 @@ public class CoreEngine {
                             stop();
                         }
 
-                        game.input((float) frameTime);
-                        Input.update();
 
-                        physicsEngine.simulate((float)unprocessedTime);
-                        physicsEngine.handleCollisions((float)unprocessedTime);
+                        eventTimer.startInvocation();
+                        eventManager.addEvent(new InputGameEvent(game));
+                        eventManager.addEvent(new PhysicsOccurenceEvent(physicsEngine));
+                        eventManager.addEvent(new UpdateGameEvent(game));
 
-                        game.update((float) frameTime);
-                        
+                        eventManager.doEvents(frameTime);
+                        eventTimer.stopInvocation();
+
                         if (frameCounter >= 1.0) {
                             double totalTime = (1000.0 * frameCounter) / (double) frames;
                             double recordedTime = 0;
 
                             console.addConsoleText("");
                             console.addConsoleText("Running at ", 55, frames + " FPS");
-                            double inputTime = game.dislayInputTime((double) frames);
-                            double updateTime = game.dislayUpdateTime((double) frames);
-                            double physSimTime = physicsEngine.displaySimulateTime((double)frames);
-                            double physCollisionTime = physicsEngine.displayCollisionTime((double)frames);
+                            recordedTime += eventTimer.displayAndReset("Event Handling", (double) frames);
                             double timeRendering = renderingEngine.dislayRenderTime((double)frames);
-                            recordedTime += inputTime;
-                            recordedTime += updateTime;
-                            recordedTime += physSimTime;
-                            recordedTime += physCollisionTime;
                             recordedTime += timeRendering;
                             double sleepTime = displaySleepTime((double) frames);
                             recordedTime += sleepTime;
                             recordedTime += displayWindowSyncTime((double) frames);
-
                             System.out.println("Other Time: " + (totalTime - recordedTime) + " ms");
                             System.out.println("Total Time: " + (totalTime) + " ms");
                             System.out.println("");
@@ -173,7 +169,7 @@ public class CoreEngine {
                     Thread.sleep(1000);
                 }catch (Exception e){
                     e.printStackTrace();
-                    System.err.println("Error creating the Main Screen");
+                    System.err.println("Error waiting on the main loading screen");
 
                     System.exit(1);
                 }
@@ -184,6 +180,7 @@ public class CoreEngine {
     private void cleanUp() {
         System.out.println("In Cleanup");
         Window.dispose();
+        System.gc();
         System.exit(1);
     }
 
@@ -205,5 +202,9 @@ public class CoreEngine {
 
     public static StateManager getStateManager() {
         return stateManager;
+    }
+
+    public EventManager getEventManager() {
+        return eventManager;
     }
 }
