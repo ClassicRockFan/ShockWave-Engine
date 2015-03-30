@@ -1,101 +1,209 @@
 package com.ClassicRockFan.ShockWave.engine.core;
 
 
-import com.ClassicRockFan.ShockWave.engine.EventHandling.EventManager;
+import com.ClassicRockFan.ShockWave.engine.administrative.ConsoleWindow;
+import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.administrative.StateManager;
-import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
+import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
+import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
+import com.ClassicRockFan.ShockWave.engine.rendering.Window;
+import game.LauncherWindow;
+
+import java.text.DecimalFormat;
 
 public class CoreEngine {
-
-    private EventManager eventManager;
-    private StateManager stateManager;
+    private static ConsoleWindow console = new ConsoleWindow();
+    private boolean isRunning;
     private Game game;
-
+    private int width;
+    private int height;
+    private String title;
     private double frameTime;
+    private RenderingEngine renderingEngine;
+    private PhysicsEngine physicsEngine;
+    private static StateManager stateManager;
 
-    public CoreEngine(Game game, double frameCap) {
+    private ProfileTimer sleepTimer = new ProfileTimer();
+    private ProfileTimer windowSyncTimer = new ProfileTimer();
+
+    public CoreEngine(int width, int height, double frameCap, Game game, String title) {
+        this.isRunning = false;
+        this.width = width;
+        this.height = height;
+        this.title = title;
+        this.frameTime = 1 / frameCap;
         this.game = game;
-        this.frameTime = frameCap;
-        this.eventManager = new EventManager(this);
+        this.game.setEngine(this);
         this.stateManager = new StateManager(StateManager.STATE_INIT);
+    }
 
+    public static ConsoleWindow getConsole() {
+        return console;
+    }
+
+    public void createConsole() {
+        console.setVisible(true);
     }
 
     public void start() {
-        if (stateManager.getCurrentState() != StateManager.STATE_INIT)
+        if (isRunning) {
             return;
-
-        Logging.printLog("Starting the CoreEngine");
-        stateManager.setCurrentState(StateManager.STATE_RUNNING);
+        }
+        System.out.println("Starting Core functionality");
+        console.addConsoleText("Starting Core functionality");
         run();
     }
 
     public void stop() {
-        if (stateManager.getCurrentState() != StateManager.STATE_RUNNING)
+
+        if (!isRunning) {
             return;
+        }
+
+        isRunning = false;
+        System.out.println("Stopping CoreEngine");
+        console.addConsoleText("Stopping the CoreEngine");
     }
 
-    public void run() {
+    private void run() {
+        while(true) {
+            if (stateManager.getCurrentState() == StateManager.STATE_RUNNING) {
+                System.out.println("Starting the CoreEngine");
+                console.addConsoleText("Starting CoreEngine");
 
-        if (stateManager.getCurrentState() == StateManager.STATE_RUNNING) {
-            game.init();
-            while (true) {
+                System.out.println("Creating Game Window");
+                console.addConsoleText("Creating Game Window");
+
+                Window.createWindow(width, height, title);
+
+                DecimalFormat df = new DecimalFormat("#.0000");
+                this.physicsEngine = new PhysicsEngine(this);
+                this.renderingEngine = new RenderingEngine(this);
+                isRunning = true;
                 int frames = 0;
                 double frameCounter = 0;
+
+                game.init(renderingEngine, physicsEngine);
 
                 double lastTime = Time.getTime();
                 double unprocessedTime = 0;
 
-                boolean render = false;
+                while (isRunning) {
+                    boolean render = false;
 
-                double startTime = Time.getTime();
-                double passedTime = startTime - lastTime;
-                lastTime = startTime;
+                    double startTime = Time.getTime();
+                    double passedTime = startTime - lastTime;
+                    lastTime = startTime;
 
-                unprocessedTime += passedTime;
-                frameCounter += passedTime;
+                    unprocessedTime += passedTime;
+                    frameCounter += passedTime;
 
-                while (unprocessedTime > frameTime) {
-                    render = true;
 
-                    unprocessedTime -= frameTime;
+                    while (unprocessedTime > frameTime) {
+                        render = true;
 
-//                    if (Window.isCloseRequested()) {
-//                        stop();
-//                    }
+                        unprocessedTime -= frameTime;
 
-                    if (frameCounter >= 1.0) {
-                        double totalTime = (1000.0 * frameCounter) / (double) frames;
-                        double recordedTime = 0;
-                        System.out.println("Other Time: " + (totalTime - recordedTime) + " ms");
-                        System.out.println("Total Time: " + (totalTime) + " ms");
-                        System.out.println("");
-                        frames = 0;
-                        frameCounter = 0;
+                        if (Window.isCloseRequested()) {
+                            stop();
+                        }
+
+                        game.input((float) frameTime);
+                        Input.update();
+
+                        physicsEngine.simulate((float)unprocessedTime);
+                        physicsEngine.handleCollisions((float)unprocessedTime);
+
+                        game.update((float) frameTime);
+                        
+                        if (frameCounter >= 1.0) {
+                            double totalTime = (1000.0 * frameCounter) / (double) frames;
+                            double recordedTime = 0;
+
+                            console.addConsoleText("");
+                            console.addConsoleText("Running at ", 55, frames + " FPS");
+                            double inputTime = game.dislayInputTime((double) frames);
+                            double updateTime = game.dislayUpdateTime((double) frames);
+                            double physSimTime = physicsEngine.displaySimulateTime((double)frames);
+                            double physCollisionTime = physicsEngine.displayCollisionTime((double)frames);
+                            double timeRendering = renderingEngine.dislayRenderTime((double)frames);
+                            recordedTime += inputTime;
+                            recordedTime += updateTime;
+                            recordedTime += physSimTime;
+                            recordedTime += physCollisionTime;
+                            recordedTime += timeRendering;
+                            double sleepTime = displaySleepTime((double) frames);
+                            recordedTime += sleepTime;
+                            recordedTime += displayWindowSyncTime((double) frames);
+
+                            System.out.println("Other Time: " + (totalTime - recordedTime) + " ms");
+                            System.out.println("Total Time: " + (totalTime) + " ms");
+                            System.out.println("");
+
+                            frames = 0;
+                            frameCounter = 0;
+
+                        }
+                    }
+
+                    if (render) {
+                        game.render(renderingEngine);
+                        windowSyncTimer.startInvocation();
+                        Window.render();
+                        windowSyncTimer.stopInvocation();
+                        frames++;
+                    } else {
+                        try {
+                            sleepTimer.startInvocation();
+                            Thread.sleep(1);
+                            sleepTimer.stopInvocation();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
-                if (render) {
-                    frames++;
+                cleanUp();
+            } else if (stateManager.getCurrentState() == StateManager.STATE_INIT) {
+                LauncherWindow launcherWindow = new LauncherWindow(width, height, title, "LoadScreen.jpg", this);
+                stateManager.setCurrentState(StateManager.STATE_MENU);
 
-                } else {
-                    try {
-                        Thread.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            } else if (stateManager.getCurrentState() == StateManager.STATE_MENU) {
+                try {
+                    Thread.sleep(1000);
+                }catch (Exception e){
+                    e.printStackTrace();
+                    System.err.println("Error creating the Main Screen");
+
+                    System.exit(1);
                 }
-                if (stateManager.getCurrentState() != StateManager.STATE_RUNNING)
-                    break;
             }
         }
     }
 
-    public EventManager getEventManager() {
-        return eventManager;
+    private void cleanUp() {
+        System.out.println("In Cleanup");
+        Window.dispose();
+        System.exit(1);
     }
 
-    public StateManager getStateManager() {
+    public double displaySleepTime(double dividend) {
+        return sleepTimer.reset(dividend);
+    }
+
+    public double displayWindowSyncTime(double dividend) {
+        return windowSyncTimer.displayAndReset("Window Render Time: ", dividend);
+    }
+
+    public RenderingEngine getRenderingEngine() {
+        return renderingEngine;
+    }
+
+    public void setRunning(boolean isRunning) {
+        this.isRunning = isRunning;
+    }
+
+    public static StateManager getStateManager() {
         return stateManager;
     }
 }

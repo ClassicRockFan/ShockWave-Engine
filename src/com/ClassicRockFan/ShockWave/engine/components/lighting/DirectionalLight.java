@@ -1,7 +1,8 @@
 package com.ClassicRockFan.ShockWave.engine.components.lighting;
 
-import com.base.engine.core.Vector3f;
-import com.base.engine.rendering.Shader;
+
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
 public class DirectionalLight extends BaseLight {
 

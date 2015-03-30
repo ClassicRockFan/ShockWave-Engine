@@ -17,19 +17,15 @@ Thank you Ron Sullivan and Thomas Hourdel.
 /* Standard imports.
  */
 
-import java.nio.*;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import org.lwjgl.BufferUtils;
 
-import com.base.engine.components.coreComponents.GameObject;
-import com.base.engine.components.rendering.FrustumCuller;
-import com.base.engine.core.Vector3f;
-import org.lwjgl.*;
+import java.nio.FloatBuffer;
 
-
+import static org.lwjgl.opengl.GL11.*;
 
 /* Static imports.
  */
-
-import static org.lwjgl.opengl.GL11.*;
 
 
 

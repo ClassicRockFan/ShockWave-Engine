@@ -1,10 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.rendering.meshLoading.model;
 
 
-import com.base.engine.core.Util;
-import com.base.engine.core.Vector2f;
-import com.base.engine.core.Vector3f;
-import com.base.engine.rendering.meshLoading.index.OBJIndex;
+import com.ClassicRockFan.ShockWave.engine.core.Util;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.rendering.meshLoading.index.OBJIndex;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

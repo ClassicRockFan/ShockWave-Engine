@@ -1,10 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.components.rendering;
 
 
-import com.base.engine.components.coreComponents.GameComponent;
-import com.base.engine.core.CoreEngine;
-import com.base.engine.core.Matrix4f;
-import com.base.engine.core.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameComponent;
+import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
+import com.ClassicRockFan.ShockWave.engine.core.math.Matrix4f;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 
 public class Camera extends GameComponent {
 

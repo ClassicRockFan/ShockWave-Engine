@@ -1,19 +1,24 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import com.base.engine.components.lighting.BaseLight;
-import com.base.engine.components.rendering.Camera;
-import com.base.engine.components.coreComponents.GameObject;
-import com.base.engine.core.*;
-import com.base.engine.administrative.ProfileTimer;
-import com.base.engine.rendering.resourceManagement.MappedValues;
+
+import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
+import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameObject;
+import com.ClassicRockFan.ShockWave.engine.components.lighting.BaseLight;
+import com.ClassicRockFan.ShockWave.engine.components.rendering.Camera;
+import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
+import com.ClassicRockFan.ShockWave.engine.core.Time;
+import com.ClassicRockFan.ShockWave.engine.core.Transform;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.MappedValues;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL13.*;
-import static org.lwjgl.opengl.GL30.*;
-import static org.lwjgl.opengl.GL32.*;
+import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
+import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER_SRGB;
+import static org.lwjgl.opengl.GL32.GL_DEPTH_CLAMP;
 
 public class RenderingEngine extends MappedValues {
     private HashMap<String, Integer> samplerMap;

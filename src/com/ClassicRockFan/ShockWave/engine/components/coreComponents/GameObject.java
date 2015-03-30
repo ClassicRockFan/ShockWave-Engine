@@ -1,10 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.components.coreComponents;
 
-import com.base.engine.components.rendering.FrustumCuller;
-import com.base.engine.core.CoreEngine;
-import com.base.engine.core.Transform;
-import com.base.engine.rendering.RenderingEngine;
-import com.base.engine.rendering.Shader;
+
+import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
+import com.ClassicRockFan.ShockWave.engine.core.Transform;
+import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
+import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
 import java.util.ArrayList;
 

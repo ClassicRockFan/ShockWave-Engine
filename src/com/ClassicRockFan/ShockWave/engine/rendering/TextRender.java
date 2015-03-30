@@ -1,9 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.TrueTypeFont;
 
 import java.awt.*;
+
 import static org.lwjgl.opengl.GL11.*;
 
 public class TextRender {

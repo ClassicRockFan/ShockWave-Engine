@@ -1,10 +1,11 @@
 package com.ClassicRockFan.ShockWave.engine.components.rendering;
 
-import com.base.engine.components.coreComponents.GameComponent;
-import com.base.engine.components.coreComponents.GameObject;
-import com.base.engine.core.Vector3f;
 
-public class FrustumCuller extends GameComponent{
+import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameComponent;
+import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameObject;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+
+public class FrustumCuller extends GameComponent {
 
     public static final int SPHERE_CULLER = 1;
     public static final int CUBE_CULLER = 2;

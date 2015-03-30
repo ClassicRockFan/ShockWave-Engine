@@ -1,7 +1,8 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import com.base.engine.core.Util;
-import com.base.engine.rendering.resourceManagement.TextureResource;
+
+import com.ClassicRockFan.ShockWave.engine.core.Util;
+import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.TextureResource;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

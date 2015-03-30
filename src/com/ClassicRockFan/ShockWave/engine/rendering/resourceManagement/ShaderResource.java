@@ -1,12 +1,13 @@
 package com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement;
 
-import com.base.engine.administrative.ReferenceCounter;
+
+import com.ClassicRockFan.ShockWave.engine.administrative.ReferenceCounter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.lwjgl.opengl.GL15.glDeleteBuffers;
-import static org.lwjgl.opengl.GL20.glCreateProgram;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL20.*;
 
 public class ShaderResource {
 

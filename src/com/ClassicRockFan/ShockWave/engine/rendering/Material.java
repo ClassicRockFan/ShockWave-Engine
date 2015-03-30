@@ -1,6 +1,7 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import com.base.engine.rendering.resourceManagement.MappedValues;
+
+import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.MappedValues;
 
 import java.util.HashMap;
 

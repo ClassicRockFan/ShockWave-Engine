@@ -1,10 +1,11 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import com.base.engine.core.Util;
-import com.base.engine.core.Vector3f;
-import com.base.engine.rendering.meshLoading.model.IndexedModel;
-import com.base.engine.rendering.meshLoading.model.OBJModel;
-import com.base.engine.rendering.resourceManagement.MeshResource;
+
+import com.ClassicRockFan.ShockWave.engine.core.Util;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.rendering.meshLoading.model.IndexedModel;
+import com.ClassicRockFan.ShockWave.engine.rendering.meshLoading.model.OBJModel;
+import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.MeshResource;
 
 import java.util.ArrayList;
 import java.util.HashMap;

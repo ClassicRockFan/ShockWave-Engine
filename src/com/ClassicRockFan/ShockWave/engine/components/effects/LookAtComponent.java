@@ -1,10 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.components.effects;
 
-import com.base.engine.components.coreComponents.GameComponent;
-import com.base.engine.core.Quaternion;
-import com.base.engine.core.Vector3f;
-import com.base.engine.rendering.RenderingEngine;
-import com.base.engine.rendering.Shader;
+import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameComponent;
+import com.ClassicRockFan.ShockWave.engine.core.math.Quaternion;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
+import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
 public class LookAtComponent extends GameComponent {
     RenderingEngine renderingEngine;

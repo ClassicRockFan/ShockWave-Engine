@@ -1,12 +1,17 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import com.base.engine.administrative.ReferenceCounter;
-import com.base.engine.components.lighting.BaseLight;
-import com.base.engine.components.lighting.DirectionalLight;
-import com.base.engine.components.lighting.PointLight;
-import com.base.engine.components.lighting.SpotLight;
-import com.base.engine.core.*;
-import com.base.engine.rendering.resourceManagement.ShaderResource;
+
+import com.ClassicRockFan.ShockWave.engine.administrative.ReferenceCounter;
+import com.ClassicRockFan.ShockWave.engine.components.lighting.BaseLight;
+import com.ClassicRockFan.ShockWave.engine.components.lighting.DirectionalLight;
+import com.ClassicRockFan.ShockWave.engine.components.lighting.PointLight;
+import com.ClassicRockFan.ShockWave.engine.components.lighting.SpotLight;
+import com.ClassicRockFan.ShockWave.engine.core.Transform;
+import com.ClassicRockFan.ShockWave.engine.core.Util;
+import com.ClassicRockFan.ShockWave.engine.core.math.Matrix4f;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.ShaderResource;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +20,7 @@ import java.util.HashMap;
 
 import static org.lwjgl.opengl.GL20.*;
 
-public class Shader extends ReferenceCounter{
+public class Shader extends ReferenceCounter {
     private static HashMap<String, ShaderResource> loadedShaders = new HashMap<String, ShaderResource>();
 
     private String fileName;

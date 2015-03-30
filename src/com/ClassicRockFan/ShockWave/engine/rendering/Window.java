@@ -1,7 +1,6 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import com.base.engine.core.Vector2f;
-
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;

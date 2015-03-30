@@ -1,11 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.components.rendering;
 
-
-import com.base.engine.components.coreComponents.GameComponent;
-import com.base.engine.core.Input;
-import com.base.engine.core.Vector2f;
-import com.base.engine.core.Vector3f;
-import com.base.engine.rendering.Window;
+import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameComponent;
+import com.ClassicRockFan.ShockWave.engine.core.Input;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.rendering.Window;
 
 public class FreeLook extends GameComponent {
     public static final Vector3f yAxis = new Vector3f(0, 1, 0);

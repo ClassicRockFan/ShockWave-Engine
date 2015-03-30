@@ -1,6 +1,7 @@
 package com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement;
 
-import com.base.engine.core.Vector3f;
+
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 
 import java.util.HashMap;
 

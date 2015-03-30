@@ -1,7 +1,7 @@
 package com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement;
 
 
-import com.base.engine.administrative.ReferenceCounter;
+import com.ClassicRockFan.ShockWave.engine.administrative.ReferenceCounter;
 
 import java.nio.ByteBuffer;
 

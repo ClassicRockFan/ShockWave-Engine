@@ -1,0 +1,13 @@
+Dual Textures - it was cool looking
+Cleanup constructors
+Organize classes
+Organize methods in classes
+Turn getters and setters to one line if possible
+
+Make it so that you don't need to add a physicsEngineComponent to make the physics work - default
+//This has been done - In the setup of coreEngine, I add a physicsEngineComponent to the root object.
+//May want to just replace it with a change to make the core do simulate() and handleCollisions() on its own
+
+Finish up collision detections
+Double check collision response algorithms
+Make a note for the Devs

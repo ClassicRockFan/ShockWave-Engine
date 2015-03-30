@@ -1,7 +1,8 @@
 package com.ClassicRockFan.ShockWave.engine.rendering.meshLoading.model;
 
-import com.base.engine.core.Vector2f;
-import com.base.engine.core.Vector3f;
+
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 
 import java.util.ArrayList;
 
