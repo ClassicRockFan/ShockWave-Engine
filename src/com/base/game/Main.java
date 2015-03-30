@@ -9,7 +9,7 @@ public class Main {
 
         System.out.println("program started");
 
-        CoreEngine engine = new CoreEngine(60);
+        CoreEngine engine = new CoreEngine(new TestGame(), 60);
         engine.start();
 
         System.out.println("program ended");

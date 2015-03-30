@@ -9,10 +9,12 @@ public class CoreEngine {
 
     private EventManager eventManager;
     private StateManager stateManager;
+    private Game game;
 
     private double frameTime;
 
-    public CoreEngine(double frameCap) {
+    public CoreEngine(Game game, double frameCap) {
+        this.game = game;
         this.frameTime = frameCap;
         this.eventManager = new EventManager(this);
         this.stateManager = new StateManager(StateManager.STATE_INIT);
@@ -34,12 +36,12 @@ public class CoreEngine {
     }
 
     public void run() {
-        while (true) {
 
-            if (stateManager.getCurrentState() == StateManager.STATE_RUNNING) {
+        if (stateManager.getCurrentState() == StateManager.STATE_RUNNING) {
+            game.init();
+            while (true) {
                 int frames = 0;
                 double frameCounter = 0;
-
 
                 double lastTime = Time.getTime();
                 double unprocessedTime = 0;
@@ -75,6 +77,7 @@ public class CoreEngine {
 
                 if (render) {
                     frames++;
+
                 } else {
                     try {
                         Thread.sleep(1);
@@ -82,6 +85,8 @@ public class CoreEngine {
                         e.printStackTrace();
                     }
                 }
+                if(stateManager.getCurrentState() != StateManager.STATE_RUNNING)
+                    break;
             }
         }
     }
