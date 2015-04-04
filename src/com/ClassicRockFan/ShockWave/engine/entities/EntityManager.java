@@ -24,77 +24,70 @@ public class EntityManager {
         this.engine = engine;
     }
 
-    //Item management
-    public void registerItem(Item item){
+    //Registration
+    public void register(Item item){
         initializedItems.add(item);
         item.init();
         Logging.printLog("Registering an item");
     }
 
-    public void loadItem(Item item){
-        if(!initializedItems.contains(item))
-            registerItem(item);
-        loadItemData(item);
-    }
-
-    private void loadItemData(Item item) {
-        item.load();
-    }
-
-    public void unloadAllItems(){
-        loadedItems.clear();
-    }
-
-    public void unload(Item item){
-        loadedItems.remove(item);
-    }
-
-    public boolean isLoaded(Item item){
-        return loadedItems.contains(item);
-    }
-
-    public ArrayList<Item> getRegisteredItems() {
-        return initializedItems;
-    }
-
-    public ArrayList<Item> getLoadedItems() {
-        return loadedItems;
-    }
-
-    //Character Management
-    public void registerCharacter(Character character){
+    public void register(Character character){
         initializedCharacters.add(character);
         character.init();
         Logging.printLog("Registering a character");
     }
 
-    public void loadCharacter(Character character){
+    //Loading
+    public void load(Item item){
+        if(!initializedItems.contains(item))
+            register(item);
+        loadData(item);
+    }
+
+    public void load(Character character){
         if(!isLoaded(character))
-            registerCharacter(character);
-        loadCharacterData(character);
+            register(character);
+        loadData(character);
         loadedCharacters.add(character);
     }
 
-    private void loadCharacterData(Character character) {
-        character.load();
+    //Load data
+    private void loadData(Entity entity) {
+        entity.load();
     }
 
-    public void unloadAll(){
+    //Unloading
+    public void unloadAllItems(){
+        loadedItems.clear();
+    }
+    public void unload(Item item){
+        if(isLoaded(item))loadedItems.remove(item);
+    }
+    public void unloadAllCharacters(){
         loadedCharacters.clear();
     }
-
     public void unload(Character character){
-        loadedCharacters.remove(character);
+        if(isLoaded(character))loadedCharacters.remove(character);
     }
 
+    //Checking
+    public boolean isLoaded(Item item){
+        return loadedItems.contains(item);
+    }
     public boolean isLoaded(Character character){
         return loadedCharacters.contains(character);
     }
 
+    //Getting
+    public ArrayList<Item> getRegisteredItems() {
+        return initializedItems;
+    }
+    public ArrayList<Item> getLoadedItems() {
+        return loadedItems;
+    }
     public ArrayList<Character> getRegisteredCharacters() {
         return initializedCharacters;
     }
-
     public ArrayList<Character> getLoadedCharacters() {
         return loadedCharacters;
     }

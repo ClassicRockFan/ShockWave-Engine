@@ -59,11 +59,11 @@ public abstract class Game {
     }
 
     public void addItem(Item item){
-        engine.getEntityManager().loadItem(item);
+        engine.getEntityManager().load(item);
     }
 
     public void addCharacter(Character character){
-        engine.getEntityManager().loadCharacter(character);
+        engine.getEntityManager().load(character);
         Logging.printLog("Adding A Character!!!", Logging.LEVEL_INFO);
     }
 

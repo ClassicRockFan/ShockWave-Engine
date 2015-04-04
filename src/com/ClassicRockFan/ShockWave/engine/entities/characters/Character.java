@@ -11,7 +11,7 @@ public class Character extends Entity{
     public Character(CoreEngine engine, String name) {
         super(name);
         this.entityManager = engine.getEntityManager();
-        entityManager.registerCharacter(this);
+        entityManager.register(this);
     }
 
     public EntityManager getCharacterManager() {

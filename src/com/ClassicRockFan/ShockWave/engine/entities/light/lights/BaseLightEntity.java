@@ -1,18 +1,18 @@
-package com.ClassicRockFan.ShockWave.engine.entities.light;
+package com.ClassicRockFan.ShockWave.engine.entities.light.lights;
 
 
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
 import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
-public class EntityBaseLight extends EntityComponent {
+public class BaseLightEntity extends EntityComponent {
 
     private Vector3f color;
     private float intensity;
     private Shader shader;
-    private EntityBaseLight base;
+    private BaseLightEntity base;
 
-    public EntityBaseLight(Vector3f color, float intensity) {
+    public BaseLightEntity(Vector3f color, float intensity) {
         super("light");
         this.color = color;
         this.intensity = intensity;
@@ -43,11 +43,11 @@ public class EntityBaseLight extends EntityComponent {
         this.intensity = intensity;
     }
 
-    public EntityBaseLight getBase() {
+    public BaseLightEntity getBase() {
         return base;
     }
 
-    public void setBase(EntityBaseLight base) {
+    public void setBase(BaseLightEntity base) {
         this.base = base;
     }
 }

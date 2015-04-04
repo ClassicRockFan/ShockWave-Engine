@@ -14,7 +14,7 @@ public class Item extends Entity{
         super(name);
         this.engine = engine;
         this.entityManager = engine.getEntityManager();
-        entityManager.registerItem(this);
+        entityManager.register(this);
         init();
     }
 
