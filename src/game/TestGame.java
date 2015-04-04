@@ -1,23 +1,22 @@
 package game;
 
-import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameObject;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.DirectionalLight;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.PointLight;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.SpotLight;
-import com.ClassicRockFan.ShockWave.engine.components.rendering.Camera;
-import com.ClassicRockFan.ShockWave.engine.components.rendering.FreeLook;
-import com.ClassicRockFan.ShockWave.engine.components.rendering.FreeMove;
-import com.ClassicRockFan.ShockWave.engine.components.rendering.MeshRender;
+
+import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Game;
 import com.ClassicRockFan.ShockWave.engine.core.math.Quaternion;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
-import com.ClassicRockFan.ShockWave.engine.phyics.Bounding.BoundingSphere;
+import com.ClassicRockFan.ShockWave.engine.entities.characters.Character;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.FreeLook;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.FreeMove;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.MeshRender;
+import com.ClassicRockFan.ShockWave.engine.entities.light.lights.DirectionalLightEntity;
+import com.ClassicRockFan.ShockWave.engine.entities.light.lights.PointLightEntity;
+import com.ClassicRockFan.ShockWave.engine.entities.light.lights.SpotLightEntity;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsObject;
 import com.ClassicRockFan.ShockWave.engine.rendering.*;
 
 public class TestGame extends Game {
-
     public Material bricks;
     public Material stoneBricks;
     public Material stoneBricks2;
@@ -25,10 +24,9 @@ public class TestGame extends Game {
     public Material wood;
     public Material drumStick;
     public Material earthTexture;
-
     @Override
-    public void init(RenderingEngine renderingEngine, PhysicsEngine physicsEngine) {
-        super.init(renderingEngine, physicsEngine);
+    public void init(RenderingEngine renderingEngine, PhysicsEngine physicsEngine, CoreEngine engine){
+        super.init(renderingEngine, physicsEngine, engine);
 
         bricks = new Material("bricks.jpg", 0.5f, 4f, "bricks_normal.jpg", "bricks_disp.jpg", 0.03f, -0.5f);
         stoneBricks = new Material("stoneBricks.jpg", 0.5f, 4f, "stoneBricks_normal.jpg", "stoneBricks_disp.jpg", 0.04f, -1.0f);
@@ -46,143 +44,83 @@ public class TestGame extends Game {
         Mesh sphere = new Mesh("sphere.obj");
         Mesh cube = new Mesh("cube.obj");
 
-        GameObject ground = new GameObject();
+        Character ground = new Character(engine, "ground");
         ground.addComponent(new MeshRender(groundMesh, bricks));
         ground.getTransform().getPos().set(5, -1, 10);
         ground.getTransform().getScale().set(2, 2, 2);
 
-        GameObject testMesh = new GameObject();
+        Character testMesh = new Character(engine, "testMesh1");
         testMesh.addComponent(new MeshRender(groundMesh, bricks));
         testMesh.getTransform().getPos().set(0, 2, 0);
         testMesh.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), 0.4f));
         testMesh.getTransform().getScale().set(0.2f, 0.2f, 0.2f);
 
-        GameObject testMesh2 = new GameObject();
+        Character testMesh2 = new Character(engine, "testMesh2");
         testMesh2.addComponent(new MeshRender(groundMesh, bricks));
-        //testMesh2.addComponent(new LookAtCamera());
-        testMesh2.getTransform().getPos().set(0, 0, 25);
-        //testMesh2.getTransform().getScale().set(1,1,1);
+        testMesh2.getTransform().setParent(testMesh.getTransform());
+        testMesh2.getTransform().getPos().set(testMesh2.getTransform().getPos().add(new Vector3f(0, 0, 25)));
 
-        GameObject coffeeCup = new GameObject();
+        Character coffeeCup = new Character(engine, "coffeeCup");
         coffeeCup.addComponent(new MeshRender(coffeeCupMesh, ceramic));
         coffeeCup.getTransform().getPos().set(3f, 0f, 3f);
 
-        GameObject drumstick = new GameObject();
+        Character drumstick = new Character(engine, "drumstick");
         drumstick.addComponent(new MeshRender(drumstickMesh, wood));
         drumstick.getTransform().getPos().set(10, 20, 10);
         drumstick.getTransform().getScale().set(0.2f, 0.2f, 0.2f);
         drumstick.getTransform().getRot().set(new Quaternion(new Vector3f(1, 0, 0), (float) Math.toRadians(60)));
 
-        GameObject drumstick1 = new GameObject();
+        Character drumstick1 = new Character(engine, "drumstick2");
         drumstick1.addComponent(new MeshRender(drumstickMesh, wood));
-        drumstick1.getTransform().getPos().set(4, 0, 0);
-        drumstick1.getTransform().getRot().set(new Quaternion(new Vector3f(1, 0, 0), (float) Math.toRadians(-120)));
+        drumstick1.getTransform().getPos().set(11, 20, 10);
+        drumstick1.getTransform().getScale().set(0.2f, 0.2f, 0.2f);
+        drumstick1.getTransform().getRot().set(new Quaternion(new Vector3f(1, 0, 0), (float) Math.toRadians(-60)));
 
-        GameObject skull = new GameObject();
+        Character skull = new Character(engine, "skull");
         skull.addComponent(new MeshRender(monkey, stoneBricks));
         skull.getTransform().getPos().set(10, 25, 10);
         skull.getTransform().getScale().set(3, 3, 3);
         skull.getTransform().getRot().set(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(-90)));
 
-        GameObject skullLight = new GameObject();
-        skullLight.addComponent(new PointLight(new Vector3f(0, 1, 0), 100f, new Attenuation(0, 1, 1)));
+        PointLightEntity skullLight = new PointLightEntity(engine, new Vector3f(0, 1, 0), 100f, new Attenuation(0, 1, 1));
         skullLight.getTransform().getPos().set(0, 30, 10);
 
-        GameObject earth = new GameObject();
+        Character earth = new Character(engine, "earth");
         earth.addComponent(new MeshRender(sphere, earthTexture));
         earth.getTransform().getScale().set(5, 5, 5);
         earth.getTransform().getPos().set(0, 10, 0);
 
-
-        PhysicsObject sphere1 = new PhysicsObject(new BoundingSphere(new Vector3f(0, 0, 0), 1), new Vector3f(0, 0, 0),  10, 0.025f);
-        PhysicsObject sphere2 = new PhysicsObject(new BoundingSphere(
-                //new Vector3f(1.414f/2.0f * 7.0f, 0.0f, 1.414f/2.0f * 7.0f)
-                new Vector3f(10,0,0), 1
-                ),
-                //new Vector3f(3*-1.414f/2.0f, 0.0f, 3*-1.414f/2.0f)
-                new Vector3f(0,0,0)
-                , 3, 0.5f
-                );
-        sphere1.addComponent(new MeshRender(sphere, stoneBricks2))
-                //.addComponent(new LookAtObject(sphere2))
-//                //.addComponent(new Orbit(sphere2, sphere1, new Vector3f(1, 1, 1), true))
-                ;
-        sphere2.addComponent(new MeshRender(sphere, stoneBricks2))
-//                //.addComponent(new PhysicsMove(2f, sphere2))
-//                //.addComponent(new LookAtObject(sphere1))
-                ;
-//        GameObject physicsObject1 = new PhysicsObject(new AABB(new Vector3f(0,0,0), new Vector3f(10,10,10)), new Vector3f(0,0,0), 10);
-//        physicsObject1.addComponent(new MeshRender(cube, bricks));
-//        physicsObject1.getTransform().setRot(new Quaternion(new Vector3f(0,1,0), Math.toRadians(45)));
-//        sphere1.getTransform().getPos().set(5, 0, 5);
-        addPhysicsObject(sphere1);
-        addPhysicsObject(sphere2);
-
-        for(int i = 0; i < 5; i ++){
-            PhysicsObject test = new PhysicsObject(new BoundingSphere(
-                    //new Vector3f(1.414f/2.0f * 7.0f, 0.0f, 1.414f/2.0f * 7.0f)
-                    new Vector3f(10,0,0), 1
-            ),
-                    //new Vector3f(3*-1.414f/2.0f, 0.0f, 3*-1.414f/2.0f)
-                    new Vector3f((float)Math.sin(i),(float) Math.cos(i),(float) Math.tan(i))
-                    , 3, 0.5f
-            );
-            test.addComponent(new MeshRender(sphere, stoneBricks2));
-            addPhysicsObject(test);
-        }
-
-
         //Lights Below
-        GameObject pointLightObject = new GameObject();
-        PointLight pointLight = new PointLight(new Vector3f(0, 1, 0), 2f, new Attenuation(0, 0, 1));
-        pointLightObject.addComponent(pointLight);
-        pointLightObject.getTransform().setParent(skull.getTransform());
+        PointLightEntity pointLight = new PointLightEntity(engine, new Vector3f(0, 1, 0), 2f, new Attenuation(0, 0, 1));
+        pointLight.getTransform().getPos().set(skullLight.getTransform().getPos());
 
-        GameObject spotLightObject = new GameObject();
-        SpotLight spotLight = new SpotLight(new Vector3f(0, 1, 1), 20f, new Attenuation(0, 0, 1), 0.7f);
-        spotLightObject.addComponent(spotLight);
-        spotLightObject.getTransform().getPos().set(5, 0, 5);
-        spotLightObject.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(90.0)));
+        SpotLightEntity spotLight = new SpotLightEntity(engine, new Vector3f(0, 1, 1), 20f, new Attenuation(0, 0, 1), 0.7f);
+        spotLight.getTransform().getPos().set(5, 0, 5);
+        spotLight.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(90.0)));
 
-        GameObject directionLightObject = new GameObject();
-        DirectionalLight directionalLight1 = new DirectionalLight(new Vector3f(0, 0, 1), 1f);
-        GameObject directionLightObject2 = new GameObject();
-        DirectionalLight directionalLight2 = new DirectionalLight(new Vector3f(1, 0, 0), 1f);
-        directionLightObject.addComponent(directionalLight1);
-        directionLightObject2.addComponent(directionalLight2);
-        directionLightObject2.getTransform().getRot().set(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(180)));
+        DirectionalLightEntity directionalLight1 = new DirectionalLightEntity(engine, new Vector3f(0, 0, 1), 1f);
+        DirectionalLightEntity directionalLight2 = new DirectionalLightEntity(engine, new Vector3f(1, 0, 0), 1f);
+        directionalLight2.getTransform().getRot().set(new Quaternion(new Vector3f(0, 1, 0), Math.toRadians(180)));
 
-        //Adding Lights
-        addObject(directionLightObject2);
-        addObject(pointLightObject);
-        addObject(spotLightObject);
-        skullLight.addChild(directionLightObject);
 
         //Create Camera
-        Camera camera = new Camera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 1000.0f);
-        GameObject cameraObject = new GameObject();
-                //new BoundingSphere(new Vector3f(5,5,5), 0.5f), new Vector3f(0,0,0), PhysicsEngine.NULL_MASS);
-        cameraObject.addComponent(camera)
+        EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 1000.0f);
+        entityCamera.addToEngine(engine);
+        Character cameraObject = new Character(engine, "camera");
+        cameraObject.
+                addComponent(entityCamera)
                 .addComponent(new FreeLook(0.5f))
                 .addComponent(new FreeMove(10))
-                //.addComponent(new PhysicsMove(500f, cameraObject))
         ;
-        //addPhysicsObject(cameraObject);
-        addObject(cameraObject);
-
-        //cameraObject.getPosition().set(0, 3, 0);
-        //cameraObject.getTransform().getRot().set(new Quaternion(new Vector3f(0, 1,0), Math.toRadians(210)));
-        renderingEngine.setMainCamera(camera);
-        addObject(skullLight);
-        addObject(skull);
-        drumstick.addChild(drumstick1);
-
-        addObject(ground);
-        testMesh.addChild(testMesh2);
-        addObject(testMesh);
-//        addObject(coffeeCup);
-        addObject(drumstick);
-        addObject(earth);
-
+        addCharacter(cameraObject);
+        addItem(skullLight);
+        addCharacter(skull);
+        addCharacter(ground);
+        addCharacter(testMesh);
+        addCharacter(testMesh2);
+        addCharacter(drumstick);
+        addCharacter(drumstick1);
+        addCharacter(earth);
     }
+
 }

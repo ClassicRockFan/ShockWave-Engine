@@ -11,6 +11,10 @@ import com.ClassicRockFan.ShockWave.engine.core.Util;
 import com.ClassicRockFan.ShockWave.engine.core.math.Matrix4f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.entities.light.Light;
+import com.ClassicRockFan.ShockWave.engine.entities.light.lights.DirectionalLightEntity;
+import com.ClassicRockFan.ShockWave.engine.entities.light.lights.PointLightEntity;
+import com.ClassicRockFan.ShockWave.engine.entities.light.lights.SpotLightEntity;
 import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.ShaderResource;
 
 import java.io.BufferedReader;
@@ -93,7 +97,7 @@ public class Shader extends ReferenceCounter {
 
     public void updateUniforms(Transform transform, Material material, RenderingEngine renderingEngine) {
         Matrix4f worldMatrix = transform.getTransformation();
-        Matrix4f MvPMatrix = renderingEngine.getMainCamera().getViewProjection().mul(worldMatrix);
+        Matrix4f MvPMatrix = renderingEngine.getEntityCamera().getViewProjection().mul(worldMatrix);
 
         for (int i = 0; i < resource.getUniformNames().size(); i++) {
             String uniformName = resource.getUniformNames().get(i);
@@ -119,11 +123,11 @@ public class Shader extends ReferenceCounter {
                 else if (uniformType.equals("float"))
                     setUniformf(uniformName, renderingEngine.getFloat(unprefixedUniformName));
                 else if (uniformType.equals("DirectionalLight"))
-                    setUniformDirectionalLight(uniformName, (DirectionalLight) renderingEngine.getActiveLight());
+                    setUniformDirectionalLight(uniformName, (DirectionalLightEntity) renderingEngine.getActiveLight());
                 else if (uniformType.equals("PointLight"))
-                    setUniformPointLight(uniformName, (PointLight) renderingEngine.getActiveLight());
+                    setUniformPointLight(uniformName, (PointLightEntity) renderingEngine.getActiveLight());
                 else if (uniformType.equals("SpotLight"))
-                    setUniformSpotLight(uniformName, (SpotLight) renderingEngine.getActiveLight());
+                    setUniformSpotLight(uniformName, (SpotLightEntity) renderingEngine.getActiveLight());
 
                 else
                     //Check if there is some other struct handled in "RenderingEngine"
@@ -132,7 +136,7 @@ public class Shader extends ReferenceCounter {
                 //Check if it belongs as a member of "camera"
             } else if (uniformName.startsWith("C_")) {
                 if (uniformName.equals("C_eyePos"))
-                    setUniform(uniformName, renderingEngine.getMainCamera().getTransform().getTransformedPos());
+                    setUniform(uniformName, renderingEngine.getEntityCamera().getTransform().getTransformedPos());
                 else
                     throw new IllegalArgumentException(uniformName + " is not a valid component of Camera.");
             } else {
@@ -375,6 +379,31 @@ public class Shader extends ReferenceCounter {
     }
 
     public void setUniformSpotLight(String uniformName, SpotLight spotLight) {
+        setUniformPointLight(uniformName + ".pointLight", spotLight);
+        setUniform(uniformName + ".direction", spotLight.getDirection());
+        setUniformf(uniformName + ".cutoff", spotLight.getConeRadius());
+    }
+
+    public void setUniformDirectionalLight(String uniformName, DirectionalLightEntity directionalLight) {
+        setUniformBaseLight(uniformName + ".base", directionalLight);
+        setUniform(uniformName + ".direction", directionalLight.getDirection());
+    }
+
+    public void setUniformBaseLight(String uniformName, Light baseLight) {
+        setUniform(uniformName + ".color", baseLight.getColor());
+        setUniformf(uniformName + ".intensity", baseLight.getIntensity());
+    }
+
+    public void setUniformPointLight(String uniformName, PointLightEntity pointLight) {
+        setUniformBaseLight(uniformName + ".base", pointLight);
+        setUniformf(uniformName + ".atten.constant", pointLight.getAttenuation().getConstant());
+        setUniformf(uniformName + ".atten.linear", pointLight.getAttenuation().getLinear());
+        setUniformf(uniformName + ".atten.exponent", pointLight.getAttenuation().getExponent());
+        setUniform(uniformName + ".position", pointLight.getTransform().getTransformedPos());
+        setUniformf(uniformName + ".range", pointLight.getRange());
+    }
+
+    public void setUniformSpotLight(String uniformName, SpotLightEntity spotLight) {
         setUniformPointLight(uniformName + ".pointLight", spotLight);
         setUniform(uniformName + ".direction", spotLight.getDirection());
         setUniformf(uniformName + ".cutoff", spotLight.getConeRadius());

@@ -42,7 +42,7 @@ public class CoreEngine {
         this.game = game;
         this.game.setEngine(this);
         this.eventManager = new EventManager(this);
-        this.itemManager = new ItemManager();
+        this.itemManager = new ItemManager(this);
         this.characterManager = new CharacterManager(this);
     }
 
@@ -92,7 +92,7 @@ public class CoreEngine {
                 int frames = 0;
                 double frameCounter = 0;
 
-                game.init(renderingEngine, physicsEngine);
+                game.init(renderingEngine, physicsEngine, this);
 
                 double lastTime = Time.getTime();
                 double unprocessedTime = 0;
@@ -132,7 +132,7 @@ public class CoreEngine {
 
                             console.addConsoleText("");
                             console.addConsoleText("Running at ", 55, frames + " FPS");
-                            recordedTime += eventTimer.displayAndReset("Event Handling", (double) frames);
+                            recordedTime += eventTimer.displayAndReset("Event Handling: ", (double) frames);
                             double timeRendering = renderingEngine.dislayRenderTime((double)frames);
                             recordedTime += timeRendering;
                             double sleepTime = displaySleepTime((double) frames);
@@ -149,7 +149,7 @@ public class CoreEngine {
                     }
 
                     if (render) {
-                        game.render(renderingEngine);
+                        game.render(this, renderingEngine);
                         windowSyncTimer.startInvocation();
                         Window.render();
                         windowSyncTimer.stopInvocation();

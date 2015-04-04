@@ -12,7 +12,7 @@ public class Time {
     }
 
     public static String getFormatTime() {
-        return getFormattedTime("dd/MM/yyyy - HH:mm:ss");
+        return getFormattedTime("HH:mm:ss");
     }
 
     public static String getFormattedTime(String format) {

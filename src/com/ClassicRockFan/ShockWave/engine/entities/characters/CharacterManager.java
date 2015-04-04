@@ -1,29 +1,33 @@
 package com.ClassicRockFan.ShockWave.engine.entities.characters;
 
+import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class CharacterManager {
 
-    private HashMap<Character, Integer> initializedCharacters;
-    private HashMap<Character, Integer> loadedCharacters;
+    private ArrayList<Character> initializedCharacters;
+    private ArrayList<Character> loadedCharacters;
     private CoreEngine engine;
 
     public CharacterManager(CoreEngine engine) {
-        initializedCharacters = new HashMap<Character, Integer>();
-        loadedCharacters = new HashMap<Character, Integer>();
+        initializedCharacters = new ArrayList<Character>();
+        loadedCharacters = new ArrayList<Character>();
         this.engine = engine;
     }
 
     public void registerCharacter(Character character){
-        initializedCharacters.put(character, initializedCharacters.size());
+        initializedCharacters.add(character);
+        character.init();
+        Logging.printLog("Registering a character");
     }
 
     public void loadCharacter(Character character){
-        if(!initializedCharacters.containsKey(character))
+        if(!isLoaded(character))
             registerCharacter(character);
         loadCharacterData(character);
+        loadedCharacters.add(character);
     }
 
     private void loadCharacterData(Character character) {
@@ -38,15 +42,15 @@ public class CharacterManager {
         loadedCharacters.remove(character);
     }
 
-    public boolean loaded(Character character){
-        return loadedCharacters.containsKey(character);
+    public boolean isLoaded(Character character){
+        return loadedCharacters.contains(character);
     }
 
-    public HashMap<Character, Integer> getRegisteredCharacters() {
+    public ArrayList<Character> getRegisteredCharacters() {
         return initializedCharacters;
     }
 
-    public HashMap<Character, Integer> getLoadedCharacters() {
+    public ArrayList<Character> getLoadedCharacters() {
         return loadedCharacters;
     }
 

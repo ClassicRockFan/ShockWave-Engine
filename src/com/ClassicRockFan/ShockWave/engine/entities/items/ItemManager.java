@@ -3,27 +3,27 @@ package com.ClassicRockFan.ShockWave.engine.entities.items;
 
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class ItemManager {
 
-    private HashMap<Item, Integer> initializedItems;
-    private HashMap<Item, Integer> loadedItems;
+    private ArrayList<Item> initializedItems;
+    private ArrayList<Item> loadedItems;
     private CoreEngine engine;
 
 
     public ItemManager(CoreEngine engine) {
-        initializedItems = new HashMap<Item, Integer>();
-        loadedItems = new HashMap<Item, Integer>();
+        initializedItems = new ArrayList<Item>();
+        loadedItems = new ArrayList<Item>();
         this.engine = engine;
     }
 
     public void registerItem(Item item){
-        initializedItems.put(item, initializedItems.size());
+        initializedItems.add(item);
     }
 
     public void loadItem(Item item){
-        if(!initializedItems.containsKey(item))
+        if(!initializedItems.contains(item))
             registerItem(item);
         loadCharacterData(item);
     }
@@ -41,14 +41,14 @@ public class ItemManager {
     }
 
     public boolean loaded(Item item){
-        return loadedItems.containsKey(item);
+        return loadedItems.contains(item);
     }
 
-    public HashMap<Item, Integer> getRegisteredCharacters() {
+    public ArrayList<Item> getRegisteredItems() {
         return initializedItems;
     }
 
-    public HashMap<Item, Integer> getLoadedCharacters() {
+    public ArrayList<Item> getLoadedItems() {
         return loadedItems;
     }
 
