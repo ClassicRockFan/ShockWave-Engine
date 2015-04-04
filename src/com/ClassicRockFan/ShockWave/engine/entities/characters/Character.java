@@ -2,20 +2,21 @@ package com.ClassicRockFan.ShockWave.engine.entities.characters;
 
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
-import com.ClassicRockFan.ShockWave.engine.entities.EntityManager;
 
 public class Character extends Entity{
 
-    private EntityManager entityManager;
 
-    public Character(CoreEngine engine, String name) {
+    public Character(String name) {
         super(name);
-        this.entityManager = engine.getEntityManager();
-        entityManager.register(this);
     }
 
-    public EntityManager getCharacterManager() {
-        return entityManager;
+    @Override
+    public void load() {
+        super.load();
     }
 
+    @Override
+    public void init(CoreEngine engine) {
+        super.init(engine);
+    }
 }

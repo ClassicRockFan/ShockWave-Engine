@@ -1,10 +1,9 @@
 package com.ClassicRockFan.ShockWave.engine.entities;
 
 
-import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
+import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
-import com.ClassicRockFan.ShockWave.engine.entities.items.Item;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
@@ -14,32 +13,29 @@ public class Entity {
 
     private Transform transform;
     private ArrayList<EntityComponent> components;
-    private ArrayList<Item> connectedItems;
+    private CoreEngine engine;
     private String name;
+    private EntityManager entityManager;
 
     public Entity(String name) {
         this.name = name;
-        this.connectedItems = new ArrayList<Item>();
         this.transform = new Transform();
         this.components = new ArrayList<EntityComponent>();
     }
 
-    public void init(){
-        Logging.printLog("Initializing some entity");
+    public void init(CoreEngine engine){
+        this.engine = engine;
+        this.entityManager = engine.getEntityManager();
     }
+
     public void load(){
-        Logging.printLog("Loading some Entity");
+
     }
 
     public Entity addComponent(EntityComponent component){
         components.add(component);
         component.setParent(this);
         return this;
-    }
-
-    public Item addComponent(Item item){
-        connectedItems.add(item);
-        return item;
     }
 
     public void input(float delta) {
@@ -65,16 +61,29 @@ public class Entity {
     public Transform getTransform() {
         return transform;
     }
-
     public void setTransform(Transform transform) {
         this.transform = transform;
     }
-
     public ArrayList<EntityComponent> getComponents() {
         return components;
     }
-
     public String getName() {
         return name;
+    }
+
+    public CoreEngine getEngine() {
+        return engine;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    public void setEngine(CoreEngine engine) {
+        this.engine = engine;
+    }
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 }

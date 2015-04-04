@@ -44,39 +44,39 @@ public class TestGame extends Game {
         Mesh sphere = new Mesh("sphere.obj");
         Mesh cube = new Mesh("cube.obj");
 
-        Character ground = new Character(engine, "ground");
+        Character ground = new Character("ground");
         ground.addComponent(new MeshRender(groundMesh, bricks));
         ground.getTransform().getPos().set(5, -1, 10);
         ground.getTransform().getScale().set(2, 2, 2);
 
-        Character testMesh = new Character(engine, "testMesh1");
+        Character testMesh = new Character("testMesh1");
         testMesh.addComponent(new MeshRender(groundMesh, bricks));
         testMesh.getTransform().getPos().set(0, 2, 0);
         testMesh.getTransform().setRot(new Quaternion(new Vector3f(0, 1, 0), 0.4f));
         testMesh.getTransform().getScale().set(0.2f, 0.2f, 0.2f);
 
-        Character testMesh2 = new Character(engine, "testMesh2");
+        Character testMesh2 = new Character("testMesh2");
         testMesh2.addComponent(new MeshRender(groundMesh, bricks));
         testMesh2.getTransform().setParent(testMesh.getTransform());
         testMesh2.getTransform().getPos().set(testMesh2.getTransform().getPos().add(new Vector3f(0, 0, 25)));
 
-        Character coffeeCup = new Character(engine, "coffeeCup");
+        Character coffeeCup = new Character("coffeeCup");
         coffeeCup.addComponent(new MeshRender(coffeeCupMesh, ceramic));
         coffeeCup.getTransform().getPos().set(3f, 0f, 3f);
 
-        Character drumstick = new Character(engine, "drumstick");
+        Character drumstick = new Character("drumstick");
         drumstick.addComponent(new MeshRender(drumstickMesh, wood));
         drumstick.getTransform().getPos().set(10, 20, 10);
         drumstick.getTransform().getScale().set(0.2f, 0.2f, 0.2f);
         drumstick.getTransform().getRot().set(new Quaternion(new Vector3f(1, 0, 0), (float) Math.toRadians(60)));
 
-        Character drumstick1 = new Character(engine, "drumstick2");
+        Character drumstick1 = new Character("drumstick2");
         drumstick1.addComponent(new MeshRender(drumstickMesh, wood));
         drumstick1.getTransform().getPos().set(11, 20, 10);
         drumstick1.getTransform().getScale().set(0.2f, 0.2f, 0.2f);
         drumstick1.getTransform().getRot().set(new Quaternion(new Vector3f(1, 0, 0), (float) Math.toRadians(-60)));
 
-        Character skull = new Character(engine, "skull");
+        Character skull = new Character("skull");
         skull.addComponent(new MeshRender(monkey, stoneBricks));
         skull.getTransform().getPos().set(10, 25, 10);
         skull.getTransform().getScale().set(3, 3, 3);
@@ -85,7 +85,7 @@ public class TestGame extends Game {
         PointLightEntity skullLight = new PointLightEntity(engine, new Vector3f(0, 1, 0), 100f, new Attenuation(0, 1, 1));
         skullLight.getTransform().getPos().set(0, 30, 10);
 
-        Character earth = new Character(engine, "earth");
+        Character earth = new Character("earth");
         earth.addComponent(new MeshRender(sphere, earthTexture));
         earth.getTransform().getScale().set(5, 5, 5);
         earth.getTransform().getPos().set(0, 10, 0);
@@ -106,18 +106,19 @@ public class TestGame extends Game {
         //Create Camera
         EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 1000.0f);
         entityCamera.addToEngine(engine);
-        Character cameraObject = new Character(engine, "camera");
-        cameraObject.
-                addComponent(entityCamera)
+        Character cameraObject = new Character("camera");
+        cameraObject
+                .addComponent(entityCamera)
                 .addComponent(new FreeLook(0.5f))
                 .addComponent(new FreeMove(10))
         ;
+
+        addLight(skullLight);
+        addLight(directionalLight1);
+        addLight(directionalLight2);
+        addLight(spotLight);
+        addLight(pointLight);
         addCharacter(cameraObject);
-        addItem(skullLight);
-        addItem(directionalLight1);
-        addItem(directionalLight2);
-        addItem(spotLight);
-        addItem(pointLight);
         addCharacter(skull);
         addCharacter(ground);
         addCharacter(testMesh);

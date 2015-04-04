@@ -1,10 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.entities;
 
 
-import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.entities.characters.Character;
 import com.ClassicRockFan.ShockWave.engine.entities.items.Item;
+import com.ClassicRockFan.ShockWave.engine.entities.light.Light;
 
 import java.util.ArrayList;
 
@@ -12,8 +12,10 @@ public class EntityManager {
 
     private ArrayList<Item> initializedItems;
     private ArrayList<Item> loadedItems;
-    private ArrayList<com.ClassicRockFan.ShockWave.engine.entities.characters.Character> initializedCharacters;
+    private ArrayList<Character> initializedCharacters;
     private ArrayList<Character> loadedCharacters;
+    private ArrayList<Light> initializedLights;
+    private ArrayList<Light> loadedLights;
     private CoreEngine engine;
 
     public EntityManager(CoreEngine engine) {
@@ -21,20 +23,25 @@ public class EntityManager {
         loadedCharacters = new ArrayList<Character>();
         initializedItems = new ArrayList<Item>();
         loadedItems = new ArrayList<Item>();
+        initializedLights = new ArrayList<Light>();
+        loadedLights = new ArrayList<Light>();
         this.engine = engine;
     }
 
     //Registration
     public void register(Item item){
         initializedItems.add(item);
-        item.init();
-        Logging.printLog("Registering an item");
+        item.init(engine);
     }
 
     public void register(Character character){
         initializedCharacters.add(character);
-        character.init();
-        Logging.printLog("Registering a character");
+        character.init(engine);
+    }
+
+    public void register(Light light){
+        initializedLights.add(light);
+        light.init(engine);
     }
 
     //Loading
@@ -49,6 +56,13 @@ public class EntityManager {
             register(character);
         loadData(character);
         loadedCharacters.add(character);
+    }
+
+    public void load(Light light){
+        if(!isLoaded(light))
+            register(light);
+        loadData(light);
+        loadedLights.add(light);
     }
 
     //Load data
@@ -69,6 +83,12 @@ public class EntityManager {
     public void unload(Character character){
         if(isLoaded(character))loadedCharacters.remove(character);
     }
+    public void unloadAllLights(){
+        loadedLights.clear();
+    }
+    public void unload(Light light){
+        if(isLoaded(light))loadedLights.remove(light);
+    }
 
     //Checking
     public boolean isLoaded(Item item){
@@ -76,6 +96,9 @@ public class EntityManager {
     }
     public boolean isLoaded(Character character){
         return loadedCharacters.contains(character);
+    }
+    public boolean isLoaded(Light light){
+        return loadedCharacters.contains(light);
     }
 
     //Getting
@@ -90,6 +113,12 @@ public class EntityManager {
     }
     public ArrayList<Character> getLoadedCharacters() {
         return loadedCharacters;
+    }
+    public ArrayList<Light> getRegisteredLights() {
+        return initializedLights;
+    }
+    public ArrayList<Light> getLoadedLights() {
+        return loadedLights;
     }
 
     //EntityManager functionality

@@ -9,7 +9,7 @@ import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 public class DirectionalLightEntity extends Light {
 
     public DirectionalLightEntity(CoreEngine engine, Vector3f color, float intensity) {
-        super(engine, color, intensity);
+        super(color, intensity);
 
         setShader(new Shader("Forward-Directional"));
     }

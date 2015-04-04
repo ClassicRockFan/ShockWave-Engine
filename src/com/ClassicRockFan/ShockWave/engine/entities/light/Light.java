@@ -2,30 +2,32 @@ package com.ClassicRockFan.ShockWave.engine.entities.light;
 
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
-import com.ClassicRockFan.ShockWave.engine.entities.items.Item;
+import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.BaseLightEntity;
 import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
 
-public class Light extends Item {
-
-
+public class Light extends Entity {
     private Vector3f color;
     private float intensity;
     private Shader shader;
     private BaseLightEntity base;
 
-    public Light(CoreEngine engine, Vector3f color, float intensity) {
-        super(engine, "light");
-
+    public Light(Vector3f color, float intensity) {
+        super("light");
         this.color = color;
         this.intensity = intensity;
     }
 
     @Override
+    public void init(CoreEngine engine) {
+        super.init(engine);
+    }
+
+    @Override
     public void load(){
         super.load();
-        getEngine().getRenderingEngine().addLight(this);
+        super.getEngine().getRenderingEngine().addLight(this);
     }
 
     public Shader getShader() {

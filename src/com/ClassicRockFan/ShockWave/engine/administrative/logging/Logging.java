@@ -21,7 +21,7 @@ public class Logging {
         if (level == LEVEL_ERROR)
             System.err.println(Time.getFormatTime() + " - [ERROR] - " + message);
         else if (level == LEVEL_INFO)
-            System.out.println(Time.getFormatTime() + " - [INFO} - " + message);
+            System.out.println(Time.getFormatTime() + " - [INFO] - " + message);
         else if (level == LEVEL_DEBUG)
             System.out.println(Time.getFormatTime() + " - [DEBUG] - " + message);
         else if (level == LEVEL_TRACE)

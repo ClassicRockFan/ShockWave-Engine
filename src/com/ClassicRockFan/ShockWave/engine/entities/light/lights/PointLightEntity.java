@@ -16,7 +16,7 @@ public class PointLightEntity extends Light {
 
 
     public PointLightEntity(CoreEngine engine, Vector3f color, float intensity, Attenuation attenuation) {
-        super(engine, color, intensity);
+        super(color, intensity);
         this.attenuation = attenuation;
 
         float a = attenuation.getExponent();
