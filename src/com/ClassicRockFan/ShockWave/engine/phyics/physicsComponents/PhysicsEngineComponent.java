@@ -1,14 +1,15 @@
 package com.ClassicRockFan.ShockWave.engine.phyics.physicsComponents;
 
 
-import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameComponent;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 
-public class PhysicsEngineComponent extends GameComponent {
+public class PhysicsEngineComponent extends EntityComponent {
 
     private PhysicsEngine physicsEngine;
 
     public PhysicsEngineComponent(PhysicsEngine physicsEngine) {
+        super("EntityComponent");
         this.physicsEngine = physicsEngine;
     }
 

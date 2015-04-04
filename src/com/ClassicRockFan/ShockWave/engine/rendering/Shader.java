@@ -2,10 +2,6 @@ package com.ClassicRockFan.ShockWave.engine.rendering;
 
 
 import com.ClassicRockFan.ShockWave.engine.administrative.ReferenceCounter;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.BaseLight;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.DirectionalLight;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.PointLight;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.SpotLight;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
 import com.ClassicRockFan.ShockWave.engine.core.Util;
 import com.ClassicRockFan.ShockWave.engine.core.math.Matrix4f;
@@ -97,7 +93,7 @@ public class Shader extends ReferenceCounter {
 
     public void updateUniforms(Transform transform, Material material, RenderingEngine renderingEngine) {
         Matrix4f worldMatrix = transform.getTransformation();
-        Matrix4f MvPMatrix = renderingEngine.getEntityCamera().getViewProjection().mul(worldMatrix);
+        Matrix4f MvPMatrix = renderingEngine.getMainCamera().getViewProjection().mul(worldMatrix);
 
         for (int i = 0; i < resource.getUniformNames().size(); i++) {
             String uniformName = resource.getUniformNames().get(i);
@@ -136,7 +132,7 @@ public class Shader extends ReferenceCounter {
                 //Check if it belongs as a member of "camera"
             } else if (uniformName.startsWith("C_")) {
                 if (uniformName.equals("C_eyePos"))
-                    setUniform(uniformName, renderingEngine.getEntityCamera().getTransform().getTransformedPos());
+                    setUniform(uniformName, renderingEngine.getMainCamera().getTransform().getTransformedPos());
                 else
                     throw new IllegalArgumentException(uniformName + " is not a valid component of Camera.");
             } else {
@@ -357,31 +353,6 @@ public class Shader extends ReferenceCounter {
 
     public void setUniform(String uniformName, Matrix4f value) {
         glUniformMatrix4(resource.getUniforms().get(uniformName), true, Util.createFlippedBuffer(value));
-    }
-
-    public void setUniformDirectionalLight(String uniformName, DirectionalLight directionalLight) {
-        setUniformBaseLight(uniformName + ".base", directionalLight);
-        setUniform(uniformName + ".direction", directionalLight.getDirection());
-    }
-
-    public void setUniformBaseLight(String uniformName, BaseLight baseLight) {
-        setUniform(uniformName + ".color", baseLight.getColor());
-        setUniformf(uniformName + ".intensity", baseLight.getIntensity());
-    }
-
-    public void setUniformPointLight(String uniformName, PointLight pointLight) {
-        setUniformBaseLight(uniformName + ".base", pointLight);
-        setUniformf(uniformName + ".atten.constant", pointLight.getAttenuation().getConstant());
-        setUniformf(uniformName + ".atten.linear", pointLight.getAttenuation().getLinear());
-        setUniformf(uniformName + ".atten.exponent", pointLight.getAttenuation().getExponent());
-        setUniform(uniformName + ".position", pointLight.getTransform().getTransformedPos());
-        setUniformf(uniformName + ".range", pointLight.getRange());
-    }
-
-    public void setUniformSpotLight(String uniformName, SpotLight spotLight) {
-        setUniformPointLight(uniformName + ".pointLight", spotLight);
-        setUniform(uniformName + ".direction", spotLight.getDirection());
-        setUniformf(uniformName + ".cutoff", spotLight.getConeRadius());
     }
 
     public void setUniformDirectionalLight(String uniformName, DirectionalLightEntity directionalLight) {

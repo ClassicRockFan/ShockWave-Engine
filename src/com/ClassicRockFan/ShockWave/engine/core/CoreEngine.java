@@ -8,8 +8,7 @@ import com.ClassicRockFan.ShockWave.engine.EventHandling.physicsEvents.PhysicsOc
 import com.ClassicRockFan.ShockWave.engine.administrative.ConsoleWindow;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.administrative.StateManager;
-import com.ClassicRockFan.ShockWave.engine.entities.characters.CharacterManager;
-import com.ClassicRockFan.ShockWave.engine.entities.items.ItemManager;
+import com.ClassicRockFan.ShockWave.engine.entities.EntityManager;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Window;
@@ -27,8 +26,7 @@ public class CoreEngine {
     private PhysicsEngine physicsEngine;
     private static StateManager stateManager = new StateManager(StateManager.STATE_INIT);
     private EventManager eventManager;
-    private CharacterManager characterManager;
-    private ItemManager itemManager;
+    private EntityManager entityManager;
 
     private ProfileTimer sleepTimer = new ProfileTimer();
     private ProfileTimer windowSyncTimer = new ProfileTimer();
@@ -42,8 +40,7 @@ public class CoreEngine {
         this.game = game;
         this.game.setEngine(this);
         this.eventManager = new EventManager(this);
-        this.itemManager = new ItemManager(this);
-        this.characterManager = new CharacterManager(this);
+        this.entityManager = new EntityManager(this);
     }
 
     public static ConsoleWindow getConsole() {
@@ -214,11 +211,5 @@ public class CoreEngine {
         return eventManager;
     }
 
-    public CharacterManager getCharacterManager() {
-        return characterManager;
-    }
-
-    public ItemManager getItemManager() {
-        return itemManager;
-    }
+    public EntityManager getEntityManager() { return entityManager; }
 }

@@ -1,14 +1,14 @@
 package com.ClassicRockFan.ShockWave.engine.phyics.physicsComponents;
 
 
-import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameComponent;
 import com.ClassicRockFan.ShockWave.engine.core.Input;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsObject;
 import com.ClassicRockFan.ShockWave.engine.phyics.calculations.Kinematics;
 import org.lwjgl.input.Keyboard;
 
-public class PhysicsMove extends GameComponent {
+public class PhysicsMove extends EntityComponent {
 
     private final int UP_KEY;
     private final int DOWN_KEY;
@@ -22,6 +22,7 @@ public class PhysicsMove extends GameComponent {
     }
 
     public PhysicsMove(float moveSpeed, int UP_KEY, int DOWN_KEY, int LEFT_KEY, int RIGHT_KEY, PhysicsObject object) {
+        super("physicsMove");
         this.moveSpeed = moveSpeed;
         this.UP_KEY = UP_KEY;
         this.DOWN_KEY = DOWN_KEY;

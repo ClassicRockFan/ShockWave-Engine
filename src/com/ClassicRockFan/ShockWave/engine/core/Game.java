@@ -25,8 +25,8 @@ public abstract class Game {
     }
 
     public void input(float delta) {
-        ArrayList<Character> loadedCharacters = engine.getCharacterManager().getLoadedCharacters();
-        ArrayList<Item> loadedItems = engine.getItemManager().getLoadedItems();
+        ArrayList<Character> loadedCharacters = engine.getEntityManager().getLoadedCharacters();
+        ArrayList<Item> loadedItems = engine.getEntityManager().getLoadedItems();
 
         for(int i = 0; i < loadedCharacters.size(); i ++)
             loadedCharacters.get(i).input(delta);
@@ -36,8 +36,8 @@ public abstract class Game {
     }
 
     public void update(float delta) {
-        ArrayList<Character> loadedCharacters = engine.getCharacterManager().getLoadedCharacters();
-        ArrayList<Item> loadedItems = engine.getItemManager().getLoadedItems();
+        ArrayList<Character> loadedCharacters = engine.getEntityManager().getLoadedCharacters();
+        ArrayList<Item> loadedItems = engine.getEntityManager().getLoadedItems();
 
         for(int i = 0; i < loadedCharacters.size(); i ++)
             loadedCharacters.get(i).update(delta);
@@ -59,11 +59,11 @@ public abstract class Game {
     }
 
     public void addItem(Item item){
-        engine.getItemManager().loadItem(item);
+        engine.getEntityManager().loadItem(item);
     }
 
     public void addCharacter(Character character){
-        engine.getCharacterManager().loadCharacter(character);
+        engine.getEntityManager().loadCharacter(character);
         Logging.printLog("Adding A Character!!!", Logging.LEVEL_INFO);
     }
 

@@ -1,12 +1,12 @@
 package com.ClassicRockFan.ShockWave.engine.phyics.physicsComponents;
 
-import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameComponent;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
 import com.ClassicRockFan.ShockWave.engine.phyics.Constants;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsObject;
 
-public class Orbit extends GameComponent {
+public class Orbit extends EntityComponent {
 
     private PhysicsObject body1;
     private PhysicsObject body2;
@@ -30,6 +30,7 @@ public class Orbit extends GameComponent {
     }
 
     public Orbit(PhysicsObject orbitingBody, PhysicsObject orbitedBody, Vector3f gravitationConstant,  boolean calcOrbitalVelocityOnOrbiting){
+        super("orbitComponent");
         this.body1 = orbitingBody;
         this.body2 = orbitedBody;
         this.gravitationConstant = gravitationConstant;

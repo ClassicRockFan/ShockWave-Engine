@@ -1,10 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.phyics;
 
 
-import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameObject;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 
-public class PhysicsObject extends GameObject {
+public class PhysicsObject extends Entity {
 
     private Vector3f position;
     private Vector3f oldPosition;
@@ -26,6 +26,7 @@ public class PhysicsObject extends GameObject {
     }
 
     public PhysicsObject(Collider collider, Vector3f velocity, float mass, float springConstant, boolean immovable) {
+        super("physicsObject");
         this.position = collider.getCenter();
         this.oldPosition = collider.getCenter();
         this.velocity = velocity;
@@ -36,6 +37,8 @@ public class PhysicsObject extends GameObject {
         this.k = springConstant;
         this.immovable = immovable;
     }
+
+
 
     public void integrate(float delta) {
         Vector3f part1 = getVelocity().mul(delta);

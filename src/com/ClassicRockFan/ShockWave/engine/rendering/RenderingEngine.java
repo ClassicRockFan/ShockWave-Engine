@@ -2,9 +2,6 @@ package com.ClassicRockFan.ShockWave.engine.rendering;
 
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
-import com.ClassicRockFan.ShockWave.engine.components.coreComponents.GameObject;
-import com.ClassicRockFan.ShockWave.engine.components.lighting.BaseLight;
-import com.ClassicRockFan.ShockWave.engine.components.rendering.Camera;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Time;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
@@ -25,25 +22,21 @@ import static org.lwjgl.opengl.GL32.GL_DEPTH_CLAMP;
 
 public class RenderingEngine extends MappedValues {
     private HashMap<String, Integer> samplerMap;
-    private ArrayList<BaseLight> lights;
     private ArrayList<Light> entityLights;
-    private BaseLight activeLight;
     private Light activeEntityLight;
     private Shader forwardAmbient;
-    private Camera mainCamera;
+    private EntityCamera mainCamera;
     private ProfileTimer renderTimer;
     private CoreEngine coreEngine;
 
     //Frustum Culling
     private FrustumCulling frustum;
-    private EntityCamera entityEntityCamera;
 
     public RenderingEngine(CoreEngine engine) {
         super();
         this.coreEngine = engine;
         engine.getConsole().addConsoleText("Creating the Rendering Engine!");
 
-        this.lights = new ArrayList<BaseLight>();
         this.entityLights = new ArrayList<Light>();
         this.samplerMap = new HashMap<String, Integer>();
         samplerMap.put("diffuse", 0);
@@ -86,36 +79,11 @@ public class RenderingEngine extends MappedValues {
         }
     }
 
-    public void render(GameObject object) {
-        renderTimer.startInvocation();
-        Window.bindAsRenderTarget();
 
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        object.renderAll(forwardAmbient, this);
-
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_ONE, GL_ONE);
-        glDepthMask(false);
-        glDepthFunc(GL_EQUAL);
-
-        for (BaseLight light : lights) {
-            activeLight = light;
-            object.renderAll(light.getShader(), this);
-        }
-
-        glDepthFunc(GL_LESS);
-        glDepthMask(true);
-        glDisable(GL_BLEND);
-        glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
-
-        renderTimer.stopInvocation();
-    }
 
     public void render(CoreEngine engine) {
-        ArrayList<com.ClassicRockFan.ShockWave.engine.entities.characters.Character> loadedCharacters = engine.getCharacterManager().getLoadedCharacters();
-        ArrayList<Item> loadedItems = engine.getItemManager().getLoadedItems();
+        ArrayList<com.ClassicRockFan.ShockWave.engine.entities.characters.Character> loadedCharacters = engine.getEntityManager().getLoadedCharacters();
+        ArrayList<Item> loadedItems = engine.getEntityManager().getLoadedItems();
 
         renderTimer.startInvocation();
         Window.bindAsRenderTarget();
@@ -138,11 +106,8 @@ public class RenderingEngine extends MappedValues {
         glDepthMask(false);
         glDepthFunc(GL_EQUAL);
 
-        Logging.printLog("Number of lights in the rendering engine: " + entityLights.size());
-
         for (Light light : entityLights) {
             activeEntityLight = light;
-            Logging.printLog("Light name: " + activeEntityLight.getName(), Logging.LEVEL_DEBUG);
             for(int i = 0; i < loadedCharacters.size(); i++) {
                 loadedCharacters.get(i).render(activeEntityLight.getShader(), this);
             }
@@ -178,22 +143,7 @@ public class RenderingEngine extends MappedValues {
         return activeEntityLight;
     }
 
-    public Camera getMainCamera() {
-        return mainCamera;
-    }
-    public EntityCamera getEntityCamera() { return entityEntityCamera; }
-
-    public void setMainCamera(Camera mainCamera) {
-        this.mainCamera = mainCamera;
-    }
-
-    public void addLight(BaseLight light) {
-        lights.add(light);
-    }
-    public void addEntityLight(Light light){entityLights.add(light);}
-
-    public void addCamera(Camera camera) {
-        this.mainCamera = camera;
-    }
-    public void addEntityCamera(EntityCamera entityCamera){this.entityEntityCamera = entityCamera;}
+    public EntityCamera getMainCamera() { return mainCamera; }
+    public void addLight(Light light){entityLights.add(light);}
+    public void setMainCamera(EntityCamera entityCamera){this.mainCamera = entityCamera;}
 }

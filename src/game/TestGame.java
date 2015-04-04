@@ -114,6 +114,10 @@ public class TestGame extends Game {
         ;
         addCharacter(cameraObject);
         addItem(skullLight);
+        addItem(directionalLight1);
+        addItem(directionalLight2);
+        addItem(spotLight);
+        addItem(pointLight);
         addCharacter(skull);
         addCharacter(ground);
         addCharacter(testMesh);

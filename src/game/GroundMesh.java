@@ -1,8 +1,8 @@
 package game;
 
-import com.ClassicRockFan.ShockWave.engine.components.rendering.MeshRender;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.MeshRender;
 import com.ClassicRockFan.ShockWave.engine.rendering.Material;
 import com.ClassicRockFan.ShockWave.engine.rendering.Mesh;
 import com.ClassicRockFan.ShockWave.engine.rendering.Vertex;

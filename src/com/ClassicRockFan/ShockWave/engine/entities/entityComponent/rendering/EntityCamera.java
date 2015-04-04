@@ -34,7 +34,7 @@ public class EntityCamera extends EntityComponent {
     }
 
     public void addToEngine(CoreEngine engine) {
-        engine.getRenderingEngine().addEntityCamera(this);
+        engine.getRenderingEngine().setMainCamera(this);
     }
 
     public float getFov() {
