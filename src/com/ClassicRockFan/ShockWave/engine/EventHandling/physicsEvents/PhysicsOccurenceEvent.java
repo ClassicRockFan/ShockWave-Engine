@@ -3,7 +3,7 @@ package com.ClassicRockFan.ShockWave.engine.EventHandling.physicsEvents;
 
 import com.ClassicRockFan.ShockWave.engine.EventHandling.core.Event;
 import com.ClassicRockFan.ShockWave.engine.EventHandling.core.EventTyping;
-import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
+import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 
 public class PhysicsOccurenceEvent extends Event{

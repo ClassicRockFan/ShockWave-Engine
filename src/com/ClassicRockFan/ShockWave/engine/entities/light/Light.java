@@ -13,8 +13,14 @@ public class Light extends Entity {
     private Shader shader;
     private BaseLightEntity base;
 
-    public Light(Vector3f color, float intensity) {
-        super("light");
+    public Light(Vector3f color, float intensity){
+        super();
+        this.color = color;
+        this.intensity = intensity;
+    }
+
+    public Light(Vector3f color, float intensity, String name) {
+        super(name);
         this.color = color;
         this.intensity = intensity;
     }

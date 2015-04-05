@@ -5,6 +5,10 @@ import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 
 public class Item extends Entity{
 
+    public Item(){
+        super();
+    }
+
     public Item(String name) {
         super(name);
     }

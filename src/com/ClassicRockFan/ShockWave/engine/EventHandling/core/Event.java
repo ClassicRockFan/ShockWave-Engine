@@ -1,7 +1,7 @@
 package com.ClassicRockFan.ShockWave.engine.EventHandling.core;
 
 
-import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
+import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 
 public class Event {
 

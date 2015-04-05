@@ -1,6 +1,8 @@
 package com.ClassicRockFan.ShockWave.engine.entities;
 
 
+import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
+import com.ClassicRockFan.ShockWave.engine.administrative.Naming;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
@@ -9,13 +11,20 @@ import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
 import java.util.ArrayList;
 
-public class Entity {
+public class Entity extends Object{
 
     private Transform transform;
     private ArrayList<EntityComponent> components;
     private CoreEngine engine;
     private String name;
     private EntityManager entityManager;
+
+    public Entity(){
+        this.name = Naming.getReccomendedName(this);
+        this.transform = new Transform();
+        this.components = new ArrayList<EntityComponent>();
+    }
+
 
     public Entity(String name) {
         this.name = name;
@@ -29,7 +38,7 @@ public class Entity {
     }
 
     public void load(){
-
+        Logging.printLog("Loading an entity named: " + name);
     }
 
     public Entity addComponent(EntityComponent component){
@@ -86,4 +95,6 @@ public class Entity {
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
+
 }

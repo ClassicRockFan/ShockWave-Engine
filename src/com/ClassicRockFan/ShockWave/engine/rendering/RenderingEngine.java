@@ -1,14 +1,14 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
+import com.ClassicRockFan.ShockWave.engine.administrative.Naming;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
-import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Time;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
-import com.ClassicRockFan.ShockWave.engine.entities.items.Item;
 import com.ClassicRockFan.ShockWave.engine.entities.light.Light;
 import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.MappedValues;
 
@@ -82,8 +82,7 @@ public class RenderingEngine extends MappedValues {
 
 
     public void render(CoreEngine engine) {
-        ArrayList<com.ClassicRockFan.ShockWave.engine.entities.characters.Character> loadedCharacters = engine.getEntityManager().getLoadedCharacters();
-        ArrayList<Item> loadedItems = engine.getEntityManager().getLoadedItems();
+        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
         renderTimer.startInvocation();
         Window.bindAsRenderTarget();
@@ -91,16 +90,10 @@ public class RenderingEngine extends MappedValues {
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        for(int i = 0; i < loadedCharacters.size(); i++) {
-            loadedCharacters.get(i).render(forwardAmbient, this);
+        for(int i = 0; i < loadedEntities.size(); i++) {
+            loadedEntities.get(i).render(forwardAmbient, this);
         }
 
-        for(int i = 0; i < loadedItems.size(); i++){
-            if(loadedItems.get(i).getName() != "light")
-                loadedItems.get(i).render(forwardAmbient, this);
-            else
-                Logging.printLog("Found a light", Logging.LEVEL_DEBUG);
-        }
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE);
         glDepthMask(false);
@@ -108,13 +101,10 @@ public class RenderingEngine extends MappedValues {
 
         for (Light light : entityLights) {
             activeEntityLight = light;
-            for(int i = 0; i < loadedCharacters.size(); i++) {
-                loadedCharacters.get(i).render(activeEntityLight.getShader(), this);
-            }
-
-            for(int i = 0; i < loadedItems.size(); i++){
-                if(loadedItems.get(i).getName() != "light")
-                    loadedItems.get(i).render(activeEntityLight.getShader(), this);
+            for(int i = 0; i < loadedEntities.size(); i++) {
+                if (loadedEntities.get(i).getName() != Naming.getReccomendedName(Light.class)) {
+                    loadedEntities.get(i).render(activeEntityLight.getShader(), this);
+                }
             }
         }
 

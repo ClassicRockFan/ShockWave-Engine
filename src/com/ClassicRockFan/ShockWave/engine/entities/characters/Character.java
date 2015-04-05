@@ -6,6 +6,10 @@ import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 public class Character extends Entity{
 
 
+    public Character(){
+        super();
+    }
+
     public Character(String name) {
         super(name);
     }

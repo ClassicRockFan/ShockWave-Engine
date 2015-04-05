@@ -1,7 +1,7 @@
 package com.ClassicRockFan.ShockWave.engine.core;
 
 
-import com.ClassicRockFan.ShockWave.engine.administrative.logging.Logging;
+import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 import com.ClassicRockFan.ShockWave.engine.entities.characters.Character;
 import com.ClassicRockFan.ShockWave.engine.entities.items.Item;
@@ -26,33 +26,17 @@ public abstract class Game {
     }
 
     public void input(float delta) {
-        ArrayList<Character> loadedCharacters = engine.getEntityManager().getLoadedCharacters();
-        ArrayList<Item> loadedItems = engine.getEntityManager().getLoadedItems();
-        ArrayList<Light> loadedLights = engine.getEntityManager().getLoadedLights();
+        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
-        for(int i = 0; i < loadedCharacters.size(); i ++)
-            loadedCharacters.get(i).input(delta);
-
-        for (int i = 0; i < loadedItems.size(); i++)
-            loadedItems.get(i).input(delta);
-
-        for (int i = 0; i < loadedLights.size(); i++)
-            loadedLights.get(i).input(delta);
+        for(int i = 0; i < loadedEntities.size(); i ++)
+            loadedEntities.get(i).input(delta);
     }
 
     public void update(float delta) {
-        ArrayList<Character> loadedCharacters = engine.getEntityManager().getLoadedCharacters();
-        ArrayList<Item> loadedItems = engine.getEntityManager().getLoadedItems();
-        ArrayList<Light> loadedLights = engine.getEntityManager().getLoadedLights();
+        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
-        for(int i = 0; i < loadedCharacters.size(); i ++)
-            loadedCharacters.get(i).update(delta);
-
-        for (int i = 0; i < loadedItems.size(); i++)
-            loadedItems.get(i).update(delta);
-
-        for (int i = 0; i < loadedLights.size(); i++)
-            loadedLights.get(i).update(delta);
+        for(int i = 0; i < loadedEntities.size(); i ++)
+            loadedEntities.get(i).update(delta);
     }
 
     public void render(CoreEngine engine, RenderingEngine renderingEngine) {
@@ -68,17 +52,17 @@ public abstract class Game {
     }
 
     public void addItem(Item item){
-        engine.getEntityManager().load(item);
+        engine.getEntityManager().getItemManager().load(item);
         Logging.printLog("Adding an Item to the game!!!", Logging.LEVEL_INFO);
     }
 
     public void addCharacter(Character character){
-        engine.getEntityManager().load(character);
+        engine.getEntityManager().getCharacterManager().load(character);
         Logging.printLog("Adding A Character to the game!!!", Logging.LEVEL_INFO);
     }
 
     public void addLight(Light light){
-        engine.getEntityManager().load(light);
+        engine.getEntityManager().getLightManager().load(light);
         Logging.printLog("Adding a Light to the game!!!", Logging.LEVEL_INFO);
     }
 
