@@ -1,6 +1,5 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
-import com.ClassicRockFan.ShockWave.engine.administrative.Naming;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Time;
@@ -29,6 +28,12 @@ public class RenderingEngine extends MappedValues {
     private ProfileTimer renderTimer;
     private CoreEngine coreEngine;
 
+    //clear color
+    private float clearR;
+    private float clearG;
+    private float clearB;
+    private float clearA;
+
     //Frustum Culling
     private FrustumCulling frustum;
 
@@ -42,6 +47,11 @@ public class RenderingEngine extends MappedValues {
         samplerMap.put("diffuse", 0);
         samplerMap.put("normalMap", 1);
         samplerMap.put("dispMap", 2);
+
+        this.clearA = 0.0f;
+        this.clearB = 0.0f;
+        this.clearG = 0.0f;
+        this.clearR = 0.0f;
 
         frustum = new FrustumCulling();
 
@@ -87,7 +97,7 @@ public class RenderingEngine extends MappedValues {
         renderTimer.startInvocation();
         Window.bindAsRenderTarget();
 
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(clearR, clearG, clearB, clearA);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         for(int i = 0; i < loadedEntities.size(); i++) {
@@ -102,8 +112,8 @@ public class RenderingEngine extends MappedValues {
         for (Light light : entityLights) {
             activeEntityLight = light;
             for(int i = 0; i < loadedEntities.size(); i++) {
-                if (loadedEntities.get(i).getName() != Naming.getReccomendedName(Light.class)) {
-                    loadedEntities.get(i).render(activeEntityLight.getShader(), this);
+                if (loadedEntities.get(i).getClass().getSuperclass() != Light.class) {
+                        loadedEntities.get(i).render(activeEntityLight.getShader(), this);
                 }
             }
         }
@@ -114,6 +124,13 @@ public class RenderingEngine extends MappedValues {
         glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
 
         renderTimer.stopInvocation();
+    }
+
+    public void setClearColor(  float clearR, float clearG, float clearB, float clearA){
+        this.clearA = clearA;
+        this.clearB = clearB;
+        this.clearG = clearG;
+        this.clearR = clearR;
     }
 
     public double dislayRenderTime(double dividend) {

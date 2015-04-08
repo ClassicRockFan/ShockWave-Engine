@@ -6,9 +6,9 @@ import com.ClassicRockFan.ShockWave.engine.core.Game;
 import com.ClassicRockFan.ShockWave.engine.core.math.Quaternion;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.entities.characters.Character;
+import com.ClassicRockFan.ShockWave.engine.entities.characters.player.Player;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.effects.LookAtCamera;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
-import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.FreeLook;
-import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.FreeMove;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.MeshRender;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.DirectionalLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.PointLightEntity;
@@ -77,7 +77,7 @@ public class TestGame extends Game {
         drumstick1.getTransform().getRot().set(new Quaternion(new Vector3f(1, 0, 0), (float) Math.toRadians(-60)));
 
         Character skull = new Character("skull");
-        skull.addComponent(new MeshRender(monkey, stoneBricks));
+        skull.addComponent(new MeshRender(monkey, stoneBricks)).addComponent(new LookAtCamera());
         skull.getTransform().getPos().set(10, 25, 10);
         skull.getTransform().getScale().set(3, 3, 3);
         skull.getTransform().getRot().set(new Quaternion(new Vector3f(0, 1, 0), (float) Math.toRadians(-90)));
@@ -88,7 +88,7 @@ public class TestGame extends Game {
         Character earth = new Character("earth");
         earth.addComponent(new MeshRender(sphere, earthTexture));
         earth.getTransform().getScale().set(5, 5, 5);
-        earth.getTransform().getPos().set(0, 10, 0);
+        earth.getTransform().getPos().set(0, 10, 50);
 
         //Lights Below
         PointLightEntity pointLight = new PointLightEntity(engine, new Vector3f(0, 1, 0), 2f, new Attenuation(0, 0, 1));
@@ -105,20 +105,15 @@ public class TestGame extends Game {
 
         //Create Camera
         EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 1000.0f);
-        entityCamera.addToEngine(engine);
-        Character cameraObject = new Character("camera");
-        cameraObject
-                .addComponent(entityCamera)
-                .addComponent(new FreeLook(0.5f))
-                .addComponent(new FreeMove(10))
-        ;
+        Player player = new Player(entityCamera, 10, 0.5f);
+        //player.addComponent(new SkyColor());
 
         addLight(skullLight);
         addLight(directionalLight1);
         addLight(directionalLight2);
         addLight(spotLight);
         addLight(pointLight);
-        addCharacter(cameraObject);
+        addCharacter(player);
         addCharacter(skull);
         addCharacter(ground);
         addCharacter(testMesh);
