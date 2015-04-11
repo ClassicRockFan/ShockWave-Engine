@@ -18,6 +18,7 @@ public class Entity extends Object{
     private CoreEngine engine;
     private String name;
     private EntityManager entityManager;
+    private int id;
 
     public Entity(){
         this.name = Naming.getReccomendedName(this);
@@ -84,22 +85,19 @@ public class Entity extends Object{
     public String getName() {
         return name;
     }
-
     public CoreEngine getEngine() {
         return engine;
     }
-
     public EntityManager getEntityManager() {
         return entityManager;
     }
-
     public void setEngine(CoreEngine engine) {
         this.engine = engine;
     }
-
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public int getId() {
+        return id;
     }
-
-
+    public void setId(int id) {
+        this.id = id;
+    }
 }

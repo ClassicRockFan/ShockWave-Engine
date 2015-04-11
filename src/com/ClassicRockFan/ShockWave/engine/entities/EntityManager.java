@@ -9,7 +9,7 @@ public class EntityManager {
     //In order to add more types of entities to the manager, just
     // add a CommonManager for it
     //add a getter for it
-    //add it to the getAllLoadedEntites() for loops
+    //add it to the getAllLoadedEntites() 'for' loops
 
     private CoreEngine engine;
     private CommonManager itemManager;

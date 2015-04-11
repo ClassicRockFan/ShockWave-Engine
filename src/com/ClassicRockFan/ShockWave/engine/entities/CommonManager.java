@@ -1,6 +1,7 @@
 package com.ClassicRockFan.ShockWave.engine.entities;
 
 
+import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 
 import java.util.ArrayList;
@@ -10,17 +11,20 @@ public class CommonManager {
     private ArrayList<Entity> initializedEntities;
     private ArrayList<Entity> loadedEntities;
     private CoreEngine engine;
+    private int numEntities;
 
     public CommonManager(CoreEngine engine) {
         this.initializedEntities = new ArrayList<Entity>();
         this.loadedEntities = new ArrayList<Entity>();
         this.engine = engine;
+        this.numEntities = 0;
     }
 
     public void register(Entity entity){
         if(!initializedEntities.contains(entity)) {
             initializedEntities.add(entity);
             entity.init(engine);
+            entity.setId(getInstance());
         }
     }
 
@@ -53,5 +57,10 @@ public class CommonManager {
 
     public CoreEngine getEngine() {
         return engine;
+    }
+
+    public int getInstance(){
+        numEntities += 1;
+        return numEntities;
     }
 }
