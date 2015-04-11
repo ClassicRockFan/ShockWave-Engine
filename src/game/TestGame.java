@@ -10,6 +10,7 @@ import com.ClassicRockFan.ShockWave.engine.entities.characters.player.Player;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.effects.LookAtCamera;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.MeshRender;
+import com.ClassicRockFan.ShockWave.engine.entities.items.InventoryItem;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.DirectionalLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.PointLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.SpotLightEntity;
@@ -64,7 +65,7 @@ public class TestGame extends Game {
         coffeeCup.addComponent(new MeshRender(coffeeCupMesh, ceramic));
         coffeeCup.getTransform().getPos().set(3f, 0f, 3f);
 
-        Character drumstick = new Character("drumstick");
+        Character drumstick = new Character("drumstick1");
         drumstick.addComponent(new MeshRender(drumstickMesh, wood));
         drumstick.getTransform().getPos().set(10, 20, 10);
         drumstick.getTransform().getScale().set(0.2f, 0.2f, 0.2f);
@@ -105,7 +106,7 @@ public class TestGame extends Game {
 
         //Create Camera
         EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 1000.0f);
-        Player player = new Player(entityCamera, 10, 0.5f);
+        Player player = new Player(entityCamera, 8, 0.5f);
         //player.addComponent(new SkyColor());
 
         addLight(skullLight);
@@ -121,6 +122,13 @@ public class TestGame extends Game {
         addCharacter(drumstick);
         addCharacter(drumstick1);
         addCharacter(earth);
+        addCharacter(coffeeCup);
+
+        InventoryItem testItem = new InventoryItem();
+        testItem.getTransform().getPos().set(0,1,0);
+        testItem.setMeshRender(new MeshRender(monkey, stoneBricks));
+
+        addItem(testItem);
     }
 
 }

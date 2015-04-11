@@ -40,16 +40,12 @@ public class Shader extends ReferenceCounter {
             System.out.println("Currently indexing Fragment shader: " + fileName);
             String fragmentShaderText = loadShader(fileName + ".fs");
 
-            System.out.println("checkpoint 1");
             addVertexShader(vertexShaderText);
-            System.out.println("checkpoint 1.5");
             addFragmentShader(fragmentShaderText);
-            System.out.println("checkpoint 2");
             addAllAttributes(vertexShaderText);
             addAllAttributes(fragmentShaderText);
             compileShader();
 
-            System.out.println("checkpoint 3");
 
             addAllUniforms(vertexShaderText);
             addAllUniforms(fragmentShaderText);
@@ -326,9 +322,7 @@ public class Shader extends ReferenceCounter {
 
     //private void addGeometryShader(String text){addProgram(text, GL_GEOMETRY_SHADER);}
     private void addFragmentShader(String text) {
-        System.out.println("checkpoint 1.75");
         addProgram(text, GL_FRAGMENT_SHADER);
-        System.out.println("checkpoint 1.9");
     }
 
     private void setAttribLocation(String attributeName, int location) {

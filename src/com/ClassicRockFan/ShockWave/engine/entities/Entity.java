@@ -47,6 +47,11 @@ public class Entity extends Object{
         return this;
     }
 
+    public Entity removeComponent(EntityComponent component){
+        components.remove(component);
+        return this;
+    }
+
     public void input(float delta) {
         transform.update();
 
