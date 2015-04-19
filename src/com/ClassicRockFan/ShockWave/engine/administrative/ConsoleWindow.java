@@ -1,40 +1,51 @@
 package com.ClassicRockFan.ShockWave.engine.administrative;
 
-/**
- * Created by Tyler on 3/19/2015.
- */
-
 
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
 
 
-@SuppressWarnings("serial")
 public class ConsoleWindow extends JFrame {
 
     private JTextArea mainField;
+    private JTextField textField;
 
     public ConsoleWindow() {
-        super("Console Window");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBackground(Color.black);
-        setForeground(Color.black);
-        mainField = new JTextArea();
-        mainField.setLineWrap(true);
-        mainField.setAutoscrolls(true);
-        mainField.setForeground(Color.WHITE);
-        mainField.setBackground(Color.BLACK);
-        DefaultCaret caret = (DefaultCaret) mainField.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
-        JScrollPane pane = new JScrollPane(mainField);
-        pane.setBounds(0, 0, 300, 300);
-        pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        add(pane, BorderLayout.CENTER);
-        pack();
+        super();
 
-        setSize(300, 300);
-        //setVisible(true);
+        this.setSize(300, 300);
+
+        getContentPane().setBackground(Color.BLACK);
+        SpringLayout springLayout = new SpringLayout();
+        getContentPane().setLayout(springLayout);
+
+        mainField = new JTextArea();
+        mainField.setBackground(Color.BLACK);
+
+        DefaultCaret caret = (DefaultCaret)mainField.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+
+
+        JScrollPane scrollPane = new JScrollPane(mainField);
+        springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 0, SpringLayout.NORTH, getContentPane());
+        springLayout.putConstraint(SpringLayout.WEST, scrollPane, 0, SpringLayout.WEST, getContentPane());
+        springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 237, SpringLayout.NORTH, getContentPane());
+        springLayout.putConstraint(SpringLayout.EAST, scrollPane, 284, SpringLayout.WEST, getContentPane());
+        getContentPane().add(scrollPane);
+
+        textField = new JTextField();
+        springLayout.putConstraint(SpringLayout.NORTH, textField, -20, SpringLayout.SOUTH, getContentPane());
+        springLayout.putConstraint(SpringLayout.WEST, textField, 0, SpringLayout.WEST, getContentPane());
+        springLayout.putConstraint(SpringLayout.SOUTH, textField, 0, SpringLayout.SOUTH, getContentPane());
+        springLayout.putConstraint(SpringLayout.EAST, textField, 213, SpringLayout.WEST, getContentPane());
+        getContentPane().add(textField);
+        textField.setColumns(10);
+
+        JButton btnNewButton = new JButton("Submit");
+        springLayout.putConstraint(SpringLayout.NORTH, btnNewButton, 0, SpringLayout.NORTH, getContentPane());
+        springLayout.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, scrollPane);
+        getContentPane().add(btnNewButton);
     }
 
     public void addConsoleText(String message) {
@@ -54,6 +65,4 @@ public class ConsoleWindow extends JFrame {
     public JTextArea getMainField() {
         return mainField;
     }
-
-
 }

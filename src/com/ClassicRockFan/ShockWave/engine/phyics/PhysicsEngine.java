@@ -1,47 +1,51 @@
 package com.ClassicRockFan.ShockWave.engine.phyics;
 
 
-import com.ClassicRockFan.ShockWave.engine.EventHandling.physicsEvents.CollisionEvent;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
+import com.ClassicRockFan.ShockWave.engine.entities.Entity;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents.CollisionEvent;
 
 import java.util.ArrayList;
 
 public class PhysicsEngine {
-    public static final float DEFAULT_GRAVITY_ACCEL = 10.0f;
-    public static float IMMOVABLE_MASS = -1.0f;
-    public static float NULL_MASS = 99999999999999999f;
-    private ArrayList<PhysicsObject> objects;
     private CoreEngine engine;
     private ProfileTimer simulateTimer;
     private ProfileTimer collisionTimer;
 
     public PhysicsEngine(CoreEngine engine) {
-        objects = new ArrayList<PhysicsObject>();
         this.engine = engine;
         this.simulateTimer = new ProfileTimer();
         this.collisionTimer = new ProfileTimer();
         engine.getConsole().addConsoleText("Creating the Physics Engine!");
     }
 
-    public void simulate(float delta) {
+    public void doPhyiscs(float delta){
+        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
+        ArrayList<PhysicsComponent> objects = new ArrayList<PhysicsComponent>();
+
+        for(int i = 0; i < loadedEntities.size(); i++){
+            if(loadedEntities.get(i).isHasPhysics())
+                objects.add(loadedEntities.get(i).getPhysicsComponent());
+        }
+
+        //simulating
         simulateTimer.startInvocation();
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).integrate(delta);
+            objects.get(i).update(delta);
             if (objects.get(i).isHasCamera()) {
                 objects.get(i).getVelocity().set(0, 0, 0);
             }
         }
         simulateTimer.stopInvocation();
-    }
 
-    public void handleCollisions(float delta) {
+        //Handling collisions
         collisionTimer.startInvocation();
         for (int i = 0; i < objects.size(); i++) {
             for (int j = i + 1; j < objects.size(); j++) {
                 //Define the two new objects
-                PhysicsObject obj1 = objects.get(i);
-                PhysicsObject obj2 = objects.get(j);
+                PhysicsComponent obj1 = objects.get(i);
+                PhysicsComponent obj2 = objects.get(j);
 
                 IntersectData data = obj1.getCollider().intersect(obj2.getCollider());
                 if (data.isDoesIntersect()) {
@@ -58,17 +62,5 @@ public class PhysicsEngine {
 
     public double displayCollisionTime(double dividend) {
         return collisionTimer.displayAndReset("Collision Time: ", dividend);
-    }
-
-    public void addPhysicsObject(PhysicsObject object) {
-        objects.add(object);
-    }
-
-    public ArrayList<PhysicsObject> getObjects() {
-        return objects;
-    }
-
-    public int getNumObjects() {
-        return objects.size();
     }
 }

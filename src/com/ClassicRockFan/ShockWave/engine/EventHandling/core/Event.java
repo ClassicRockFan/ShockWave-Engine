@@ -1,4 +1,4 @@
-package com.ClassicRockFan.ShockWave.engine.EventHandling.core;
+package com.ClassicRockFan.ShockWave.engine.eventHandling.core;
 
 
 import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
@@ -10,7 +10,7 @@ public class Event {
     private String message;
 
     public Event(int type) {
-        this(type, Logging.LEVEL_NULL);
+        this(type, Logging.LEVEL_INFO);
     }
 
     public Event(int type, int logLevel) {
@@ -30,27 +30,13 @@ public class Event {
     public int getLogLevel() {
         return logLevel;
     }
-
-    public void setLogLevel(int logLevel) {
-        this.logLevel = logLevel;
-    }
-
     public int getType() {
         return type;
     }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
     public String getMessage() {
         if (message != null)
             return message;
         else
             return "An Event of type " + type + " has not registered a message.  Please fix this issue for proper logging";
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

@@ -16,9 +16,13 @@ public class InventoryItem extends Item{
     }
 
     public InventoryItem(int value) {
+        this(value, new MeshRender(new Mesh("sphere.obj"), new Material(new Texture("default.png"), 1.0f, 1.0f)));
+    }
+
+    public InventoryItem(int value, MeshRender meshRender){
         super();
         this.value = value;
-        this.meshRender =  new MeshRender(new Mesh("sphere.obj"), new Material(new Texture("default.png"), 1.0f, 1.0f));
+        this.meshRender = meshRender;
         this.getTransform().getScale().set(0.3f, 0.3f, 0.3f);
     }
 

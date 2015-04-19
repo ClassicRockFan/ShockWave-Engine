@@ -66,7 +66,6 @@ public abstract class Game {
         Logging.printLog("Adding a Light to the game!!!", Logging.LEVEL_INFO);
     }
 
-
     public RenderingEngine getRenderingEngine() {
         return renderingEngine;
     }
