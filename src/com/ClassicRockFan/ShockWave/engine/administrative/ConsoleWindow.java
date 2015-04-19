@@ -67,6 +67,11 @@ public class ConsoleWindow extends JFrame {
                 "help - displays all available commands",
                 "terminate - stops the game"
         };
+
+        addConsoleText("POSSIBLE COMMANDS:");
+        for(int i = 0; i < commands.length; i++){
+            addConsoleText(commands[i]);
+        }
     }
 
     private void setupSubmitButon(JButton button) {
@@ -74,7 +79,6 @@ public class ConsoleWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String text = textField.getText().trim().toLowerCase();
-                Logging.printLog("Console Text Entered: " + text);
 
                 if (text.equals("terminate"))
                     System.exit(2);

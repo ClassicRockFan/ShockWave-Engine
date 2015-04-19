@@ -90,11 +90,18 @@ public class TestGame extends Game {
         skullLight.getTransform().getPos().set(0, 30, 10);
 
         Character earth = new Character("earth");
-        earth.addComponent(new MeshRender(sphere, earthTexture))
-                .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(0, 10, 50), 5), new Vector3f(1, 0, 1), 100, 0.001f));
-        earth.getPhysicsComponent().setConstantAcceleration(new Vector3f(0, -9.8f, 0));
+        earth.addComponent(new MeshRender(sphere, earthTexture));
         earth.getTransform().getScale().set(5, 5, 5);
         earth.getTransform().getPos().set(0, 10, 50);
+
+        Character phsicsObj1 = new Character("physicsOBJ1");
+        phsicsObj1.addComponent(new MeshRender(sphere, bricks))
+        .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(0, 1, 0), 1), new Vector3f(1, 0, 1), 100, 0.2f));
+
+        Character phsicsObj2 = new Character("physicsOBJ2");
+        phsicsObj2.addComponent(new MeshRender(sphere, stoneBricks))
+                .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(10, 1, 10), 1), new Vector3f(-2, 0, -2), 100, 0.2f));
+        phsicsObj2.getTransform().getPos().set(10, 1, 10);
 
         //Lights Below
         PointLightEntity pointLight = new PointLightEntity(engine, new Vector3f(0, 1, 0), 2f, new Attenuation(0, 0, 1));
@@ -128,6 +135,8 @@ public class TestGame extends Game {
         addCharacter(drumstick1);
         addCharacter(earth);
         addCharacter(coffeeCup);
+        addCharacter(phsicsObj1);
+        addCharacter(phsicsObj2);
 
         InventoryItem testItem = new InventoryItem();
         testItem.getTransform().getPos().set(0, 1, 0);

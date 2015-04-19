@@ -41,4 +41,8 @@ public class Event {
         else
             return "An Event of type " + type + " has not registered a message.  Please fix this issue for proper logging";
     }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
