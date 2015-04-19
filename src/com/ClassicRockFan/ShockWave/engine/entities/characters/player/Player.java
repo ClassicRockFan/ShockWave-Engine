@@ -25,8 +25,8 @@ public class Player extends Character {
     }
 
     @Override
-    public void init(CoreEngine engine) {
-        super.init(engine);
+    public void finalizeSetup(CoreEngine engine) {
+        super.finalizeSetup(engine);
     }
 
     @Override

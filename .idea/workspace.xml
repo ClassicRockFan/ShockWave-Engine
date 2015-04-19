@@ -2,66 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ced4da24-8e87-4de4-b492-dd299529e657" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Tyler\Projects\Code\ShockWave-Engine\out\production\ShockWave\com\ClassicRockFan\ShockWave\engine\core\CoreEngine.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow$1.class" afterPath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow.class" afterPath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Bounding/AABB.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Bounding/AABB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Bounding/BoundingSphere.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Bounding/BoundingSphere.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.class" afterPath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/entities/Entity.class" afterPath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/entities/Entity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/core/Game.class" afterPath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/core/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/administrative/Logging.class" afterPath="$PROJECT_DIR$/out/production/ShockWave/com/ClassicRockFan/ShockWave/engine/administrative/Logging.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ShockWave/game/TestGame.class" afterPath="$PROJECT_DIR$/out/production/ShockWave/game/TestGame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Character.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Character.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Collider.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Collider.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Tyler\Projects\Code\ShockWave-Engine\src\com\ClassicRockFan\ShockWave\engine\eventHandling\handlers\physicsEvents\CollisionEvent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/physicsEvents/CollisionEvent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/CommonManager.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/CommonManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Constants.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/Entity.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/Entity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/EntityCamera.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/EntityCamera.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/EntityComponent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/EntityComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/EntityManager.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/EntityManager.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Tyler\Projects\Code\ShockWave-Engine\src\com\ClassicRockFan\ShockWave\engine\eventHandling\core\Event.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/core/Event.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FreeLook.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FreeLook.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FreeMove.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FreeMove.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FrustumCuller.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FrustumCuller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/FrustumCulling.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/FrustumCulling.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Game.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/coreComponents/GameComponent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/coreComponents/GameComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/coreComponents/GameObject.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/coreComponents/GameObject.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Tyler\Projects\Code\ShockWave-Engine\src\com\ClassicRockFan\ShockWave\engine\eventHandling\handlers\coreEvents\InputGameEvent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/coreEvents/InputGameEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/IntersectData.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/IntersectData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Inventory.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Inventory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/InventoryItem.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/InventoryItem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/Item.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/Item.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Tyler\Projects\Code\ShockWave-Engine\src\com\ClassicRockFan\ShockWave\engine\eventHandling\handlers\custom\KeyHandler.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/custom/KeyHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/calculations/Kinematics.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/calculations/Kinematics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/LauncherWindow.java" afterPath="$PROJECT_DIR$/src/game/LauncherWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/Light.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/Light.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/LoadMaterials.java" afterPath="$PROJECT_DIR$/src/game/LoadMaterials.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/Logging.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/Logging.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/calculations/Momentum.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/calculations/Momentum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/Naming.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/Naming.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/meshLoading/index/OBJIndex.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/meshLoading/index/OBJIndex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/meshLoading/model/OBJModel.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/meshLoading/model/OBJModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/physicsComponents/Orbit.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/physicsComponents/Orbit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsComponent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsEngine.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/physicsComponents/PhysicsMove.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/physicsComponents/PhysicsMove.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/physicsComponents/PhysicsObjectComponent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/physicsComponents/PhysicsObjectComponent.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Tyler\Projects\Code\ShockWave-Engine\src\com\ClassicRockFan\ShockWave\engine\eventHandling\handlers\physicsEvents\PhysicsOccurenceEvent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/physicsEvents/PhysicsOccurenceEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Bounding/Plane.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Bounding/Plane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/Plane.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/Plane.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/player/Player.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/RenderingEngine.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/RenderingEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/resourceManagement/ShaderResource.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/resourceManagement/ShaderResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/SkyColor.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/SkyColor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/lights/SpotLightEntity.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/lights/SpotLightEntity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/TestGame.java" afterPath="$PROJECT_DIR$/src/game/TestGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/TextRender.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/TextRender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/resourceManagement/TextureResource.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/resourceManagement/TextureResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Transform.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Transform.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Tyler\Projects\Code\ShockWave-Engine\src\com\ClassicRockFan\ShockWave\engine\eventHandling\handlers\coreEvents\UpdateGameEvent.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/coreEvents/UpdateGameEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/Vertex.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/Vertex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/Window.java" afterPath="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/Window.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/assd.java" afterPath="$PROJECT_DIR$/src/game/assd.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShockWave.iws" />
@@ -84,36 +43,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6285046">
-              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+              <folding>
+                <element signature="e#1513#1514#0" expanded="true" />
+                <element signature="e#1559#1560#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestGame.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/TestGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="129" column="8" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.48364487">
+              <caret line="94" column="77" selection-start-line="94" selection-start-column="77" selection-end-line="94" selection-end-column="77" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConsoleWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2606#2953#0" expanded="true" />
-                <element signature="e#2952#2953#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -122,7 +70,51 @@
         <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+              <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhysicsComponent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="84" column="49" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
+              <folding>
+                <element signature="e#652#653#0" expanded="true" />
+                <element signature="e#701#702#0" expanded="true" />
+                <element signature="e#1998#1999#0" expanded="true" />
+                <element signature="e#2029#2030#0" expanded="true" />
+                <element signature="e#2201#2202#0" expanded="true" />
+                <element signature="e#2235#2236#0" expanded="true" />
+                <element signature="e#2639#2640#0" expanded="true" />
+                <element signature="e#2695#2696#0" expanded="true" />
+                <element signature="e#2744#2745#0" expanded="true" />
+                <element signature="e#2787#2788#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityComponent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/EntityComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
+              <folding>
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#582#583#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoreEngine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -148,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FreeMove.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/FrustumCuller.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/MeshRender.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Time.java" />
@@ -169,10 +160,6 @@
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/lights/PointLightEntity.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/logging/Logging.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/Naming.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/Item.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/Light.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Character.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/player/Player.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/RenderingEngine.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/EntityComponent.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/SkyColor.java" />
@@ -180,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/inventoryItems/InventoryItem.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Inventory.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/EntityManager.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/CommonManager.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/InventoryItem.java" />
         <option value="$PROJECT_DIR$/src/game/GroundMesh.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/custom/Keys.java" />
@@ -189,15 +175,21 @@
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/custom/KeyHandler.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/core/Event.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/core/EventManager.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsComponent.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsEngine.java" />
-        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Game.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/eventHandling/handlers/physicsEvents/PhysicsOccurenceEvent.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/EventHandling/handlers/custom/KeyHandler.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/EventHandling/handlers/coreEvents/InputGameEvent.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Game.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/Logging.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/CommonManager.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Character.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/Light.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/Item.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/player/Player.java" />
         <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/Entity.java" />
+        <option value="$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsComponent.java" />
         <option value="$PROJECT_DIR$/src/game/TestGame.java" />
       </list>
     </option>
@@ -257,6 +249,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShockWave" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShockWave" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="com.ClassicRockFan.ShockWave.engine" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
@@ -275,77 +281,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eventHandling" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="handlers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShockWave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShockWave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.ClassicRockFan.ShockWave.engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eventHandling" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="handlers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coreEvents" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShockWave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShockWave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.ClassicRockFan.ShockWave.engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eventHandling" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShockWave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShockWave" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.ClassicRockFan.ShockWave.engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="phyics" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -877,13 +813,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/effects/LookAtComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/effects/LookAtObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36">
@@ -964,13 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/Logging.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28671327">
-          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/rendering/EntityCamera.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2377622">
@@ -989,48 +911,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/Light.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/rendering/FrustumCulling.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding>
-            <element signature="e#302#303#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/player/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="61" selection-start-line="34" selection-start-column="61" selection-end-line="34" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1060#1061#0" expanded="false" />
-            <element signature="e#1323#1324#0" expanded="false" />
-            <element signature="e#1387#1388#0" expanded="false" />
-            <element signature="e#1599#1600#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,20 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/EntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/CommonManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1145,24 +1015,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/EntityComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -1210,7 +1066,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
           <folding>
-            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1241,37 +1097,122 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="72" selection-start-line="129" selection-start-column="72" selection-end-line="129" selection-end-column="72" />
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="e#2275#2276#0" expanded="true" />
-            <element signature="e#2315#2316#0" expanded="true" />
-            <element signature="e#7459#7460#0" expanded="true" />
-            <element signature="e#7508#7509#0" expanded="true" />
-            <element signature="e#7963#7964#0" expanded="true" />
-            <element signature="e#7999#8000#0" expanded="true" />
+            <element signature="e#1513#1514#0" expanded="true" />
+            <element signature="e#1559#1560#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/TestGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="8" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/ConsoleWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+          <caret line="73" column="36" selection-start-line="70" selection-start-column="18" selection-end-line="73" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2606#2953#0" expanded="true" />
-            <element signature="e#2952#2953#0" expanded="true" />
+            <element signature="e#2671#3230#0" expanded="true" />
+            <element signature="e#3229#3230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/administrative/Logging.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="76" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/CommonManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47663552">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/EntityManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.03271028">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/CoreEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding>
+            <element signature="e#753#754#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/light/Light.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <folding>
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/items/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding>
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/characters/player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding>
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19859813">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/entityComponent/EntityComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
+          <folding>
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1279,15 +1220,34 @@
     <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/entities/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+          <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/core/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ClassicRockFan/ShockWave/engine/phyics/PhysicsComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6285046">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="49" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
+          <folding>
+            <element signature="e#652#653#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+            <element signature="e#1998#1999#0" expanded="true" />
+            <element signature="e#2029#2030#0" expanded="true" />
+            <element signature="e#2201#2202#0" expanded="true" />
+            <element signature="e#2235#2236#0" expanded="true" />
+            <element signature="e#2639#2640#0" expanded="true" />
+            <element signature="e#2695#2696#0" expanded="true" />
+            <element signature="e#2744#2745#0" expanded="true" />
+            <element signature="e#2787#2788#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/TestGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48364487">
+          <caret line="94" column="77" selection-start-line="94" selection-start-column="77" selection-end-line="94" selection-end-column="77" />
           <folding />
         </state>
       </provider>

@@ -22,14 +22,13 @@ public class CommonManager {
     public void register(Entity entity) {
         if (!initializedEntities.contains(entity)) {
             initializedEntities.add(entity);
-            entity.init(engine);
-            entity.setId(getInstance());
+            entity.finalizeSetup(engine);
+            entity.setId(getID());
         }
     }
 
     public void load(Entity entity) {
-        if (!initializedEntities.contains(entity))
-            register(entity);
+        register(entity);
         if (!loadedEntities.contains(entity)) {
             entity.load();
             loadedEntities.add(entity);
@@ -60,7 +59,7 @@ public class CommonManager {
         return engine;
     }
 
-    public int getInstance() {
+    private int getID() {
         numEntities += 1;
         return numEntities;
     }

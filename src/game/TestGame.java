@@ -14,6 +14,8 @@ import com.ClassicRockFan.ShockWave.engine.entities.items.InventoryItem;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.DirectionalLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.PointLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.SpotLightEntity;
+import com.ClassicRockFan.ShockWave.engine.phyics.Bounding.BoundingSphere;
+import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.*;
 
@@ -88,7 +90,9 @@ public class TestGame extends Game {
         skullLight.getTransform().getPos().set(0, 30, 10);
 
         Character earth = new Character("earth");
-        earth.addComponent(new MeshRender(sphere, earthTexture));
+        earth.addComponent(new MeshRender(sphere, earthTexture))
+                .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(0, 10, 50), 5), new Vector3f(1, 0, 1), 100, 0.001f));
+        earth.getPhysicsComponent().setConstantAcceleration(new Vector3f(0, -9.8f, 0));
         earth.getTransform().getScale().set(5, 5, 5);
         earth.getTransform().getPos().set(0, 10, 50);
 

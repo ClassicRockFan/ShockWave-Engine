@@ -32,8 +32,8 @@ public class Character extends Entity {
     }
 
     @Override
-    public void init(CoreEngine engine) {
-        super.init(engine);
+    public void finalizeSetup(CoreEngine engine) {
+        super.finalizeSetup(engine);
     }
 
     public int getBaseHealth() {

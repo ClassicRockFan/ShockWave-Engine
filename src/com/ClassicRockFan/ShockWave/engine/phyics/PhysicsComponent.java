@@ -10,6 +10,7 @@ public class PhysicsComponent extends EntityComponent {
     private Vector3f oldPosition;
     private Vector3f velocity;
     private Vector3f acceleration;
+    private Vector3f constantAcceleration;
     private boolean hasCamera;
     private Collider collider;
     private float mass;
@@ -31,6 +32,7 @@ public class PhysicsComponent extends EntityComponent {
         this.oldPosition = collider.getCenter();
         this.velocity = velocity;
         this.acceleration = new Vector3f(0, 0, 0);
+        this.constantAcceleration = new Vector3f(0,0,0);
         this.collider = collider;
         this.hasCamera = false;
         this.mass = mass;
@@ -43,10 +45,11 @@ public class PhysicsComponent extends EntityComponent {
     public void update(float delta) {
         Vector3f part1 = getVelocity().mul(delta);
         Vector3f part2 = getAcceleration().mul(delta * delta);
-        setPosition(getPosition().add(part1.add(part2)));
+        Vector3f part3 = getConstantAcceleration().mul(delta * delta);
+        setPosition(getPosition().add(part1.add(part2.add(part3))));
         getTransform().getPos().set(getPosition());
 
-        setVelocity(getVelocity().add(getAcceleration().mul(delta)));
+        setVelocity(getVelocity().add(getAcceleration().mul(delta)).add(getConstantAcceleration().mul(delta)));
         setAcceleration(new Vector3f(0, 0, 0));
     }
 
@@ -77,6 +80,13 @@ public class PhysicsComponent extends EntityComponent {
 
     public void setAcceleration(Vector3f acceleration) {
         this.acceleration = acceleration;
+    }
+    public void setConstantAcceleration(Vector3f acceleration){
+        this.constantAcceleration = acceleration;
+    }
+
+    public Vector3f getConstantAcceleration() {
+        return constantAcceleration;
     }
 
     public Collider getCollider() {

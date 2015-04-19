@@ -73,8 +73,4 @@ public abstract class Game {
     public PhysicsEngine getPhysicsEngine() {
         return physicsEngine;
     }
-
-    public void setEngine(CoreEngine engine) {
-        this.engine = engine;
-    }
 }

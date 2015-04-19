@@ -41,7 +41,6 @@ public class CoreEngine {
         this.title = title;
         this.frameTime = 1 / frameCap;
         this.game = game;
-        this.game.setEngine(this);
 
         //Managers
         this.eventManager = new EventManager();

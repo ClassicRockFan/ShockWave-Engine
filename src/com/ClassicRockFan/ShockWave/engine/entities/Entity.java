@@ -39,7 +39,8 @@ public class Entity {
         this.physicsComponent = null;
     }
 
-    public void init(CoreEngine engine) {
+    public void finalizeSetup(CoreEngine engine) {
+        Logging.printLog("Finalizing the setup of an Entity named " + name, Logging.LEVEL_INFO);
         this.engine = engine;
         this.entityManager = engine.getEntityManager();
     }
@@ -123,9 +124,13 @@ public class Entity {
         return physicsComponent;
     }
 
-    public Entity setPhysicsComponent(PhysicsComponent component) {
+    private void setPhysicsComponent(PhysicsComponent physicsComponent) {
+        this.physicsComponent = physicsComponent;
+    }
+
+    public Entity addPhysicsComponent(PhysicsComponent component) {
         component.setParent(this);
-        this.setPhysicsComponent(component);
+        setPhysicsComponent(component);
         hasPhysics = true;
         return this;
     }

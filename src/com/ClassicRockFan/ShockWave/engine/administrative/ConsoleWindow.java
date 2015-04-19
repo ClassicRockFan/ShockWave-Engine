@@ -15,6 +15,7 @@ public class ConsoleWindow extends JFrame {
     private JTextArea mainField;
     private JTextField textField;
     private CoreEngine engine;
+    private JScrollPane scrollPane;
 
     public ConsoleWindow(CoreEngine engine) {
         super();
@@ -48,12 +49,13 @@ public class ConsoleWindow extends JFrame {
         textField.setColumns(10);
 
 
-        JScrollPane scrollPane = new JScrollPane(mainField);
+        scrollPane = new JScrollPane(mainField);
         springLayout.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, scrollPane);
         springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 0, SpringLayout.NORTH, getContentPane());
         springLayout.putConstraint(SpringLayout.WEST, scrollPane, 0, SpringLayout.WEST, getContentPane());
         springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 237, SpringLayout.NORTH, getContentPane());
         springLayout.putConstraint(SpringLayout.EAST, scrollPane, 284, SpringLayout.WEST, getContentPane());
+        scrollPane.setAutoscrolls(true);
         getContentPane().add(scrollPane);
     }
 
@@ -66,8 +68,29 @@ public class ConsoleWindow extends JFrame {
 
                 if (text.equals("terminate"))
                     System.exit(2);
+//                else if (text.equals("pause"))
+//                    pauseCaret();
+//                else if (text.equals("resume"))
+//                    resumeCaret();
+
+                textField.setText("");
             }
         });
+
+    }
+
+    private void pauseCaret(){
+        DefaultCaret caret = (DefaultCaret) mainField.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.UPDATE_WHEN_ON_EDT);
+        mainField.setAutoscrolls(false);
+        scrollPane.setAutoscrolls(false);
+    }
+
+    private void resumeCaret(){
+        DefaultCaret caret = (DefaultCaret) mainField.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+        mainField.setAutoscrolls(true);
+        scrollPane.setAutoscrolls(true);
     }
 
     public void addConsoleText(String message) {
