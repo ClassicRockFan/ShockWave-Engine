@@ -16,6 +16,7 @@ public class ConsoleWindow extends JFrame {
     private JTextField textField;
     private CoreEngine engine;
     private JScrollPane scrollPane;
+    private String[] commands;
 
     public ConsoleWindow(CoreEngine engine) {
         super();
@@ -57,6 +58,15 @@ public class ConsoleWindow extends JFrame {
         springLayout.putConstraint(SpringLayout.EAST, scrollPane, 284, SpringLayout.WEST, getContentPane());
         scrollPane.setAutoscrolls(true);
         getContentPane().add(scrollPane);
+
+        setupCommands();
+    }
+
+    private void setupCommands(){
+        commands = new String[]{
+                "help - displays all available commands",
+                "terminate - stops the game"
+        };
     }
 
     private void setupSubmitButon(JButton button) {
@@ -72,7 +82,12 @@ public class ConsoleWindow extends JFrame {
 //                    pauseCaret();
 //                else if (text.equals("resume"))
 //                    resumeCaret();
-
+                else if (text.equals("help")) {
+                    addConsoleText("POSSIBLE COMMANDS:");
+                    for(int i = 0; i < commands.length; i++){
+                        addConsoleText(commands[i]);
+                    }
+                }
                 textField.setText("");
             }
         });
