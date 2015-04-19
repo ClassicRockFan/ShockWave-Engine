@@ -1,19 +1,19 @@
-package com.ClassicRockFan.ShockWave.engine.EventHandling.physicsEvents;
+package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents;
 
 
-import com.ClassicRockFan.ShockWave.engine.EventHandling.core.Event;
-import com.ClassicRockFan.ShockWave.engine.EventHandling.core.EventTyping;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.phyics.IntersectData;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsObject;
+import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
 
 public class CollisionEvent extends Event {
 
-    private PhysicsObject obj1;
-    private PhysicsObject obj2;
+    private PhysicsComponent obj1;
+    private PhysicsComponent obj2;
     private IntersectData data;
 
-    public CollisionEvent(PhysicsObject obj1, PhysicsObject obj2, IntersectData data) {
+    public CollisionEvent(PhysicsComponent obj1, PhysicsComponent obj2, IntersectData data) {
         super(EventTyping.PHYSICS_COLLISION_EVENT_TYPE);
         this.obj1 = obj1;
         this.data = data;

@@ -8,18 +8,24 @@ package com.ClassicRockFan.ShockWave.engine.administrative;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-@SuppressWarnings("serial")
 public class ConsoleWindow extends JFrame {
 
     private JTextArea mainField;
+    private JTextField input;
+    private JButton button;
 
     public ConsoleWindow() {
         super("Console Window");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBackground(Color.black);
         setForeground(Color.black);
+
+        JPanel panel = new JPanel();
+
         mainField = new JTextArea();
         mainField.setLineWrap(true);
         mainField.setAutoscrolls(true);
@@ -27,14 +33,34 @@ public class ConsoleWindow extends JFrame {
         mainField.setBackground(Color.BLACK);
         DefaultCaret caret = (DefaultCaret) mainField.getCaret();
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
-        JScrollPane pane = new JScrollPane(mainField);
+
+
+        input = new JTextField();
+        input.setBounds(0, 250, 200, 50);
+
+        button = new JButton("Submit");
+        button.setBounds(200, 250, 100, 50);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String text = input.getText().toLowerCase().trim();
+
+
+            }
+        });
+
+        panel.add(mainField);
+        panel.add(input);
+        panel.add(button);
+
+        JScrollPane pane = new JScrollPane(panel);
         pane.setBounds(0, 0, 300, 300);
         pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(pane, BorderLayout.CENTER);
+
         pack();
 
         setSize(300, 300);
-        //setVisible(true);
     }
 
     public void addConsoleText(String message) {

@@ -1,17 +1,13 @@
-package com.ClassicRockFan.ShockWave.engine.EventHandling.core;
-
-import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
+package com.ClassicRockFan.ShockWave.engine.eventHandling.core;
 
 import java.util.ArrayList;
 
 public class EventManager {
 
-    private CoreEngine engine;
     private ArrayList<Event> events;
 
-    public EventManager(CoreEngine engine) {
+    public EventManager() {
         this.events = new ArrayList<Event>();
-        this.engine = engine;
     }
 
     public void doEvents(double frameTime) {

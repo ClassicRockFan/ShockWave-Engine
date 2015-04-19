@@ -1,4 +1,4 @@
-package com.ClassicRockFan.ShockWave.engine.EventHandling.core;
+package com.ClassicRockFan.ShockWave.engine.eventHandling.core;
 
 
 public class EventTyping {

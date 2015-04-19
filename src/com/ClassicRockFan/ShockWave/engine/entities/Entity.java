@@ -6,6 +6,7 @@ import com.ClassicRockFan.ShockWave.engine.administrative.Naming;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
+import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
@@ -19,23 +20,24 @@ public class Entity extends Object{
     private String name;
     private EntityManager entityManager;
     private int id;
+    private boolean hasPhysics;
+    private PhysicsComponent physicsComponent;
 
     public Entity(){
         this.name = Naming.getReccomendedName(this);
-        this.transform = new Transform();
-        this.components = new ArrayList<EntityComponent>();
     }
-
 
     public Entity(String name) {
         this.name = name;
-        this.transform = new Transform();
-        this.components = new ArrayList<EntityComponent>();
     }
 
     public void init(CoreEngine engine){
+        this.transform = new Transform();
+        this.components = new ArrayList<EntityComponent>();
+        this.hasPhysics = false;
         this.engine = engine;
         this.entityManager = engine.getEntityManager();
+        this.physicsComponent = null;
     }
 
     public void load(){
@@ -45,6 +47,13 @@ public class Entity extends Object{
     public Entity addComponent(EntityComponent component){
         components.add(component);
         component.setParent(this);
+        return this;
+    }
+
+    public Entity setPhysicsComponent(PhysicsComponent component){
+        component.setParent(this);
+        this.setPhysicsComponent(component);
+        hasPhysics = true;
         return this;
     }
 
@@ -99,5 +108,12 @@ public class Entity extends Object{
     }
     public void setId(int id) {
         this.id = id;
+    }
+    public boolean isHasPhysics() {
+        return hasPhysics;
+    }
+
+    public PhysicsComponent getPhysicsComponent() {
+        return physicsComponent;
     }
 }

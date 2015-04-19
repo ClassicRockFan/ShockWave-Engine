@@ -25,6 +25,7 @@ public class TestGame extends Game {
     public Material wood;
     public Material drumStick;
     public Material earthTexture;
+
     @Override
     public void init(RenderingEngine renderingEngine, PhysicsEngine physicsEngine, CoreEngine engine){
         super.init(renderingEngine, physicsEngine, engine);
@@ -103,11 +104,14 @@ public class TestGame extends Game {
         DirectionalLightEntity directionalLight2 = new DirectionalLightEntity(engine, new Vector3f(1, 0, 0), 1f);
         directionalLight2.getTransform().getRot().set(new Quaternion(new Vector3f(0, 1, 0), Math.toRadians(180)));
 
-
         //Create Camera
         EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 1000.0f);
         Player player = new Player(entityCamera, 8, 0.5f);
         //player.addComponent(new SkyColor());
+
+        //Inventory Items
+        InventoryItem testInvItem = new InventoryItem(1000, new MeshRender(monkey, stoneBricks));
+        testInvItem.getTransform().getPos().set(0,1,0);
 
         addLight(skullLight);
         addLight(directionalLight1);
@@ -124,11 +128,7 @@ public class TestGame extends Game {
         addCharacter(earth);
         addCharacter(coffeeCup);
 
-        InventoryItem testItem = new InventoryItem();
-        testItem.getTransform().getPos().set(0,1,0);
-        testItem.setMeshRender(new MeshRender(monkey, stoneBricks));
-
-        addItem(testItem);
+        addItem(testInvItem);
     }
 
 }

@@ -24,7 +24,8 @@ public class GroundMesh {
                 new Vertex(new Vector3f(fieldWidth * 3, 0.0f, -fieldDepth), new Vector2f(1.0f, 0.0f)),
                 new Vertex(new Vector3f(fieldWidth * 3, 0.0f, fieldDepth * 3), new Vector2f(1.0f, 1.0f))};
 
-        int[] indices = new int[]{0, 1, 2,
+        int[] indices = new int[]{
+                0, 1, 2,
                 2, 1, 3
         };
 
