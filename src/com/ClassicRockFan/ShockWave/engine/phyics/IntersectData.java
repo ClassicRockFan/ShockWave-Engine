@@ -12,7 +12,15 @@ public class IntersectData {
         this.direction = direction;
     }
 
-    public boolean isDoesIntersect() {return doesIntersect;}
-    public float getDistance() {return direction.length();}
-    public Vector3f getDirection(){return direction;}
+    public boolean isDoesIntersect() {
+        return doesIntersect;
+    }
+
+    public float getDistance() {
+        return direction.length();
+    }
+
+    public Vector3f getDirection() {
+        return direction;
+    }
 }

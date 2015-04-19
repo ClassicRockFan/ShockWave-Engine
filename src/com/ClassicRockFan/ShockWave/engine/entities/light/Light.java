@@ -13,7 +13,7 @@ public class Light extends Entity {
     private Shader shader;
     private BaseLightEntity base;
 
-    public Light(Vector3f color, float intensity){
+    public Light(Vector3f color, float intensity) {
         super();
         this.color = color;
         this.intensity = intensity;
@@ -31,7 +31,7 @@ public class Light extends Entity {
     }
 
     @Override
-    public void load(){
+    public void load() {
         super.load();
         super.getEngine().getRenderingEngine().addLight(this);
     }

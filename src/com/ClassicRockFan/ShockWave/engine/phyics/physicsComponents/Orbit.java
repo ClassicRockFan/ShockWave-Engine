@@ -29,33 +29,32 @@ public class Orbit extends EntityComponent {
         this(body1, body2, Constants.UNIVERSAL_GRAVITATION.mul(gravityScale), calcOrbitalVelocityOnOBJ1);
     }
 
-    public Orbit(PhysicsComponent orbitingBody, PhysicsComponent orbitedBody, Vector3f gravitationConstant,  boolean calcOrbitalVelocityOnOrbiting){
+    public Orbit(PhysicsComponent orbitingBody, PhysicsComponent orbitedBody, Vector3f gravitationConstant, boolean calcOrbitalVelocityOnOrbiting) {
         super("orbitComponent");
         this.body1 = orbitingBody;
         this.body2 = orbitedBody;
         this.gravitationConstant = gravitationConstant;
 
         //Checks the masses and makes sure that they aren't immovable - not completely accurate, but makes it look better
-        if(body1.isImmovable()) {
+        if (body1.isImmovable()) {
             body1Mass = 10;
             body1Immovable = true;
-        }else
+        } else
             body1Mass = body1.getMass();
 
-        if(body2.isImmovable()) {
+        if (body2.isImmovable()) {
             body2Mass = 10;
             body2Immovable = true;
-        }else
+        } else
             body2Mass = body2.getMass();
 
-        if(calcOrbitalVelocityOnOrbiting)
+        if (calcOrbitalVelocityOnOrbiting)
             calcOrbitalVelocity();
     }
 
 
-
     @Override
-    public void update(float delta){
+    public void update(float delta) {
         //Calculate the position of the two objects relative to each other;
         Vector3f direction = (body2.getCollider().getCenter().sub(body1.getCollider().getCenter()));
         direction.printVector("Direction");
@@ -66,18 +65,20 @@ public class Orbit extends EntityComponent {
         boolean correctY = false;
         boolean correctZ = false;
 
-        if(direction.getX() == 0.0f) {
+        if (direction.getX() == 0.0f) {
             direction.setX(1.0f);
             correctX = true;
-        }if(direction.getY() == 0.0f) {
+        }
+        if (direction.getY() == 0.0f) {
             direction.setY(1.0f);
             correctY = true;
-        }if(direction.getZ() == 0.0f) {
+        }
+        if (direction.getZ() == 0.0f) {
             direction.setZ(1.0f);
             correctZ = true;
         }
 
-        Vector3f numerator = (gravitationConstant.mul(body1Mass* body2Mass));
+        Vector3f numerator = (gravitationConstant.mul(body1Mass * body2Mass));
         numerator.printVector("Numerator: ");
 
         //Get the radius and keep the directional features - the direction comes necessary for determining directions of vectors
@@ -99,7 +100,6 @@ public class Orbit extends EntityComponent {
         Vector3f body2Velocity = body2Accel.mul(radius.mul(-1));
 
 
-
         //Square root the components of the velocity to adjust it appropriately
         //-- Also checks if velocity > 0 to make sure that we are going to deal with imaginary numbers (See Vector3f class)
         body1Velocity.set(body1Velocity.sqrt());
@@ -109,27 +109,27 @@ public class Orbit extends EntityComponent {
 
 
         //Fix the velocities if they had to be corrected
-        if(correctX){
+        if (correctX) {
             body1Velocity.setX(0);
             body2Velocity.setX(0);
         }
-        if(correctY){
+        if (correctY) {
             body1Velocity.setY(0);
             body2Velocity.setY(0);
         }
-        if(correctZ){
+        if (correctZ) {
             body1Velocity.setZ(0);
             body2Velocity.setZ(0);
         }
 
-        if(!body1Immovable)
+        if (!body1Immovable)
             body1.getVelocity().set(body1Velocity.add(body1.getVelocity()));
         else
-            body1.setVelocity(new Vector3f(0,0,0));
-        if(!body2Immovable)
+            body1.setVelocity(new Vector3f(0, 0, 0));
+        if (!body2Immovable)
             body2.getVelocity().set(body2Velocity.add(body2.getVelocity()));
         else
-            body2.setVelocity(new Vector3f(0,0,0));
+            body2.setVelocity(new Vector3f(0, 0, 0));
         body1.getVelocity().printVector("Body1's new Velocity");
         body2.getVelocity().printVector("Body2's new Velocity");
 
@@ -143,7 +143,7 @@ public class Orbit extends EntityComponent {
 
     }
 
-    private void calcOrbitalVelocity(){
+    private void calcOrbitalVelocity() {
         body1.getVelocity().printVector("Body 1's Orbital Velocity");
         body2.getVelocity().printVector("Body 2's Orbital Velocity");
         float sigmaMass = body1Mass + body2Mass;
@@ -156,13 +156,15 @@ public class Orbit extends EntityComponent {
         boolean correctY = false;
         boolean correctZ = false;
 
-        if(direction.getX() == 0.0f) {
+        if (direction.getX() == 0.0f) {
             direction.setX(1.0f);
             correctX = true;
-        }if(direction.getY() == 0.0f) {
+        }
+        if (direction.getY() == 0.0f) {
             direction.setY(1.0f);
             correctY = true;
-        }if(direction.getZ() == 0.0f) {
+        }
+        if (direction.getZ() == 0.0f) {
             direction.setZ(1.0f);
             correctZ = true;
         }
@@ -173,27 +175,27 @@ public class Orbit extends EntityComponent {
         Vector3f velocity = toBeSquared.sqrt();
 
         //Fix the velocities if they had to be corrected
-        if(correctX){
+        if (correctX) {
             velocity.setX(0);
         }
-        if(correctY){
+        if (correctY) {
             velocity.setY(0);
         }
-        if(correctZ){
+        if (correctZ) {
             velocity.setZ(0);
         }
 
         //Check the velocities against the direction to make sure it doesn't just go straight toward the object
-        Vector3f correctedVelocity = new Vector3f(0,0,0);
-        if(direction.getX() != 0)
+        Vector3f correctedVelocity = new Vector3f(0, 0, 0);
+        if (direction.getX() != 0)
             correctedVelocity.setX(velocity.getZ());
-        if(direction.getY() != 0)
+        if (direction.getY() != 0)
             correctedVelocity.setY(velocity.getZ() * -1);
-        if(direction.getZ() != 0)
+        if (direction.getZ() != 0)
             correctedVelocity.setZ(velocity.getX());
 
         body1.setVelocity(correctedVelocity);
-        body2.setVelocity(new Vector3f(0,0,0));
+        body2.setVelocity(new Vector3f(0, 0, 0));
 
         CoreEngine.getConsole().addConsoleText(body1.getVelocity().toString("Body 1's Orbital Velocity"));
         CoreEngine.getConsole().addConsoleText(body2.getVelocity().toString("Body 2's Orbital Velocity"));

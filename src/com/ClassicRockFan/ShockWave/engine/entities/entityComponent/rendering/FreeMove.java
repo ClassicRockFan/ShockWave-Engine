@@ -28,7 +28,7 @@ public class FreeMove extends EntityComponent {
 
     @Override
     public void input(float delta) {
-        float moveAmount = (float) (moveSpeed * delta);
+        float moveAmount = moveSpeed * delta;
 
         if (Input.getKey(UP_KEY)) {
             move(getTransform().getRot().getForward(), moveAmount);

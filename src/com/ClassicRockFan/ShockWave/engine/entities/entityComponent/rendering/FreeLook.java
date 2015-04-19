@@ -20,7 +20,7 @@ public class FreeLook extends EntityComponent {
 
     @Override
     public void input(float delta) {
-        float rotateAmount = (float) (sensitivity);
+        float rotateAmount = sensitivity;
 
         if (Input.getMouseDown(0)) {
             Input.setMousePosition(centerPos);

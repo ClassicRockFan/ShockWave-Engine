@@ -1,7 +1,6 @@
 package com.ClassicRockFan.ShockWave.engine.entities;
 
 
-import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 
 import java.util.ArrayList;
@@ -20,37 +19,39 @@ public class CommonManager {
         this.numEntities = 0;
     }
 
-    public void register(Entity entity){
-        if(!initializedEntities.contains(entity)) {
+    public void register(Entity entity) {
+        if (!initializedEntities.contains(entity)) {
             initializedEntities.add(entity);
             entity.init(engine);
             entity.setId(getInstance());
         }
     }
 
-    public void load(Entity entity){
-        if(!initializedEntities.contains(entity))
+    public void load(Entity entity) {
+        if (!initializedEntities.contains(entity))
             register(entity);
-        if(!loadedEntities.contains(entity)) {
+        if (!loadedEntities.contains(entity)) {
             entity.load();
             loadedEntities.add(entity);
         }
     }
 
-    public void unloadAll(){
+    public void unloadAll() {
         loadedEntities.clear();
     }
-    public void unload(Entity entity){
-        if(isLoaded(entity))loadedEntities.remove(entity);
+
+    public void unload(Entity entity) {
+        if (isLoaded(entity)) loadedEntities.remove(entity);
     }
 
-    public boolean isLoaded(Entity entity){
+    public boolean isLoaded(Entity entity) {
         return loadedEntities.contains(entity);
     }
 
     public ArrayList<Entity> getRegisteredEntities() {
         return initializedEntities;
     }
+
     public ArrayList<Entity> getLoadedEntities() {
         return loadedEntities;
     }
@@ -59,7 +60,7 @@ public class CommonManager {
         return engine;
     }
 
-    public int getInstance(){
+    public int getInstance() {
         numEntities += 1;
         return numEntities;
     }

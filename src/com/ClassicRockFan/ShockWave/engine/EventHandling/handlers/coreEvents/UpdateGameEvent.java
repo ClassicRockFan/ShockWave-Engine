@@ -1,12 +1,12 @@
 package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents;
 
 
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
 import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.Game;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
 
-public class UpdateGameEvent extends Event{
+public class UpdateGameEvent extends Event {
 
     private Game game;
 

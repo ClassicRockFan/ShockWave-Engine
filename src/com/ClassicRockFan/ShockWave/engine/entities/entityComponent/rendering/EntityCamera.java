@@ -48,6 +48,7 @@ public class EntityCamera extends EntityComponent {
     public float getZNear() {
         return zNear;
     }
+
     public float getZFar() {
         return zFar;
     }

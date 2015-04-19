@@ -114,7 +114,9 @@ public class TextureResource {
 //        this.id = textureID;
 //    }
 
-    public ReferenceCounter getReferenceCounter(){return this.refCount;}
+    public ReferenceCounter getReferenceCounter() {
+        return this.refCount;
+    }
 
     public void bindAsRenderTarget() {
         glBindFramebuffer(GL_DRAW_FRAMEBUFFER, frameBuffer);

@@ -30,7 +30,7 @@ public class PhysicsComponent extends EntityComponent {
         this.position = collider.getCenter();
         this.oldPosition = collider.getCenter();
         this.velocity = velocity;
-        this.acceleration = new Vector3f(0,0,0);
+        this.acceleration = new Vector3f(0, 0, 0);
         this.collider = collider;
         this.hasCamera = false;
         this.mass = mass;
@@ -47,7 +47,7 @@ public class PhysicsComponent extends EntityComponent {
         getTransform().getPos().set(getPosition());
 
         setVelocity(getVelocity().add(getAcceleration().mul(delta)));
-        setAcceleration(new Vector3f(0,0,0));
+        setAcceleration(new Vector3f(0, 0, 0));
     }
 
     public Vector3f getPosition() {
@@ -59,7 +59,9 @@ public class PhysicsComponent extends EntityComponent {
         this.position = position;
     }
 
-    public Vector3f getOldPosition() {return oldPosition;}
+    public Vector3f getOldPosition() {
+        return oldPosition;
+    }
 
     public Vector3f getVelocity() {
         return velocity;
@@ -100,5 +102,7 @@ public class PhysicsComponent extends EntityComponent {
         return k;
     }
 
-    public boolean isImmovable() {return immovable;}
+    public boolean isImmovable() {
+        return immovable;
+    }
 }

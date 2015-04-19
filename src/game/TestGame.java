@@ -25,8 +25,9 @@ public class TestGame extends Game {
     public Material wood;
     public Material drumStick;
     public Material earthTexture;
+
     @Override
-    public void init(RenderingEngine renderingEngine, PhysicsEngine physicsEngine, CoreEngine engine){
+    public void init(RenderingEngine renderingEngine, PhysicsEngine physicsEngine, CoreEngine engine) {
         super.init(renderingEngine, physicsEngine, engine);
 
         bricks = new Material("bricks.jpg", 0.5f, 4f, "bricks_normal.jpg", "bricks_disp.jpg", 0.03f, -0.5f);
@@ -125,7 +126,7 @@ public class TestGame extends Game {
         addCharacter(coffeeCup);
 
         InventoryItem testItem = new InventoryItem();
-        testItem.getTransform().getPos().set(0,1,0);
+        testItem.getTransform().getPos().set(0, 1, 0);
         testItem.setMeshRender(new MeshRender(monkey, stoneBricks));
 
         addItem(testItem);

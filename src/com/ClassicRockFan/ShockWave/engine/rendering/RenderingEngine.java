@@ -40,7 +40,7 @@ public class RenderingEngine extends MappedValues {
     public RenderingEngine(CoreEngine engine) {
         super();
         this.coreEngine = engine;
-        engine.getConsole().addConsoleText("Creating the Rendering Engine!");
+        CoreEngine.getConsole().addConsoleText("Creating the Rendering Engine!");
 
         this.entityLights = new ArrayList<Light>();
         this.samplerMap = new HashMap<String, Integer>();
@@ -90,7 +90,6 @@ public class RenderingEngine extends MappedValues {
     }
 
 
-
     public void render(CoreEngine engine) {
         ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
@@ -100,7 +99,7 @@ public class RenderingEngine extends MappedValues {
         glClearColor(clearR, clearG, clearB, clearA);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        for(int i = 0; i < loadedEntities.size(); i++) {
+        for (int i = 0; i < loadedEntities.size(); i++) {
             loadedEntities.get(i).render(forwardAmbient, this);
         }
 
@@ -111,9 +110,9 @@ public class RenderingEngine extends MappedValues {
 
         for (Light light : entityLights) {
             activeEntityLight = light;
-            for(int i = 0; i < loadedEntities.size(); i++) {
+            for (int i = 0; i < loadedEntities.size(); i++) {
                 if (loadedEntities.get(i).getClass().getSuperclass() != Light.class) {
-                        loadedEntities.get(i).render(activeEntityLight.getShader(), this);
+                    loadedEntities.get(i).render(activeEntityLight.getShader(), this);
                 }
             }
         }
@@ -126,7 +125,7 @@ public class RenderingEngine extends MappedValues {
         renderTimer.stopInvocation();
     }
 
-    public void setClearColor(  float clearR, float clearG, float clearB, float clearA){
+    public void setClearColor(float clearR, float clearG, float clearB, float clearA) {
         this.clearA = clearA;
         this.clearB = clearB;
         this.clearG = clearG;
@@ -150,7 +149,15 @@ public class RenderingEngine extends MappedValues {
         return activeEntityLight;
     }
 
-    public EntityCamera getMainCamera() { return mainCamera; }
-    public void addLight(Light light){entityLights.add(light);}
-    public void setMainCamera(EntityCamera entityCamera){this.mainCamera = entityCamera;}
+    public EntityCamera getMainCamera() {
+        return mainCamera;
+    }
+
+    public void setMainCamera(EntityCamera entityCamera) {
+        this.mainCamera = entityCamera;
+    }
+
+    public void addLight(Light light) {
+        entityLights.add(light);
+    }
 }

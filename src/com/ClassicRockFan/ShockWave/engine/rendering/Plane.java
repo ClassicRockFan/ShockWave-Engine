@@ -7,11 +7,11 @@ public class Plane {
     private Vector3f normal, point;
     private float d;
 
-    public Plane(Vector3f v1, Vector3f v2, Vector3f v3){
+    public Plane(Vector3f v1, Vector3f v2, Vector3f v3) {
         set3Points(v1, v2, v3);
     }
 
-    public void set3Points(Vector3f v1, Vector3f v2, Vector3f v3){
+    public void set3Points(Vector3f v1, Vector3f v2, Vector3f v3) {
         Vector3f aux1, aux2;
 
         aux1 = v1.sub(v2);
@@ -23,20 +23,20 @@ public class Plane {
         d = -(normal.innerProduct(point));
     }
 
-    public void setNormalAndPoint(Vector3f normal, Vector3f point){
+    public void setNormalAndPoint(Vector3f normal, Vector3f point) {
         this.normal = normal;
         this.point = point;
         this.d = -(normal.innerProduct(point));
     }
 
-    public void setCoeffecients(float a, float b, float c, float d){
+    public void setCoeffecients(float a, float b, float c, float d) {
         this.normal.set(a, b, c);
         float l = normal.length();
-        normal.set(a/1, b/1, c/1);
-        this.d = d/1;
+        normal.set(a / 1, b / 1, c / 1);
+        this.d = d / 1;
     }
 
-    public float getDistance(Vector3f p){
+    public float getDistance(Vector3f p) {
         return d + normal.innerProduct(p);
     }
 

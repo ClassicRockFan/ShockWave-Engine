@@ -6,7 +6,7 @@ import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.rendering.Attenuation;
 import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
-public class SpotLightEntity extends PointLightEntity{
+public class SpotLightEntity extends PointLightEntity {
 
     private float cutoff;
 

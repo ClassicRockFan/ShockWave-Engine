@@ -28,14 +28,14 @@ public abstract class Game {
     public void input(float delta) {
         ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
-        for(int i = 0; i < loadedEntities.size(); i ++)
+        for (int i = 0; i < loadedEntities.size(); i++)
             loadedEntities.get(i).input(delta);
     }
 
     public void update(float delta) {
         ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
-        for(int i = 0; i < loadedEntities.size(); i ++)
+        for (int i = 0; i < loadedEntities.size(); i++)
             loadedEntities.get(i).update(delta);
     }
 
@@ -51,17 +51,17 @@ public abstract class Game {
         return root;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         engine.getEntityManager().getItemManager().load(item);
         Logging.printLog("Adding an Item to the game!!!", Logging.LEVEL_INFO);
     }
 
-    public void addCharacter(Character character){
+    public void addCharacter(Character character) {
         engine.getEntityManager().getCharacterManager().load(character);
         Logging.printLog("Adding A Character to the game!!!", Logging.LEVEL_INFO);
     }
 
-    public void addLight(Light light){
+    public void addLight(Light light) {
         engine.getEntityManager().getLightManager().load(light);
         Logging.printLog("Adding a Light to the game!!!", Logging.LEVEL_INFO);
     }

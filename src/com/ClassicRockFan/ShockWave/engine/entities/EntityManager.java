@@ -23,17 +23,17 @@ public class EntityManager {
         this.lightManager = new CommonManager(engine);
     }
 
-    public ArrayList<Entity> getAllLoadedEntites(){
+    public ArrayList<Entity> getAllLoadedEntites() {
         ArrayList<Entity> result = new ArrayList<Entity>();
 
 
-        for(int i = 0; i < itemManager.getLoadedEntities().size(); i++)
+        for (int i = 0; i < itemManager.getLoadedEntities().size(); i++)
             result.add(itemManager.getLoadedEntities().get(i));
 
-        for(int i = 0; i < characterManager.getLoadedEntities().size(); i++)
+        for (int i = 0; i < characterManager.getLoadedEntities().size(); i++)
             result.add(characterManager.getLoadedEntities().get(i));
 
-        for(int i = 0; i < lightManager.getLoadedEntities().size(); i++)
+        for (int i = 0; i < lightManager.getLoadedEntities().size(); i++)
             result.add(lightManager.getLoadedEntities().get(i));
 
         return result;

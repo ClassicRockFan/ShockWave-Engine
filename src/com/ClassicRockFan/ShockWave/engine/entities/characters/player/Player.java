@@ -2,12 +2,12 @@ package com.ClassicRockFan.ShockWave.engine.entities.characters.player;
 
 
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
-import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
 import com.ClassicRockFan.ShockWave.engine.entities.characters.Character;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.FreeLook;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.FreeMove;
 
-public class Player extends Character{
+public class Player extends Character {
 
     private EntityCamera camera;
     private float moveSpeed;
@@ -25,12 +25,12 @@ public class Player extends Character{
     }
 
     @Override
-    public void init(CoreEngine engine){
+    public void init(CoreEngine engine) {
         super.init(engine);
     }
 
     @Override
-    public void load(){
+    public void load() {
         this.addComponent(freeLook).addComponent(freeMove).addComponent(camera);
         getEngine().getRenderingEngine().setMainCamera(camera);
     }

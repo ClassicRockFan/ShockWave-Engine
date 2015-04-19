@@ -12,7 +12,7 @@ import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
 import java.util.ArrayList;
 
-public class Entity extends Object{
+public class Entity {
 
     private Transform transform;
     private ArrayList<EntityComponent> components;
@@ -23,41 +23,38 @@ public class Entity extends Object{
     private boolean hasPhysics;
     private PhysicsComponent physicsComponent;
 
-    public Entity(){
-        this.name = Naming.getReccomendedName(this);
-    }
-
-    public Entity(String name) {
-        this.name = name;
-    }
-
-    public void init(CoreEngine engine){
+    public Entity() {
         this.transform = new Transform();
         this.components = new ArrayList<EntityComponent>();
         this.hasPhysics = false;
-        this.engine = engine;
-        this.entityManager = engine.getEntityManager();
+        this.name = Naming.getReccomendedName(this);
         this.physicsComponent = null;
     }
 
-    public void load(){
+    public Entity(String name) {
+        this.transform = new Transform();
+        this.components = new ArrayList<EntityComponent>();
+        this.hasPhysics = false;
+        this.name = name;
+        this.physicsComponent = null;
+    }
+
+    public void init(CoreEngine engine) {
+        this.engine = engine;
+        this.entityManager = engine.getEntityManager();
+    }
+
+    public void load() {
         Logging.printLog("Loading an entity named: " + name);
     }
 
-    public Entity addComponent(EntityComponent component){
+    public Entity addComponent(EntityComponent component) {
         components.add(component);
         component.setParent(this);
         return this;
     }
 
-    public Entity setPhysicsComponent(PhysicsComponent component){
-        component.setParent(this);
-        this.setPhysicsComponent(component);
-        hasPhysics = true;
-        return this;
-    }
-
-    public Entity removeComponent(EntityComponent component){
+    public Entity removeComponent(EntityComponent component) {
         components.remove(component);
         return this;
     }
@@ -85,35 +82,51 @@ public class Entity extends Object{
     public Transform getTransform() {
         return transform;
     }
+
     public void setTransform(Transform transform) {
         this.transform = transform;
     }
+
     public ArrayList<EntityComponent> getComponents() {
         return components;
     }
+
     public String getName() {
         return name;
     }
+
     public CoreEngine getEngine() {
         return engine;
     }
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
+
     public void setEngine(CoreEngine engine) {
         this.engine = engine;
     }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public boolean isHasPhysics() {
         return hasPhysics;
     }
 
     public PhysicsComponent getPhysicsComponent() {
         return physicsComponent;
+    }
+
+    public Entity setPhysicsComponent(PhysicsComponent component) {
+        component.setParent(this);
+        this.setPhysicsComponent(component);
+        hasPhysics = true;
+        return this;
     }
 }

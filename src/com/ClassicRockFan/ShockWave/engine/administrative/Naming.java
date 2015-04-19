@@ -4,7 +4,7 @@ import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 
 public class Naming {
 
-    public static String getReccomendedName(Entity entity){
+    public static String getReccomendedName(Entity entity) {
         String className = entity.getClass().toString();
         String packageName = entity.getClass().getPackage().toString();
 
@@ -12,7 +12,7 @@ public class Naming {
         return reccomendedName;
     }
 
-    public static String getReccomendedName(Class clazz){
+    public static String getReccomendedName(Class clazz) {
         String className = clazz.toString();
         String packageName = clazz.getPackage().toString();
 

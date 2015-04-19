@@ -3,20 +3,20 @@ package com.ClassicRockFan.ShockWave.engine.entities.characters;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 
-public class Character extends Entity{
+public class Character extends Entity {
 
     private int baseHealth;
     private int health;
 
-    public Character(){
+    public Character() {
         this(50);
     }
 
-    public Character(int baseHealth){
+    public Character(int baseHealth) {
         this(baseHealth, baseHealth);
     }
 
-    public Character(int baseHealth, int health){
+    public Character(int baseHealth, int health) {
         super();
         this.baseHealth = baseHealth;
         this.health = health;
@@ -44,7 +44,7 @@ public class Character extends Entity{
         return health;
     }
 
-    public void adjustHealth(int changedHealth){
-        this.health+=changedHealth;
+    public void adjustHealth(int changedHealth) {
+        this.health += changedHealth;
     }
 }

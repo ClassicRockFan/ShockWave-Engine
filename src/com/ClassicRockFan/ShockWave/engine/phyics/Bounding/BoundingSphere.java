@@ -16,12 +16,12 @@ public class BoundingSphere extends Collider {
     }
 
     @Override
-    public void transform(Vector3f translation){
+    public void transform(Vector3f translation) {
         center.set(center.getX() + translation.getX(), center.getY() + translation.getY(), center.getZ() + translation.getZ());
     }
 
     @Override
-    public Vector3f getCenter(){
+    public Vector3f getCenter() {
         return center;
     }
 
@@ -34,9 +34,11 @@ public class BoundingSphere extends Collider {
 
         float distance = centerDistance - radiusDistance;
 
-        return new IntersectData(centerDistance<radiusDistance, direction.mul(distance));
+        return new IntersectData(centerDistance < radiusDistance, direction.mul(distance));
 
     }
 
-    public float getRadius() {return radius;}
+    public float getRadius() {
+        return radius;
+    }
 }

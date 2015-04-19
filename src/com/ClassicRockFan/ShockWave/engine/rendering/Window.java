@@ -14,23 +14,19 @@ import static org.lwjgl.opengl.GL30.glBindFramebuffer;
 public class Window {
 
 
-    public static void createWindow(int width, int height, String title){
+    public static void createWindow(int width, int height, String title) {
         Display.setTitle(title);
-        try
-        {
+        try {
             Display.setDisplayMode(new DisplayMode(width, height));
             Display.create();
             Keyboard.create();
             Mouse.create();
-        }
-        catch (LWJGLException e)
-        {
+        } catch (LWJGLException e) {
             e.printStackTrace();
         }
     }
 
-    public static void dispose()
-    {
+    public static void dispose() {
         Display.destroy();
         Keyboard.destroy();
         Mouse.destroy();

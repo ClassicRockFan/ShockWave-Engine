@@ -46,7 +46,7 @@ public class PhysicsMove extends EntityComponent {
             move(getTransform().getRot().getLeft(), direction.length());
         }
         if (Input.getKey(RIGHT_KEY)) {
-            move(getTransform().getRot().getRight(),direction.length());
+            move(getTransform().getRot().getRight(), direction.length());
         }
     }
 

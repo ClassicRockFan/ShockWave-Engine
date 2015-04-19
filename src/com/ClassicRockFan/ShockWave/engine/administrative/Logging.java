@@ -16,7 +16,7 @@ public class Logging {
     }
 
     public static void printLog(String message, int level) {
-        if(level == LEVEL_NULL)
+        if (level == LEVEL_NULL)
             return;
         if (level == LEVEL_ERROR)
             System.err.println(Time.getFormatTime() + " - [ERROR] - " + message);

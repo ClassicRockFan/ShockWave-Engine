@@ -30,9 +30,11 @@ public class Event {
     public int getLogLevel() {
         return logLevel;
     }
+
     public int getType() {
         return type;
     }
+
     public String getMessage() {
         if (message != null)
             return message;

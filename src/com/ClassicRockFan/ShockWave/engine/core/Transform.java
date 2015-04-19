@@ -58,10 +58,8 @@ public class Transform {
         if (!rot.equals(oldRot))
             return true;
 
-        if (!scale.equals(oldScale))
-            return true;
+        return !scale.equals(oldScale);
 
-        return false;
     }
 
     public Matrix4f getTransformation() {
@@ -116,11 +114,11 @@ public class Transform {
         return scale;
     }
 
-    public void setScale(Vector3f scale) {
-        this.scale = scale;
-    }
-
     public void setScale(float scale) {
         this.scale = new Vector3f(scale, scale, scale);
+    }
+
+    public void setScale(Vector3f scale) {
+        this.scale = scale;
     }
 }

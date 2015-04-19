@@ -1,11 +1,12 @@
-package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents;
+package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.custom;
 
 
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
-import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
+
+        import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.Game;
 import com.ClassicRockFan.ShockWave.engine.core.Input;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
 
 public class InputGameEvent extends Event {
 

@@ -5,7 +5,7 @@ import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 
 public class Vertex {
-    public static final int SIZE =8;
+    public static final int SIZE = 8;
 
     private Vector3f pos;
     private Vector2f textCoord;

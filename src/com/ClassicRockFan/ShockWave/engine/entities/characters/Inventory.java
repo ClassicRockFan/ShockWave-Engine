@@ -27,26 +27,26 @@ public class Inventory {
         return items;
     }
 
-    public boolean addItem(InventoryItem item){
-        if(items.containsKey(item)) {
+    public boolean addItem(InventoryItem item) {
+        if (items.containsKey(item)) {
             int num = items.get(item);
             items.remove(item);
-            items.put(item, num+1);
+            items.put(item, num + 1);
             return true;
-        }else{
+        } else {
             items.put(item, 1);
             return false;
         }
     }
 
-    public boolean removeItem(InventoryItem item){
-        if(items.containsKey(item)) {
+    public boolean removeItem(InventoryItem item) {
+        if (items.containsKey(item)) {
             int num = items.get(item);
             items.remove(item);
-            if(num != 1)
-                items.put(item, num-1);
+            if (num != 1)
+                items.put(item, num - 1);
             return true;
-        }else{
+        } else {
             return false;
         }
     }

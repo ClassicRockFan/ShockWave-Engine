@@ -11,7 +11,7 @@ public class Kinematics {
         float deltaY = velocityInitial.getY() * time + (float) 0.5 * (acceleration.getY() * time * time);
         float deltaZ = velocityInitial.getZ() * time + (float) 0.5 * (acceleration.getZ() * time * time);
 
-        return new Vector3f(deltaX + object.getPosition().getX(), deltaY+ object.getPosition().getY(), deltaZ+ object.getPosition().getZ());
+        return new Vector3f(deltaX + object.getPosition().getX(), deltaY + object.getPosition().getY(), deltaZ + object.getPosition().getZ());
     }
 
     public static Vector3f calcDistance(Vector3f velocityInitial, Vector3f acceleration, float time) {

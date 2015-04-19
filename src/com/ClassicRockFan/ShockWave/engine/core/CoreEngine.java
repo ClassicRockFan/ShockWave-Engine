@@ -1,21 +1,23 @@
 package com.ClassicRockFan.ShockWave.engine.core;
 
 
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventManager;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.InputGameEvent;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.UpdateGameEvent;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents.PhysicsOccurenceEvent;
 import com.ClassicRockFan.ShockWave.engine.administrative.ConsoleWindow;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.administrative.StateManager;
 import com.ClassicRockFan.ShockWave.engine.entities.EntityManager;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventManager;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.UpdateGameEvent;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.custom.InputGameEvent;
+import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents.PhysicsOccurenceEvent;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Window;
 import game.LauncherWindow;
 
 public class CoreEngine {
-    private static ConsoleWindow console = new ConsoleWindow();
+    private static ConsoleWindow console;
+    //Managers
+    private static StateManager stateManager = new StateManager(StateManager.STATE_INIT);
     private boolean isRunning;
     private Game game;
     private int width;
@@ -25,9 +27,6 @@ public class CoreEngine {
     //Secondary Engines
     private RenderingEngine renderingEngine;
     private PhysicsEngine physicsEngine;
-
-    //Managers
-    private static StateManager stateManager = new StateManager(StateManager.STATE_INIT);
     private EventManager eventManager;
     private EntityManager entityManager;
 
@@ -47,10 +46,17 @@ public class CoreEngine {
         //Managers
         this.eventManager = new EventManager();
         this.entityManager = new EntityManager(this);
+
+        //Misc.
+        console = new ConsoleWindow(this);
     }
 
     public static ConsoleWindow getConsole() {
         return console;
+    }
+
+    public static StateManager getStateManager() {
+        return stateManager;
     }
 
     public void createConsole() {
@@ -79,7 +85,7 @@ public class CoreEngine {
 
     private void run() {
         ProfileTimer eventTimer = new ProfileTimer();
-        while(true) {
+        while (true) {
             if (stateManager.getCurrentState() == StateManager.STATE_RUNNING) {
                 System.out.println("Starting the CoreEngine");
                 console.addConsoleText("Starting CoreEngine");
@@ -135,7 +141,7 @@ public class CoreEngine {
                             console.addConsoleText("");
                             console.addConsoleText("Running at ", 55, frames + " FPS");
                             recordedTime += eventTimer.displayAndReset("Event Handling: ", (double) frames);
-                            double timeRendering = renderingEngine.dislayRenderTime((double)frames);
+                            double timeRendering = renderingEngine.dislayRenderTime((double) frames);
                             recordedTime += timeRendering;
                             double sleepTime = displaySleepTime((double) frames);
                             recordedTime += sleepTime;
@@ -174,7 +180,7 @@ public class CoreEngine {
             } else if (stateManager.getCurrentState() == StateManager.STATE_MENU) {
                 try {
                     Thread.sleep(1000);
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                     System.err.println("Error waiting on the main loading screen");
 
@@ -207,13 +213,11 @@ public class CoreEngine {
         this.isRunning = isRunning;
     }
 
-    public static StateManager getStateManager() {
-        return stateManager;
-    }
-
     public EventManager getEventManager() {
         return eventManager;
     }
 
-    public EntityManager getEntityManager() { return entityManager; }
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 }

@@ -6,8 +6,8 @@ import com.ClassicRockFan.ShockWave.engine.administrative.ReferenceCounter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.lwjgl.opengl.GL15.*;
-import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL15.glDeleteBuffers;
+import static org.lwjgl.opengl.GL20.glCreateProgram;
 
 public class ShaderResource {
 
@@ -34,11 +34,13 @@ public class ShaderResource {
 
     @Override
     protected void finalize() {
-        if(refCounter.getRefCount() <= 0)
+        if (refCounter.getRefCount() <= 0)
             glDeleteBuffers(program);
     }
 
-    public ReferenceCounter getReferenceCounter(){return this.refCounter;}
+    public ReferenceCounter getReferenceCounter() {
+        return this.refCounter;
+    }
 
     public int getProgram() {
         return program;

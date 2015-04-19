@@ -16,7 +16,7 @@ public class AABB extends Collider {
         this.maxExtents = maxExtents;
     }
 
-    public IntersectData intersectAABB(AABB other){
+    public IntersectData intersectAABB(AABB other) {
         Vector3f distance1 = other.getMinExtents().sub(maxExtents);
         Vector3f distance2 = other.getMaxExtents().sub(minExtents);
         Vector3f distances = distance1.max(distance2);
@@ -33,8 +33,19 @@ public class AABB extends Collider {
 //    }
 
     //Getters and Setters Below
-    public Vector3f getMinExtents() {return minExtents;}
-    public void setMinExtents(Vector3f minExtents) {this.minExtents = minExtents;}
-    public Vector3f getMaxExtents() {return maxExtents;}
-    public void setMaxExtents(Vector3f maxExtents) {this.maxExtents = maxExtents;}
+    public Vector3f getMinExtents() {
+        return minExtents;
+    }
+
+    public void setMinExtents(Vector3f minExtents) {
+        this.minExtents = minExtents;
+    }
+
+    public Vector3f getMaxExtents() {
+        return maxExtents;
+    }
+
+    public void setMaxExtents(Vector3f maxExtents) {
+        this.maxExtents = maxExtents;
+    }
 }

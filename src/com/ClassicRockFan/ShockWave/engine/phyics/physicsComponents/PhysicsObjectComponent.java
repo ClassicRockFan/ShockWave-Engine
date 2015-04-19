@@ -14,7 +14,7 @@ public class PhysicsObjectComponent extends EntityComponent {
     }
 
     @Override
-    public void update(float delta){
+    public void update(float delta) {
         getTransform().getPos().set(physicsComponent.getPosition());
     }
 

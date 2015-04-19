@@ -6,7 +6,7 @@ import com.ClassicRockFan.ShockWave.engine.rendering.Material;
 import com.ClassicRockFan.ShockWave.engine.rendering.Mesh;
 import com.ClassicRockFan.ShockWave.engine.rendering.Texture;
 
-public class InventoryItem extends Item{
+public class InventoryItem extends Item {
 
     private int value;
     private MeshRender meshRender;
@@ -19,7 +19,7 @@ public class InventoryItem extends Item{
         this(value, new MeshRender(new Mesh("sphere.obj"), new Material(new Texture("default.png"), 1.0f, 1.0f)));
     }
 
-    public InventoryItem(int value, MeshRender meshRender){
+    public InventoryItem(int value, MeshRender meshRender) {
         super();
         this.value = value;
         this.meshRender = meshRender;
@@ -27,7 +27,7 @@ public class InventoryItem extends Item{
     }
 
     @Override
-    public void load(){
+    public void load() {
         addComponent(meshRender);
     }
 

@@ -17,15 +17,15 @@ public class PhysicsEngine {
         this.engine = engine;
         this.simulateTimer = new ProfileTimer();
         this.collisionTimer = new ProfileTimer();
-        engine.getConsole().addConsoleText("Creating the Physics Engine!");
+        CoreEngine.getConsole().addConsoleText("Creating the Physics Engine!");
     }
 
-    public void doPhyiscs(float delta){
+    public void doPhyiscs(float delta) {
         ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
         ArrayList<PhysicsComponent> objects = new ArrayList<PhysicsComponent>();
 
-        for(int i = 0; i < loadedEntities.size(); i++){
-            if(loadedEntities.get(i).isHasPhysics())
+        for (int i = 0; i < loadedEntities.size(); i++) {
+            if (loadedEntities.get(i).isHasPhysics())
                 objects.add(loadedEntities.get(i).getPhysicsComponent());
         }
 

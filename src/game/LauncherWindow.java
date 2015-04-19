@@ -21,15 +21,15 @@ public class LauncherWindow extends JFrame {
     private BufferedImage background;
     private CoreEngine core;
 
-    public LauncherWindow(int width, int height, String title, String launcherBackgroundPath, CoreEngine core_){
+    public LauncherWindow(int width, int height, String title, String launcherBackgroundPath, CoreEngine core_) {
         super(title);
         this.core = core_;
-        this.width = width;
-        this.height = height;
-        this.title = title;
+        LauncherWindow.width = width;
+        LauncherWindow.height = height;
+        LauncherWindow.title = title;
         try {
             this.background = ImageIO.read(new File("./res/textures/" + launcherBackgroundPath));
-        }catch (Exception e){
+        } catch (Exception e) {
             System.err.println("Invalid Launcher Background file.");
             e.printStackTrace();
             System.exit(-1);
@@ -47,7 +47,7 @@ public class LauncherWindow extends JFrame {
         setVisible(true);
     }
 
-    private void populateScreen(JPanel panel){
+    private void populateScreen(JPanel panel) {
         panel.setBounds(0, 0, width, height);
 
         add(panel);
@@ -63,7 +63,7 @@ public class LauncherWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 core.setRunning(true);
-                core.getStateManager().setCurrentState(StateManager.STATE_RUNNING);
+                CoreEngine.getStateManager().setCurrentState(StateManager.STATE_RUNNING);
                 dispose();
             }
         });

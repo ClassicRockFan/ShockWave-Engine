@@ -3,9 +3,9 @@ package com.ClassicRockFan.ShockWave.engine.entities.items;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 
-public class Item extends Entity{
+public class Item extends Entity {
 
-    public Item(){
+    public Item() {
         super();
     }
 
@@ -14,7 +14,7 @@ public class Item extends Entity{
     }
 
     @Override
-    public void init(CoreEngine engine){
+    public void init(CoreEngine engine) {
         super.init(engine);
     }
 

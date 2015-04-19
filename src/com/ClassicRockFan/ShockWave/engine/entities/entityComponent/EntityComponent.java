@@ -7,12 +7,12 @@ import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
-public abstract class EntityComponent{
+public abstract class EntityComponent {
 
     private Entity parent;
     private String name;
 
-    public EntityComponent(){
+    public EntityComponent() {
         this.name = Naming.getReccomendedName(this.getClass());
     }
 
@@ -34,12 +34,12 @@ public abstract class EntityComponent{
         return parent.getTransform();
     }
 
-    public void setParent(Entity parent){
-        this.parent = parent;
-    }
-
     public Entity getParent() {
         return parent;
+    }
+
+    public void setParent(Entity parent) {
+        this.parent = parent;
     }
 
     public String getName() {

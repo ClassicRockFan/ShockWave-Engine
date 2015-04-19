@@ -122,7 +122,7 @@ public class GameObject {
     }
 
     public GameObject getParent() {
-        if(parent != null)
+        if (parent != null)
             return parent;
         else
             return null;

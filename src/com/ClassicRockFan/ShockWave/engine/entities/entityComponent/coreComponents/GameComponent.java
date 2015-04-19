@@ -18,15 +18,19 @@ public abstract class GameComponent {
     public void render(Shader shader, RenderingEngine renderingEngine) {
     }
 
+    public GameObject getParent() {
+        return parent;
+    }
+
     public void setParent(GameObject parent) {
         this.parent = parent;
     }
-    public GameObject getParent() {return parent;}
 
     public Transform getTransform() {
         return parent.getTransform();
     }
 
-    public void addToEngine(CoreEngine engine) {}
+    public void addToEngine(CoreEngine engine) {
+    }
 
 }
