@@ -58,8 +58,10 @@ public class Transform {
         if (!rot.equals(oldRot))
             return true;
 
-        return !scale.equals(oldScale);
+        if (!scale.equals(oldScale))
+            return true;
 
+        return false;
     }
 
     public Matrix4f getTransformation() {

@@ -16,6 +16,8 @@ public class Entity {
 
     private Transform transform;
     private ArrayList<EntityComponent> components;
+    private ArrayList<Entity> children;
+    private Entity parent;
     private CoreEngine engine;
     private String name;
     private EntityManager entityManager;
@@ -26,6 +28,7 @@ public class Entity {
     public Entity() {
         this.transform = new Transform();
         this.components = new ArrayList<EntityComponent>();
+        this.children = new ArrayList<Entity>();
         this.hasPhysics = false;
         this.name = Naming.getReccomendedName(this);
         this.physicsComponent = null;
@@ -34,6 +37,7 @@ public class Entity {
     public Entity(String name) {
         this.transform = new Transform();
         this.components = new ArrayList<EntityComponent>();
+        this.children = new ArrayList<Entity>();
         this.hasPhysics = false;
         this.name = name;
         this.physicsComponent = null;
@@ -59,6 +63,28 @@ public class Entity {
         components.remove(component);
         return this;
     }
+
+    public void inputAll(float delta) {
+        input(delta);
+        for (Entity child : children) {
+            child.inputAll(delta);
+        }
+    }
+
+    public void updateAll(float delta) {
+        update(delta);
+        for (Entity child : children) {
+            child.updateAll(delta);
+        }
+    }
+
+    public void renderAll(Shader shader, RenderingEngine renderingEngine) {
+        render(shader, renderingEngine);
+        for (Entity child : children) {
+            child.renderAll(shader, renderingEngine);
+        }
+    }
+
 
     public void input(float delta) {
         transform.update();
@@ -133,5 +159,30 @@ public class Entity {
         setPhysicsComponent(component);
         hasPhysics = true;
         return this;
+    }
+
+    public Entity addChild(Entity child) {
+        children.add(child);
+        child.setParent(this);
+        child.setEngine(engine);
+        child.getTransform().setParent(transform);
+
+        return this;
+    }
+
+    public ArrayList<Entity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(ArrayList<Entity> children) {
+        this.children = children;
+    }
+
+    public Entity getParent() {
+        return parent;
+    }
+
+    public void setParent(Entity parent) {
+        this.parent = parent;
     }
 }

@@ -29,14 +29,14 @@ public abstract class Game {
         ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
         for (int i = 0; i < loadedEntities.size(); i++)
-            loadedEntities.get(i).input(delta);
+            loadedEntities.get(i).inputAll(delta);
     }
 
     public void update(float delta) {
         ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
         for (int i = 0; i < loadedEntities.size(); i++)
-            loadedEntities.get(i).update(delta);
+            loadedEntities.get(i).updateAll(delta);
     }
 
     public void render(CoreEngine engine, RenderingEngine renderingEngine) {

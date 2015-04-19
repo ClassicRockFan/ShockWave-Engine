@@ -129,20 +129,33 @@ public class TestGame extends Game {
         addCharacter(player);
         addCharacter(skull);
         addCharacter(ground);
-        addCharacter(testMesh);
-        addCharacter(testMesh2);
+//        addCharacter(testMesh);
+//        addCharacter(testMesh2);
         addCharacter(drumstick);
         addCharacter(drumstick1);
-        addCharacter(earth);
-        addCharacter(coffeeCup);
-        addCharacter(phsicsObj1);
-        addCharacter(phsicsObj2);
+        //addCharacter(earth);
+        //addCharacter(coffeeCup);
+        //addCharacter(phsicsObj1);
+        //addCharacter(phsicsObj2);
 
         InventoryItem testItem = new InventoryItem();
         testItem.getTransform().getPos().set(0, 1, 0);
-        testItem.setMeshRender(new MeshRender(monkey, stoneBricks));
+        testItem.setMeshRender(new MeshRender(sphere, stoneBricks));
 
-        addItem(testItem);
+        //addItem(testItem);
+
+        Character test = new Character("test");
+        test.addComponent(new MeshRender(monkey, bricks));
+        test.getTransform().getPos().set(new Vector3f(20, 0, 0));
+
+        Character test2 = new Character("test2");
+        test2.getTransform().getPos().set(new Vector3f(0, 1, 0));
+        test2.addComponent(new MeshRender(monkey, stoneBricks2))
+                ;
+
+        test.addChild(test2);
+
+        addCharacter(test);
     }
 
 }

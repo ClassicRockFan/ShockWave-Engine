@@ -100,7 +100,8 @@ public class RenderingEngine extends MappedValues {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         for (int i = 0; i < loadedEntities.size(); i++) {
-            loadedEntities.get(i).render(forwardAmbient, this);
+            if (loadedEntities.get(i).getClass().getSuperclass() != Light.class)
+                loadedEntities.get(i).renderAll(forwardAmbient, this);
         }
 
         glEnable(GL_BLEND);
@@ -112,7 +113,7 @@ public class RenderingEngine extends MappedValues {
             activeEntityLight = light;
             for (int i = 0; i < loadedEntities.size(); i++) {
                 if (loadedEntities.get(i).getClass().getSuperclass() != Light.class) {
-                    loadedEntities.get(i).render(activeEntityLight.getShader(), this);
+                    loadedEntities.get(i).renderAll(activeEntityLight.getShader(), this);
                 }
             }
         }
