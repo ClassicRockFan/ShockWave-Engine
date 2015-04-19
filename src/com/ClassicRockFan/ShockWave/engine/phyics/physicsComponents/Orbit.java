@@ -4,12 +4,12 @@ import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
 import com.ClassicRockFan.ShockWave.engine.phyics.Constants;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
+import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsObject;
 
 public class Orbit extends EntityComponent {
 
-    private PhysicsComponent body1;
-    private PhysicsComponent body2;
+    private PhysicsObject body1;
+    private PhysicsObject body2;
     private Vector3f gravitationConstant;
     private float body1Mass;
     private float body2Mass;
@@ -17,19 +17,19 @@ public class Orbit extends EntityComponent {
     private boolean body2Immovable = false;
 
     //Only add this component to one of the two objects.  Otherwise, it will do this twice and waste calculation time.
-    public Orbit(PhysicsComponent body1, PhysicsComponent body2, float gravityScale) {
+    public Orbit(PhysicsObject body1, PhysicsObject body2, float gravityScale) {
         this(body1, body2, Constants.UNIVERSAL_GRAVITATION.mul(gravityScale), true);
     }
 
-    public Orbit(PhysicsComponent body1, PhysicsComponent body2, Vector3f gravityScale) {
+    public Orbit(PhysicsObject body1, PhysicsObject body2, Vector3f gravityScale) {
         this(body1, body2, gravityScale, true);
     }
 
-    public Orbit(PhysicsComponent body1, PhysicsComponent body2, float gravityScale, boolean calcOrbitalVelocityOnOBJ1) {
+    public Orbit(PhysicsObject body1, PhysicsObject body2, float gravityScale, boolean calcOrbitalVelocityOnOBJ1) {
         this(body1, body2, Constants.UNIVERSAL_GRAVITATION.mul(gravityScale), calcOrbitalVelocityOnOBJ1);
     }
 
-    public Orbit(PhysicsComponent orbitingBody, PhysicsComponent orbitedBody, Vector3f gravitationConstant,  boolean calcOrbitalVelocityOnOrbiting){
+    public Orbit(PhysicsObject orbitingBody, PhysicsObject orbitedBody, Vector3f gravitationConstant,  boolean calcOrbitalVelocityOnOrbiting){
         super("orbitComponent");
         this.body1 = orbitingBody;
         this.body2 = orbitedBody;

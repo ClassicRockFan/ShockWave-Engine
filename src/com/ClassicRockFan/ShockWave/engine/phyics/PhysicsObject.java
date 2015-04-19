@@ -2,9 +2,9 @@ package com.ClassicRockFan.ShockWave.engine.phyics;
 
 
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
-import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
+import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 
-public class PhysicsComponent extends EntityComponent {
+public class PhysicsObject extends Entity {
 
     private Vector3f position;
     private Vector3f oldPosition;
@@ -17,16 +17,16 @@ public class PhysicsComponent extends EntityComponent {
     private boolean immovable;
 
 
-    public PhysicsComponent(Collider collider, Vector3f velocity, float mass) {
+    public PhysicsObject(Collider collider, Vector3f velocity, float mass) {
         this(collider, velocity, mass, 0);
     }
 
-    public PhysicsComponent(Collider collider, Vector3f velocity, float mass, float springConstant) {
+    public PhysicsObject(Collider collider, Vector3f velocity, float mass, float springConstant) {
         this(collider, velocity, mass, springConstant, false);
     }
 
-    public PhysicsComponent(Collider collider, Vector3f velocity, float mass, float springConstant, boolean immovable) {
-        super("physicsComponent");
+    public PhysicsObject(Collider collider, Vector3f velocity, float mass, float springConstant, boolean immovable) {
+        super("physicsObject");
         this.position = collider.getCenter();
         this.oldPosition = collider.getCenter();
         this.velocity = velocity;
@@ -39,8 +39,8 @@ public class PhysicsComponent extends EntityComponent {
     }
 
 
-    @Override
-    public void update(float delta) {
+
+    public void integrate(float delta) {
         Vector3f part1 = getVelocity().mul(delta);
         Vector3f part2 = getAcceleration().mul(delta * delta);
         setPosition(getPosition().add(part1.add(part2)));

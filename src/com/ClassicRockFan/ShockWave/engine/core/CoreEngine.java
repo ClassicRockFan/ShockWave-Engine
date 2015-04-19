@@ -1,10 +1,10 @@
 package com.ClassicRockFan.ShockWave.engine.core;
 
 
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventManager;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.InputGameEvent;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.UpdateGameEvent;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents.PhysicsOccurenceEvent;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.core.EventManager;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.coreEvents.InputGameEvent;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.coreEvents.UpdateGameEvent;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.physicsEvents.PhysicsOccurenceEvent;
 import com.ClassicRockFan.ShockWave.engine.administrative.ConsoleWindow;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.administrative.StateManager;
@@ -22,11 +22,8 @@ public class CoreEngine {
     private int height;
     private String title;
     private double frameTime;
-    //Secondary Engines
     private RenderingEngine renderingEngine;
     private PhysicsEngine physicsEngine;
-
-    //Managers
     private static StateManager stateManager = new StateManager(StateManager.STATE_INIT);
     private EventManager eventManager;
     private EntityManager entityManager;
@@ -35,7 +32,6 @@ public class CoreEngine {
     private ProfileTimer windowSyncTimer = new ProfileTimer();
 
     public CoreEngine(int width, int height, double frameCap, Game game, String title) {
-        //Setup
         this.isRunning = false;
         this.width = width;
         this.height = height;
@@ -43,9 +39,7 @@ public class CoreEngine {
         this.frameTime = 1 / frameCap;
         this.game = game;
         this.game.setEngine(this);
-
-        //Managers
-        this.eventManager = new EventManager();
+        this.eventManager = new EventManager(this);
         this.entityManager = new EntityManager(this);
     }
 
@@ -110,6 +104,7 @@ public class CoreEngine {
                     unprocessedTime += passedTime;
                     frameCounter += passedTime;
 
+
                     while (unprocessedTime > frameTime) {
                         render = true;
 
@@ -166,6 +161,7 @@ public class CoreEngine {
                         }
                     }
                 }
+
                 cleanUp();
             } else if (stateManager.getCurrentState() == StateManager.STATE_INIT) {
                 LauncherWindow launcherWindow = new LauncherWindow(width, height, title, "LoadScreen.jpg", this);

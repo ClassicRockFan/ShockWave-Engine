@@ -1,8 +1,8 @@
-package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents;
+package com.ClassicRockFan.ShockWave.engine.EventHandling.physicsEvents;
 
 
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.core.Event;
+import com.ClassicRockFan.ShockWave.engine.EventHandling.core.EventTyping;
 import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 
@@ -16,6 +16,7 @@ public class PhysicsOccurenceEvent extends Event{
 
     @Override
     public void handle(double frameTime) {
-        physicsEngine.doPhyiscs((float) frameTime);
+        physicsEngine.simulate((float)frameTime);
+        physicsEngine.handleCollisions((float)frameTime);
     }
 }

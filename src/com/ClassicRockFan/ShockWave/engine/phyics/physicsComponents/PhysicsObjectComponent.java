@@ -2,23 +2,23 @@ package com.ClassicRockFan.ShockWave.engine.phyics.physicsComponents;
 
 
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
+import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsObject;
 
 public class PhysicsObjectComponent extends EntityComponent {
 
-    PhysicsComponent physicsComponent;
+    PhysicsObject physicsObject;
 
-    public PhysicsObjectComponent(PhysicsComponent physicsComponent) {
+    public PhysicsObjectComponent(PhysicsObject physicsObject) {
         super("physicsObjectComponent");
-        this.physicsComponent = physicsComponent;
+        this.physicsObject = physicsObject;
     }
 
     @Override
     public void update(float delta){
-        getTransform().getPos().set(physicsComponent.getPosition());
+        getTransform().getPos().set(physicsObject.getPosition());
     }
 
-    public PhysicsComponent getPhysicsComponent() {
-        return physicsComponent;
+    public PhysicsObject getPhysicsObject() {
+        return physicsObject;
     }
 }
