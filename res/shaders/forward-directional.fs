@@ -1,11 +1,10 @@
 #version 120
-#include "lighting.fsh"
+#include "lighting.glh"
 
 uniform DirectionalLight R_directionalLight;
 
-vec4 CalcLightingEffect(vec3 normal, vec3 worldPos)
-{
-	return CalcDirectionalLight(R_directionalLight, normal, worldPos);
+vec4 calcLightingEffect(vec3 normal, vec3 worldPos){
+    return calcDirectionLight(R_directionalLight, normalize(normal), worldPos);
 }
 
-#include "lightingMain.fsh"
+#include "lighting.fsh"
