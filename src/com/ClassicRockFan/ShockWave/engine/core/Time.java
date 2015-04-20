@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 
 public class Time {
-    private static final long SECOND = (long) 1000000000.0;
+    public static final long SECOND = (long) 1000000000.0;
 
     public static double getTime() {
         return (double) System.nanoTime() / (double) SECOND;

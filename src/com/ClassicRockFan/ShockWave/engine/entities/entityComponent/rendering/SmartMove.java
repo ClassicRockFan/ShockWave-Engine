@@ -1,23 +1,24 @@
 package com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering;
 
-
 import com.ClassicRockFan.ShockWave.engine.core.Input;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
 import org.lwjgl.input.Keyboard;
 
-public class FreeMove extends EntityComponent {
+
+public class SmartMove extends EntityComponent{
+
     private final int UP_KEY;
     private final int DOWN_KEY;
     private final int LEFT_KEY;
     private final int RIGHT_KEY;
     private float moveSpeed;
 
-    public FreeMove(float moveSpeed) {
+    public SmartMove(float moveSpeed) {
         this(moveSpeed, Keyboard.KEY_W, Keyboard.KEY_S, Keyboard.KEY_A, Keyboard.KEY_D);
     }
 
-    public FreeMove(float moveSpeed, int UP_KEY, int DOWN_KEY, int LEFT_KEY, int RIGHT_KEY) {
+    public SmartMove(float moveSpeed, int UP_KEY, int DOWN_KEY, int LEFT_KEY, int RIGHT_KEY) {
         super("freeMove");
         this.moveSpeed = moveSpeed;
         this.UP_KEY = UP_KEY;
@@ -71,5 +72,6 @@ public class FreeMove extends EntityComponent {
     public int getRIGHT_KEY() {
         return RIGHT_KEY;
     }
+
 
 }

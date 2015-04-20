@@ -25,6 +25,9 @@ public class CollisionEvent extends Event {
     public void handle(double delta) {
         super.handle(delta);
 
+
+        //TODO: Fix the BS below
+
         Vector3f nullVelocity = new Vector3f(0, 0, 0);
 
         Vector3f direction = data.getDirection();
@@ -66,6 +69,7 @@ public class CollisionEvent extends Event {
             //Apply velocities
             obj1.setAcceleration(obj1Accel);
             obj2.setAcceleration(obj2Accel);
+
 
             //Check if the objects have stopped and then add a little space
             // to stop wasting time calculating stuff that doesn't need to happen

@@ -1,4 +1,4 @@
-package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.custom;
+package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents;
 
 
 

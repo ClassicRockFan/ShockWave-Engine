@@ -1,4 +1,4 @@
-package com.ClassicRockFan.ShockWave.engine.phyics.Bounding;
+package com.ClassicRockFan.ShockWave.engine.phyics.bounding;
 
 
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;

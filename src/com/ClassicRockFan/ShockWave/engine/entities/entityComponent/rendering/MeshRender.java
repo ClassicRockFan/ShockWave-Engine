@@ -32,4 +32,12 @@ public class MeshRender extends EntityComponent {
     public Material getMaterial() {
         return material;
     }
+
+    public void setMesh(Mesh mesh) {
+        this.mesh = mesh;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
 }

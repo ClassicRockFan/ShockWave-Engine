@@ -14,10 +14,11 @@ import com.ClassicRockFan.ShockWave.engine.entities.items.InventoryItem;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.DirectionalLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.PointLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.SpotLightEntity;
-import com.ClassicRockFan.ShockWave.engine.phyics.Bounding.BoundingSphere;
+import com.ClassicRockFan.ShockWave.engine.phyics.bounding.BoundingSphere;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.*;
+import game.customEntities.AnimationTest;
 
 public class TestGame extends Game {
     public Material bricks;
@@ -42,8 +43,8 @@ public class TestGame extends Game {
 
         //Misc. Meshes
         Mesh groundMesh = new Mesh("plane3.obj");
-        Mesh coffeeCupMesh = new Mesh("coffeeCup.obj");
         Mesh drumstickMesh = new Mesh("drumstick.obj");
+        Mesh coffeeCupMesh = new Mesh("coffeeCup.obj");
         Mesh monkey = new Mesh("TylerMonkey.obj");
         Mesh sphere = new Mesh("sphere.obj");
         Mesh cube = new Mesh("cube.obj");
@@ -118,8 +119,9 @@ public class TestGame extends Game {
 
         //Create Camera
         EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 1000.0f);
-        Player player = new Player(entityCamera, 8, 0.5f);
-        //player.addComponent(new SkyColor());
+        Player player = new Player(entityCamera, 8, 0.5f, 10);
+        player.getTransform().getPos().set(0,0,5);
+        player.getTransform().getRot().set(new Quaternion(new Vector3f(0,1,0), Math.toRadians(180)));
 
         addLight(skullLight);
         addLight(directionalLight1);
@@ -129,33 +131,22 @@ public class TestGame extends Game {
         addCharacter(player);
         addCharacter(skull);
         addCharacter(ground);
-//        addCharacter(testMesh);
-//        addCharacter(testMesh2);
+        addCharacter(testMesh);
+        addCharacter(testMesh2);
         addCharacter(drumstick);
         addCharacter(drumstick1);
-        //addCharacter(earth);
-        //addCharacter(coffeeCup);
-        //addCharacter(phsicsObj1);
-        //addCharacter(phsicsObj2);
+        addCharacter(earth);
+        addCharacter(coffeeCup);
+        addCharacter(phsicsObj1);
+        addCharacter(phsicsObj2);
 
         InventoryItem testItem = new InventoryItem();
         testItem.getTransform().getPos().set(0, 1, 0);
         testItem.setMeshRender(new MeshRender(sphere, stoneBricks));
 
-        //addItem(testItem);
+        addItem(testItem);
 
-        Character test = new Character("test");
-        test.addComponent(new MeshRender(monkey, bricks));
-        test.getTransform().getPos().set(new Vector3f(20, 0, 0));
-
-        Character test2 = new Character("test2");
-        test2.getTransform().getPos().set(new Vector3f(0, 1, 0));
-        test2.addComponent(new MeshRender(monkey, stoneBricks2))
-                ;
-
-        test.addChild(test2);
-
-        addCharacter(test);
+        addCharacter(new AnimationTest());
     }
 
 }

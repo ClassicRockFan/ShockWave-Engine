@@ -2,7 +2,7 @@ package com.ClassicRockFan.ShockWave.engine.phyics;
 
 
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
-import com.ClassicRockFan.ShockWave.engine.phyics.Bounding.BoundingSphere;
+import com.ClassicRockFan.ShockWave.engine.phyics.bounding.BoundingSphere;
 
 public class Collider {
 
