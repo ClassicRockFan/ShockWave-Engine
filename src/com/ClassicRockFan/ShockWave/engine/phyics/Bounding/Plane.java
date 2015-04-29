@@ -2,14 +2,16 @@ package com.ClassicRockFan.ShockWave.engine.phyics.bounding;
 
 
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.phyics.Collider;
 import com.ClassicRockFan.ShockWave.engine.phyics.IntersectData;
 
-public class Plane {
+public class Plane extends Collider{
 
     float dist;
     private Vector3f normal;
 
     public Plane(Vector3f normal, float dist) {
+        super(Collider.TYPE_PLANE);
         this.normal = normal;
         this.dist = dist;
     }

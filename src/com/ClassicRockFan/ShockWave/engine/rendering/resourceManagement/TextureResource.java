@@ -19,11 +19,11 @@ public class TextureResource {
     private int frameBuffer = -1;
 
 //    public TextureResource(int width, int height, char[] buffer, int filter, int attachment) {
-//        this.refCount = 1;
+//        this.refCount = new ReferenceCounter();
 //        this.width = width;
 //        this.height = height;
 //
-//        initTextures(buffer, filter, 1);
+//        initTextures(Util.charToByteBuffer(buffer), filter, 1);
 //        initRenderTargets(attachment);
 //    }
 
@@ -78,21 +78,22 @@ public class TextureResource {
 
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
+        bindAsRenderTarget();
         this.id = textureID;
     }
 
 //    private void initTextures(char[] data, int filter, int wrapMode) {
 //        int textureID = glGenTextures();
 //
-//            glBindTexture(GL_TEXTURE_2D, textureID);
+//        glBindTexture(GL_TEXTURE_2D, textureID);
 //
-//            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
-//            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapMode);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapMode);
 //
-//            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
-//            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
 //
-//            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, );
+//        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, );
 //
 //
 //        int depthRenderBuffer = glGenRenderbuffers();

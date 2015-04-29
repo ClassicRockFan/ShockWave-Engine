@@ -65,6 +65,11 @@ public class Util {
         return buffer;
     }
 
+    public static ByteBuffer charToByteBuffer(char[] data){
+
+        return null;
+    }
+
     public static String[] removeEmptyStrings(String[] data) {
 
         ArrayList<String> result = new ArrayList<String>();

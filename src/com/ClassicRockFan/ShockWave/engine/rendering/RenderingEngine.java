@@ -4,6 +4,7 @@ import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Time;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
+import com.ClassicRockFan.ShockWave.engine.core.math.Matrix4f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector2f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
@@ -36,6 +37,13 @@ public class RenderingEngine extends MappedValues {
 
     //Frustum Culling
     private FrustumCulling frustum;
+
+    static Texture g_tempTarget;
+    static Mesh g_mesh;
+    static Transform g_transform;
+    static Material g_material;
+    static EntityCamera g_camera;
+    static Entity g_cameraObject;
 
     public RenderingEngine(CoreEngine engine) {
         super();
@@ -71,6 +79,34 @@ public class RenderingEngine extends MappedValues {
 
         glEnable(GL_TEXTURE_2D);
 
+
+        int width = Window.getWidth();
+        int height = Window.getHeight();
+        int dataSize = width * height * 4;
+
+        char[] data = new char[dataSize];
+        System.out.println(width);
+        System.out.println(height);
+        System.out.println(dataSize);
+       // g_tempTarget = new Texture("renderToTexture", Window.getWidth(), Window.getHeight(), data, GL_TEXTURE_2D, GL_NEAREST);
+
+        Vertex vertices[] = { new Vertex(new Vector3f(-1,-1,0),new Vector2f(1,0)),
+                new Vertex(new Vector3f(-1,1,0),new Vector2f(1,1)),
+                new Vertex(new Vector3f(1,1,0),new Vector2f(0,1)),
+                new Vertex(new Vector3f(1, -1,0),new Vector2f(0,0)) };
+
+        int indices[] = { 2, 1, 0,
+                3, 2, 0 };
+       // g_material = new Material(g_tempTarget, 1, 8);
+        g_transform = new Transform();
+        g_transform.setScale(0.9f);
+        g_mesh = new Mesh(vertices, indices, true);
+
+        g_camera = new EntityCamera(new Matrix4f().initIdentity());
+        g_cameraObject = (new Entity()).addComponent(g_camera);
+
+        g_cameraObject.getTransform().rotate(new Vector3f(0, 1, 0), (float) Math.toRadians(180.0f));
+
         System.out.println(getOpenGlVersion());
     }
 
@@ -91,9 +127,9 @@ public class RenderingEngine extends MappedValues {
 
 
     public void render(CoreEngine engine) {
+        renderTimer.startInvocation();
         ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
 
-        renderTimer.startInvocation();
         Window.bindAsRenderTarget();
 
         glClearColor(clearR, clearG, clearB, clearA);
@@ -113,7 +149,7 @@ public class RenderingEngine extends MappedValues {
             activeEntityLight = light;
             for (int i = 0; i < loadedEntities.size(); i++) {
                 if (loadedEntities.get(i).getClass().getSuperclass() != Light.class) {
-                    loadedEntities.get(i).renderAll(activeEntityLight.getShader(), this);
+                    loadedEntities.get(i).render(activeEntityLight.getShader(), this);
                 }
             }
         }
@@ -122,6 +158,10 @@ public class RenderingEngine extends MappedValues {
         glDepthMask(true);
         glDisable(GL_BLEND);
         glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
+
+
+
+
 
         renderTimer.stopInvocation();
     }

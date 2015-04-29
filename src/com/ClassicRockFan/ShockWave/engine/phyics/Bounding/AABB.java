@@ -25,7 +25,8 @@ public class AABB extends Collider {
 
         return new IntersectData(maxDistance < 0, distances);
     }
-//
+
+
 //    public IntersectData intersectSphere(BoundingSphere other){
 //
 //

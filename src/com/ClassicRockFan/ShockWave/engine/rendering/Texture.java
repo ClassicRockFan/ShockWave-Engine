@@ -37,35 +37,32 @@ public class Texture {
 
     }
 
-//    public Texture(String name, int width, int height, char[] data, int filter, int attachment) {
-//        this.fileName = name;
-//        initRenderTarget(attachment, true);
-//
-//        ByteBuffer buffer = Util.createByteBuffer(height * width * 4000);
-//        //boolean hasAlpha = image.getColorModel().hasAlpha();
-//        //int[] pixels = data.getRGB(0, 0, width, height, null, 0, width);
-//
-//
-//
-//        for (int y = 0; y < height; y++) {
-//            for (int x = 0; x < width; x++) {
-////                int pixel = pixels[y * width + x];
-////
-//                buffer.put((byte) ((data >> 16) & 0xFF));
-//                buffer.put((byte) ((data >> 8) & 0xFF));
-//                buffer.put((byte) ((data) & 0xFF));
-////                if (hasAlpha)
-////                    buffer.put((byte) ((pixel >> 24) & 0xFF));
-////                else
-////                    buffer.put((byte) (0xFF));
-//
-//            }
-//        }
-//        buffer.flip();
-//
-//
-//        resource = new TextureResource(width, height, buffer, filter, attachment);
-//    }
+    public Texture(String name, int width, int height, char[] data, int filter, int attachment) {
+        this.fileName = name;
+        initRenderTarget(attachment, true);
+
+        ByteBuffer buffer = Util.createByteBuffer(width * height * 11);
+//        boolean hasAlpha = image.getColorModel().hasAlpha();
+//        int[] pixels = data.getRGB(0, 0, width, height, null, 0, width);
+
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                //int pixel = pixels[y * width + x];
+
+                buffer.put((byte)(data[y*width + x]));
+//                if (hasAlpha)
+//                    buffer.put((byte) ((pixel >> 24) & 0xFF));
+//                else
+//                    buffer.put((byte) (0xFF));
+
+            }
+        }
+        buffer.flip();
+
+
+        resource = new TextureResource(width, height, buffer, filter, attachment);
+    }
 
     public static void unbind() {
         glBindTexture(GL_TEXTURE_2D, 0);

@@ -96,7 +96,7 @@ public class AnimationTest extends com.ClassicRockFan.ShockWave.engine.entities.
         animationMeshes.add(coffeeCupMesh);animationMeshes.add(monkey);
         animationMeshes.add(coffeeCupMesh);
         CycleAnimation animation = new CycleAnimation(animationMeshes, 5f, animationRender);
-        animation.setPlaying(true);
+        //animation.setPlaying(true);
         this.addComponent(animation).addComponent(animationRender);
     }
 
