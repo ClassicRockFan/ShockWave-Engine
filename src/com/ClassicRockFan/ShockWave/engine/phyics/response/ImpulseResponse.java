@@ -1,31 +1,19 @@
-package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents;
+package com.ClassicRockFan.ShockWave.engine.phyics.response;
 
 
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
 import com.ClassicRockFan.ShockWave.engine.phyics.IntersectData;
 import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
 
-public class CollisionEvent extends Event {
+public class ImpulseResponse extends Response {
 
-    private PhysicsComponent obj1;
-    private PhysicsComponent obj2;
-    private IntersectData data;
-
-    public CollisionEvent(PhysicsComponent obj1, PhysicsComponent obj2, IntersectData data) {
-        super(EventTyping.PHYSICS_COLLISION_EVENT_TYPE);
-        this.setMessage("Collision occurred between objects " + obj1.getParent().getName() + " & " + obj2.getParent().getName() + ".");
-        this.obj1 = obj1;
-        this.data = data;
-        this.obj2 = obj2;
+    public ImpulseResponse() {
+        super(ResponsePriorities.IMPULSE_BASED_RESPONSE);
     }
 
     @Override
-    public void handle(double delta) {
-        super.handle(delta);
-
-
+    public void respond(PhysicsComponent obj1, PhysicsComponent obj2, IntersectData data, double delta) {
+        super.respond(obj1, obj2, data, delta);
         //TODO: Fix the BS below
 
         Vector3f nullVelocity = new Vector3f(0, 0, 0);

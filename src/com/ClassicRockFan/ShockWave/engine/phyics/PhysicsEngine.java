@@ -4,7 +4,6 @@ package com.ClassicRockFan.ShockWave.engine.phyics;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents.CollisionEvent;
 
 import java.util.ArrayList;
 
@@ -49,7 +48,10 @@ public class PhysicsEngine {
 
                 IntersectData data = obj1.getCollider().intersect(obj2.getCollider());
                 if (data.isDoesIntersect()) {
-                    engine.getEventManager().addEvent(new CollisionEvent(obj1, obj2, data));
+                    if(obj1.getCollider().getResponse().getPriority() >= obj2.getCollider().getResponse().getPriority())
+                        obj1.getCollider().getResponse().respond(obj1, obj2, data, delta);
+                    else
+                        obj2.getCollider().getResponse().respond(obj2, obj1, data, delta);
                 }
             }
         }

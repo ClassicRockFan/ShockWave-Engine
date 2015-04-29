@@ -115,4 +115,5 @@ public class PhysicsComponent extends EntityComponent {
     public boolean isImmovable() {
         return immovable;
     }
+
 }

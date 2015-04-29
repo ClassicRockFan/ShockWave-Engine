@@ -101,8 +101,7 @@ public class TestGame extends Game {
 
         Character phsicsObj2 = new Character("physicsOBJ2");
         phsicsObj2.addComponent(new MeshRender(sphere, stoneBricks))
-                .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(10, 1, 10), 1), new Vector3f(-2, 0, -2), 100, 0.2f));
-        phsicsObj2.getTransform().getPos().set(10, 1, 10);
+                .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(9.5f, 0, 10), 1), new Vector3f(-2, 0, -2), 100, 0.2f));
 
         //Lights Below
         PointLightEntity pointLight = new PointLightEntity(engine, new Vector3f(0, 1, 0), 2f, new Attenuation(0, 0, 1));

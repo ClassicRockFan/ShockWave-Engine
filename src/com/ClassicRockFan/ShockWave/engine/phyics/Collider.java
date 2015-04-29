@@ -4,6 +4,8 @@ package com.ClassicRockFan.ShockWave.engine.phyics;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.phyics.bounding.BoundingSphere;
 import com.ClassicRockFan.ShockWave.engine.phyics.bounding.Plane;
+import com.ClassicRockFan.ShockWave.engine.phyics.response.ImpulseResponse;
+import com.ClassicRockFan.ShockWave.engine.phyics.response.Response;
 
 public class Collider {
 
@@ -14,9 +16,15 @@ public class Collider {
     public static final Vector3f NO_MATCH = new Vector3f(-100, -100, -100);
 
     private int type;
+    private Response response;
 
     public Collider(int type) {
+        this(type, new ImpulseResponse());
+    }
+
+    public Collider(int type, Response response) {
         this.type = type;
+        this.response = response;
     }
 
     public Vector3f getCenter() {
@@ -49,5 +57,9 @@ public class Collider {
 
     public int getType() {
         return type;
+    }
+
+    public Response getResponse() {
+        return response;
     }
 }
