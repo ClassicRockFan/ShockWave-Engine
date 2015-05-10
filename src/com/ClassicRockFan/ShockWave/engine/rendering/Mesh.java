@@ -154,9 +154,9 @@ public class Mesh {
             System.exit(1);
         }
 
-        OBJModel test = new OBJModel("./res/models/" + fileName);
+        OBJModel obj = new OBJModel("./res/models/" + fileName);
 
-        IndexedModel model = test.toIndexedModel();
+        IndexedModel model = obj.toIndexedModel();
         model.calcNormals();
 
         ArrayList<Vertex> vertices = new ArrayList<Vertex>();

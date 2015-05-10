@@ -137,7 +137,7 @@ public class RenderingEngine extends MappedValues {
 
         for (int i = 0; i < loadedEntities.size(); i++) {
             if (loadedEntities.get(i).getClass().getSuperclass() != Light.class)
-                loadedEntities.get(i).renderAll(forwardAmbient, this);
+                loadedEntities.get(i).render(forwardAmbient, this);
         }
 
         glEnable(GL_BLEND);
@@ -158,10 +158,6 @@ public class RenderingEngine extends MappedValues {
         glDepthMask(true);
         glDisable(GL_BLEND);
         glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
-
-
-
-
 
         renderTimer.stopInvocation();
     }
@@ -200,5 +196,10 @@ public class RenderingEngine extends MappedValues {
 
     public void addLight(Light light) {
         entityLights.add(light);
+    }
+
+    public void setAmbient(Vector3f ambient){
+        removeVector("ambient");
+        addVector("ambient", ambient);
     }
 }

@@ -6,7 +6,7 @@ import com.ClassicRockFan.ShockWave.engine.administrative.Naming;
 import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.Transform;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
+import com.ClassicRockFan.ShockWave.engine.physics.PhysicsComponent;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Shader;
 
@@ -174,10 +174,6 @@ public class Entity {
         return children;
     }
 
-    public void setChildren(ArrayList<Entity> children) {
-        this.children = children;
-    }
-
     public Entity getParent() {
         return parent;
     }
@@ -185,4 +181,5 @@ public class Entity {
     public void setParent(Entity parent) {
         this.parent = parent;
     }
+
 }

@@ -5,11 +5,13 @@ import com.ClassicRockFan.ShockWave.engine.core.CoreEngine;
 import com.ClassicRockFan.ShockWave.engine.core.math.Matrix4f;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.EntityComponent;
+import com.ClassicRockFan.ShockWave.engine.rendering.FrustumCull;
 
 public class EntityCamera extends EntityComponent {
 
     private Matrix4f projection;
     private float fov, aspect, zNear, zFar;
+    private FrustumCull frustumCull;
 
     public EntityCamera(float fov, float aspect, float zNear, float zFar) {
         super("camera");
@@ -18,6 +20,8 @@ public class EntityCamera extends EntityComponent {
         this.zNear = zNear;
         this.zFar = zFar;
         this.projection = new Matrix4f().initPerspective(fov, aspect, zNear, zFar);
+        this.frustumCull = new FrustumCull();
+        frustumCull.setCamInternals(this);
     }
 
     public EntityCamera(Matrix4f projection) {
@@ -51,5 +55,9 @@ public class EntityCamera extends EntityComponent {
 
     public float getZFar() {
         return zFar;
+    }
+
+    public FrustumCull getFrustumCull() {
+        return frustumCull;
     }
 }

@@ -14,9 +14,9 @@ import com.ClassicRockFan.ShockWave.engine.entities.items.InventoryItem;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.DirectionalLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.PointLightEntity;
 import com.ClassicRockFan.ShockWave.engine.entities.light.lights.SpotLightEntity;
-import com.ClassicRockFan.ShockWave.engine.phyics.bounding.BoundingSphere;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
+import com.ClassicRockFan.ShockWave.engine.physics.bounding.BoundingSphere;
+import com.ClassicRockFan.ShockWave.engine.physics.PhysicsComponent;
+import com.ClassicRockFan.ShockWave.engine.physics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.*;
 import game.customEntities.AnimationTest;
 
@@ -97,11 +97,11 @@ public class TestGame extends Game {
 
         Character phsicsObj1 = new Character("physicsOBJ1");
         phsicsObj1.addComponent(new MeshRender(sphere, bricks))
-        .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(0, 1, 0), 1), new Vector3f(1, 0, 1), 100, 0.2f));
+        .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(0, 1, 0), 1), new Vector3f(1f, -0f, 1f), 10f, 11f));
 
         Character phsicsObj2 = new Character("physicsOBJ2");
         phsicsObj2.addComponent(new MeshRender(sphere, stoneBricks))
-                .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(9.5f, 0, 10), 1), new Vector3f(-2, 0, -2), 100, 0.2f));
+                .addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(10.0f, 1, 10), 1), new Vector3f(-1, 0, -1), 100f, 101f));
 
         //Lights Below
         PointLightEntity pointLight = new PointLightEntity(engine, new Vector3f(0, 1, 0), 2f, new Attenuation(0, 0, 1));

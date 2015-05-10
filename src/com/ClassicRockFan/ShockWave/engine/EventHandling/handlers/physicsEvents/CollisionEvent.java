@@ -4,8 +4,8 @@ package com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.eventHandling.core.Event;
 import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventTyping;
-import com.ClassicRockFan.ShockWave.engine.phyics.IntersectData;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsComponent;
+import com.ClassicRockFan.ShockWave.engine.physics.IntersectData;
+import com.ClassicRockFan.ShockWave.engine.physics.PhysicsComponent;
 
 public class CollisionEvent extends Event {
 
@@ -67,8 +67,8 @@ public class CollisionEvent extends Event {
             obj2Accel = force.div(obj2.getMass()).mul((float)delta);
         }
         //Apply velocities
-        obj1.setAcceleration(obj1Accel);
-        obj2.setAcceleration(obj2Accel);
+        //obj1.setAcceleration(obj1Accel);
+        //obj2.setAcceleration(obj2Accel);
 
 
         //Check if the objects have stopped and then add a little space

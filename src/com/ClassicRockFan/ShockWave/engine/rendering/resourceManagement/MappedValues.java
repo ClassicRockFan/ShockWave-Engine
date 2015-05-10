@@ -18,6 +18,9 @@ public abstract class MappedValues {
     public void addVector(String name, Vector3f vector) {
         vectorHashmap.put(name, vector);
     }
+    public void removeVector(String name){
+        vectorHashmap.remove(name);
+    }
 
     public void addFloat(String name, Float value) {
         floatHashmap.put(name, value);

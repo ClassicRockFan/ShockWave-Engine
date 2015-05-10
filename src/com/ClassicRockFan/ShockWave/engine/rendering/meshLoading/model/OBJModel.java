@@ -18,8 +18,10 @@ public class OBJModel {
     private ArrayList<OBJIndex> indices;
     private boolean hasTexCoords;
     private boolean hasNormals;
+    private String fileName;
 
     public OBJModel(String fileName) {
+        this.fileName = fileName;
         positions = new ArrayList<Vector3f>();
         texCoords = new ArrayList<Vector2f>();
         normals = new ArrayList<Vector3f>();
@@ -76,17 +78,17 @@ public class OBJModel {
         for (int i = 0; i < indices.size(); i++) {
             OBJIndex currentIndex = indices.get(i);
 
-            Vector3f currentPosition = positions.get(currentIndex.vertexIndex);
+            Vector3f currentPosition = positions.get(currentIndex.getVertexIndex());
             Vector2f currentTexCoord;
             Vector3f currentNormal;
 
-            if (hasTexCoords)
-                currentTexCoord = texCoords.get(currentIndex.textCoordIndex);
-            else
+            if (hasTexCoords) {
+                currentTexCoord = texCoords.get(currentIndex.getTextCoordIndex());
+            }else
                 currentTexCoord = new Vector2f(0, 0);
 
             if (hasNormals)
-                currentNormal = normals.get(currentIndex.normalIndex);
+                currentNormal = normals.get(currentIndex.getNormalIndex());
             else
                 currentNormal = new Vector3f(0, 0, 0);
 
@@ -131,8 +133,6 @@ public class OBJModel {
         for (int i = 0; i < result.getPositions().size(); i++)
             result.getTangents().add(normalModel.getTangents().get(indexMap.get(i)));
 
-//		for(int i = 0; i < result.GetTexCoords().size(); i++)
-//			result.GetTexCoords().Get(i).SetY(1.0f - result.GetTexCoords().Get(i).GetY());
 
         return result;
     }

@@ -9,7 +9,7 @@ import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventManager;
 import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.InputGameEvent;
 import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.UpdateGameEvent;
 import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents.PhysicsOccurenceEvent;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
+import com.ClassicRockFan.ShockWave.engine.physics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Window;
 import game.LauncherWindow;
@@ -115,6 +115,8 @@ public class CoreEngine {
                     unprocessedTime += passedTime;
                     frameCounter += passedTime;
 
+                    //physicsEngine.doPhyiscs((float) frameTime);
+
                     while (unprocessedTime > frameTime) {
                         render = true;
 
@@ -124,7 +126,8 @@ public class CoreEngine {
                             stop();
                         }
 
-
+                        //game.input((float)frameTime);
+                        //game.update((float) frameTime);
                         eventTimer.startInvocation();
                         eventManager.addEvent(new InputGameEvent(game));
                         eventManager.addEvent(new PhysicsOccurenceEvent(physicsEngine));

@@ -53,15 +53,12 @@ public class Material extends MappedValues {
         Texture result = textureHashmap.get(name);
         if (result != null) {
             return result;
-        }
-        if (name.contains("_normal")) {
+        } else if (name.contains("_normal")) {
             return new Texture("default_normal.jpg");
-        }
-
-        if (name.contains("_disp")) {
+        } else if (name.contains("_disp")) {
             return new Texture("default_disp.jpg");
+        } else {
+            return new Texture("default.png");
         }
-
-        return new Texture("default.png");
     }
 }

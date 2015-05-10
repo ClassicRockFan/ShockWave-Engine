@@ -2,12 +2,17 @@ package com.ClassicRockFan.ShockWave.engine.core;
 
 
 import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
+import com.ClassicRockFan.ShockWave.engine.core.math.Quaternion;
+import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
 import com.ClassicRockFan.ShockWave.engine.entities.characters.Character;
+import com.ClassicRockFan.ShockWave.engine.entities.characters.player.Player;
+import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
 import com.ClassicRockFan.ShockWave.engine.entities.items.Item;
 import com.ClassicRockFan.ShockWave.engine.entities.light.Light;
-import com.ClassicRockFan.ShockWave.engine.phyics.PhysicsEngine;
+import com.ClassicRockFan.ShockWave.engine.physics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
+import com.ClassicRockFan.ShockWave.engine.rendering.Window;
 
 import java.util.ArrayList;
 
@@ -19,10 +24,19 @@ public abstract class Game {
     private PhysicsEngine physicsEngine;
     private CoreEngine engine;
 
+    private Player player;
+
     public void init(RenderingEngine renderingEngine, PhysicsEngine physicsEngine, CoreEngine engine) {
         this.engine = engine;
         this.renderingEngine = renderingEngine;
         this.physicsEngine = physicsEngine;
+
+        EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 500.0f);
+        this.player = new Player(entityCamera, 8, 0.5f, 10);
+        player.getTransform().getPos().set(0,0,5);
+        player.getTransform().getRot().set(new Quaternion(new Vector3f(0,1,0), Math.toRadians(180)));
+
+        addCharacter(player);
     }
 
     public void input(float delta) {
@@ -72,5 +86,9 @@ public abstract class Game {
 
     public PhysicsEngine getPhysicsEngine() {
         return physicsEngine;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

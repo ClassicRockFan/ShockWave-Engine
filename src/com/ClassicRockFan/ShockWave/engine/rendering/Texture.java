@@ -1,6 +1,7 @@
 package com.ClassicRockFan.ShockWave.engine.rendering;
 
 
+import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.Util;
 import com.ClassicRockFan.ShockWave.engine.rendering.resourceManagement.TextureResource;
 
@@ -98,6 +99,7 @@ public class Texture {
 
     private TextureResource loadTexture(String fileName) {
         try {
+            Logging.printLog("Loading a texture at path - " + "./res/textures/" + fileName);
             BufferedImage image = ImageIO.read(new File("./res/textures/" + fileName));
             int[] pixels = image.getRGB(0, 0, image.getWidth(), image.getHeight(), null, 0, image.getWidth());
 
