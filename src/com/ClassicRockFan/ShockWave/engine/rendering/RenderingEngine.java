@@ -128,7 +128,7 @@ public class RenderingEngine extends MappedValues {
 
     public void render(CoreEngine engine) {
         renderTimer.startInvocation();
-        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
+        ArrayList<Entity> loadedEntities = engine.getGame().getEntityManager().getLoadedEntities();
 
         Window.bindAsRenderTarget();
 

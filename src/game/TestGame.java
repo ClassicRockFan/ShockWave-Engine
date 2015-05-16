@@ -122,30 +122,30 @@ public class TestGame extends Game {
         player.getTransform().getPos().set(0,0,5);
         player.getTransform().getRot().set(new Quaternion(new Vector3f(0,1,0), Math.toRadians(180)));
 
-        addLight(skullLight);
-        addLight(directionalLight1);
-        addLight(directionalLight2);
-        addLight(spotLight);
-        addLight(pointLight);
-        addCharacter(player);
-        addCharacter(skull);
-        addCharacter(ground);
-        addCharacter(testMesh);
-        addCharacter(testMesh2);
-        addCharacter(drumstick);
-        addCharacter(drumstick1);
-        addCharacter(earth);
-        addCharacter(coffeeCup);
-        addCharacter(phsicsObj1);
-        addCharacter(phsicsObj2);
+        addEntity(skullLight);
+        addEntity(directionalLight1);
+        addEntity(directionalLight2);
+        addEntity(spotLight);
+        addEntity(pointLight);
+        addEntity(player);
+        addEntity(skull);
+        addEntity(ground);
+        addEntity(testMesh);
+        addEntity(testMesh2);
+        addEntity(drumstick);
+        addEntity(drumstick1);
+        addEntity(earth);
+        addEntity(coffeeCup);
+        addEntity(phsicsObj1);
+        addEntity(phsicsObj2);
 
         InventoryItem testItem = new InventoryItem();
         testItem.getTransform().getPos().set(0, 1, 0);
         testItem.setMeshRender(new MeshRender(sphere, stoneBricks));
 
-        addItem(testItem);
+        addEntity(testItem);
 
-        addCharacter(new AnimationTest());
+        addEntity(new AnimationTest());
     }
 
 }

@@ -4,11 +4,6 @@ package com.ClassicRockFan.ShockWave.engine.core;
 import com.ClassicRockFan.ShockWave.engine.administrative.ConsoleWindow;
 import com.ClassicRockFan.ShockWave.engine.administrative.ProfileTimer;
 import com.ClassicRockFan.ShockWave.engine.administrative.StateManager;
-import com.ClassicRockFan.ShockWave.engine.entities.EntityManager;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.core.EventManager;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.InputGameEvent;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.coreEvents.UpdateGameEvent;
-import com.ClassicRockFan.ShockWave.engine.eventHandling.handlers.physicsEvents.PhysicsOccurenceEvent;
 import com.ClassicRockFan.ShockWave.engine.physics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Window;
@@ -27,8 +22,6 @@ public class CoreEngine {
     //Secondary Engines
     private RenderingEngine renderingEngine;
     private PhysicsEngine physicsEngine;
-    private EventManager eventManager;
-    private EntityManager entityManager;
 
     private ProfileTimer sleepTimer = new ProfileTimer();
     private ProfileTimer windowSyncTimer = new ProfileTimer();
@@ -43,8 +36,6 @@ public class CoreEngine {
         this.game = game;
 
         //Managers
-        this.eventManager = new EventManager();
-        this.entityManager = new EntityManager(this);
 
         //Misc.
         console = new ConsoleWindow(this);
@@ -115,7 +106,7 @@ public class CoreEngine {
                     unprocessedTime += passedTime;
                     frameCounter += passedTime;
 
-                    //physicsEngine.doPhyiscs((float) frameTime);
+                    physicsEngine.doPhyiscs((float) frameTime);
 
                     while (unprocessedTime > frameTime) {
                         render = true;
@@ -126,14 +117,12 @@ public class CoreEngine {
                             stop();
                         }
 
-                        //game.input((float)frameTime);
-                        //game.update((float) frameTime);
-                        eventTimer.startInvocation();
-                        eventManager.addEvent(new InputGameEvent(game));
-                        eventManager.addEvent(new PhysicsOccurenceEvent(physicsEngine));
-                        eventManager.addEvent(new UpdateGameEvent(game));
 
-                        eventManager.doEvents(frameTime);
+                        eventTimer.startInvocation();
+
+                        game.input((float)frameTime);
+                        game.update((float) frameTime);
+
                         eventTimer.stopInvocation();
 
                         if (frameCounter >= 1.0) {
@@ -215,11 +204,27 @@ public class CoreEngine {
         this.isRunning = isRunning;
     }
 
-    public EventManager getEventManager() {
-        return eventManager;
+    public boolean isRunning() {
+        return isRunning;
     }
 
-    public EntityManager getEntityManager() {
-        return entityManager;
+    public Game getGame() {
+        return game;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public PhysicsEngine getPhysicsEngine() {
+        return physicsEngine;
     }
 }

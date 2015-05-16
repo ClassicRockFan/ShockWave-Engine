@@ -20,7 +20,6 @@ public class Entity {
     private Entity parent;
     private CoreEngine engine;
     private String name;
-    private EntityManager entityManager;
     private int id;
     private boolean hasPhysics;
     private PhysicsComponent physicsComponent;
@@ -46,7 +45,6 @@ public class Entity {
     public void finalizeSetup(CoreEngine engine) {
         Logging.printLog("Finalizing the setup of an Entity named " + name, Logging.LEVEL_INFO);
         this.engine = engine;
-        this.entityManager = engine.getEntityManager();
     }
 
     public void load() {
@@ -130,8 +128,8 @@ public class Entity {
         this.engine = engine;
     }
 
-    public EntityManager getEntityManager() {
-        return entityManager;
+    public CommonManager getEntityManager() {
+        return getEngine().getGame().getEntityManager();
     }
 
     public int getId() {

@@ -28,7 +28,7 @@ public class PhysicsEngine {
 
     public void doPhyiscs(float delta) {
         octree.clean();
-        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
+        ArrayList<Entity> loadedEntities = engine.getGame().getEntityManager().getLoadedEntities();
         ArrayList<PhysicsComponent> objects = new ArrayList<PhysicsComponent>();
 
 

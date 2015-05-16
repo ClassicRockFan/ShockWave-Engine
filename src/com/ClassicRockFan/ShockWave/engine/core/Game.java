@@ -1,15 +1,12 @@
 package com.ClassicRockFan.ShockWave.engine.core;
 
 
-import com.ClassicRockFan.ShockWave.engine.administrative.Logging;
 import com.ClassicRockFan.ShockWave.engine.core.math.Quaternion;
 import com.ClassicRockFan.ShockWave.engine.core.math.Vector3f;
+import com.ClassicRockFan.ShockWave.engine.entities.CommonManager;
 import com.ClassicRockFan.ShockWave.engine.entities.Entity;
-import com.ClassicRockFan.ShockWave.engine.entities.characters.Character;
 import com.ClassicRockFan.ShockWave.engine.entities.characters.player.Player;
 import com.ClassicRockFan.ShockWave.engine.entities.entityComponent.rendering.EntityCamera;
-import com.ClassicRockFan.ShockWave.engine.entities.items.Item;
-import com.ClassicRockFan.ShockWave.engine.entities.light.Light;
 import com.ClassicRockFan.ShockWave.engine.physics.PhysicsEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.RenderingEngine;
 import com.ClassicRockFan.ShockWave.engine.rendering.Window;
@@ -23,6 +20,7 @@ public abstract class Game {
     private RenderingEngine renderingEngine;
     private PhysicsEngine physicsEngine;
     private CoreEngine engine;
+    private CommonManager entityManager;
 
     private Player player;
 
@@ -31,23 +29,25 @@ public abstract class Game {
         this.renderingEngine = renderingEngine;
         this.physicsEngine = physicsEngine;
 
+        this.entityManager = new CommonManager(engine);
+
         EntityCamera entityCamera = new EntityCamera((float) Math.toRadians(70.0f), (float) Window.getWidth() / Window.getHeight(), 0.01f, 500.0f);
         this.player = new Player(entityCamera, 8, 0.5f, 10);
         player.getTransform().getPos().set(0,0,5);
         player.getTransform().getRot().set(new Quaternion(new Vector3f(0,1,0), Math.toRadians(180)));
 
-        addCharacter(player);
+        addEntity(player);
     }
 
     public void input(float delta) {
-        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
+        ArrayList<Entity> loadedEntities = entityManager.getLoadedEntities();
 
         for (int i = 0; i < loadedEntities.size(); i++)
             loadedEntities.get(i).inputAll(delta);
     }
 
     public void update(float delta) {
-        ArrayList<Entity> loadedEntities = engine.getEntityManager().getAllLoadedEntites();
+        ArrayList<Entity> loadedEntities = entityManager.getLoadedEntities();
 
         for (int i = 0; i < loadedEntities.size(); i++)
             loadedEntities.get(i).updateAll(delta);
@@ -65,20 +65,17 @@ public abstract class Game {
         return root;
     }
 
-    public void addItem(Item item) {
-        engine.getEntityManager().getItemManager().load(item);
-        Logging.printLog("Adding an Item to the game!!!", Logging.LEVEL_INFO);
+    public Entity addEntity(Entity entity) {
+        entityManager.load(entity);
+
+        return entity;
     }
 
-    public void addCharacter(Character character) {
-        engine.getEntityManager().getCharacterManager().load(character);
-        Logging.printLog("Adding A Character to the game!!!", Logging.LEVEL_INFO);
+    public Entity unloadEntity(Entity entity){
+        entityManager.unload(entity);
+        return entity;
     }
 
-    public void addLight(Light light) {
-        engine.getEntityManager().getLightManager().load(light);
-        Logging.printLog("Adding a Light to the game!!!", Logging.LEVEL_INFO);
-    }
 
     public RenderingEngine getRenderingEngine() {
         return renderingEngine;
@@ -90,5 +87,13 @@ public abstract class Game {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public CoreEngine getEngine() {
+        return engine;
+    }
+
+    public CommonManager getEntityManager() {
+        return entityManager;
     }
 }

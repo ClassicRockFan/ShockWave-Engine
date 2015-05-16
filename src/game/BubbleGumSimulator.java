@@ -79,15 +79,15 @@ public class BubbleGumSimulator extends Game{
                     //ball.getPhysicsComponent().getCollider().setResponse(new PerfectlyElasticResponse());
                    // ball.getTransform().getPos().set(distance * i, distance * j + 1, distance * k);
                     ball.getTransform().setScale(0.3f);
-                    addItem(ball);
+                    addEntity(ball);
 
                     counter++;
                 }
             }
         }
 
-        addItem(floor);
-        addItem(ceil);
+        addEntity(floor);
+        addEntity(ceil);
 
         //getPlayer().addPhysicsComponent(new PhysicsComponent(new BoundingSphere(getPlayer().getTransform().getPos(), 1), new Vector3f(0,0,0), 100));
         //getPlayer().getPhysicsComponent().setConstantAcceleration(new Vector3f(0, -9.8f, 0));
@@ -101,7 +101,7 @@ public class BubbleGumSimulator extends Game{
         projectItem.getTransform().getPos().set(-10, 0, -10);
         projectItem.getTransform().getRot().set(new Quaternion(new Vector3f(0,1,0), 3.14/2));
 
-        addItem(projectItem);
+        addEntity(projectItem);
 
     }
 
