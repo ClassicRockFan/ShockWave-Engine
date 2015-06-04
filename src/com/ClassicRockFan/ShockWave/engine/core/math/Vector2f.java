@@ -35,6 +35,17 @@ public class Vector2f {
         return x * r.getX() + y * r.getY();
     }
 
+    public float angle(Vector2f other){
+        float dls = dot(other) / (length() * other.length());
+        if(dls < -1.0F) {
+            dls = -1.0F;
+        } else if(dls > 1.0F) {
+            dls = 1.0F;
+        }
+
+        return (float)Math.acos((double)dls);
+    }
+
     public Vector2f abs() {
         return new Vector2f(Math.abs(x), Math.abs(y));
     }

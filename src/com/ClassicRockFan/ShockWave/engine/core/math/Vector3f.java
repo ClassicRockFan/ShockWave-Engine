@@ -76,6 +76,17 @@ public class Vector3f {
         return new Vector3f(x_, y_, z_);
     }
 
+   public float angle(Vector3f other){
+       float dls = dot(other) / (length() * other.length());
+       if(dls < -1.0F) {
+           dls = -1.0F;
+       } else if(dls > 1.0F) {
+           dls = 1.0F;
+       }
+
+       return (float)Math.acos((double)dls);
+   }
+
 
     public Vector3f normalized() {
 

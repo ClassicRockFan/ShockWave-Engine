@@ -21,7 +21,7 @@ public class BubbleGumSimulator extends Game{
 
 
     private final int height = 12;
-    private final float distance = 2f;
+    private final float distance = 4f;
 
     @Override
     public void init(RenderingEngine renderingEngine, PhysicsEngine physicsEngine, CoreEngine engine) {
@@ -43,7 +43,7 @@ public class BubbleGumSimulator extends Game{
         floor.addComponent(new MeshRender(groundMesh, floorMat))
                 .addPhysicsComponent(
                         new PhysicsComponent(
-                                new BoundingPlane(new Vector3f(0, 1, 0), -0.1f),
+                                new BoundingPlane(new Vector3f(0f, 1f, 1f), -0.1f),
                                 new Vector3f(0, 0, 0),
                                 1000f,
                                 1000f,
@@ -73,13 +73,20 @@ public class BubbleGumSimulator extends Game{
                     //PointLightEntity ball = new PointLightEntity(engine, new Vector3f(0.5f, 0, 0), 10, new Attenuation(10, 10, 10));
 
                     Item ball = new Item("gumBall_" + (counter));
-                    Material ballMat = new Material("color_" + randomColor() +".png", 10f, 10f);
-                    ball.addComponent(new MeshRender(sphere, ballMat)).addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(distance * i + random(), distance * j + 1 + random()/2, distance * k + random()), 0.3f), new Vector3f(0, 0, 0), 5, 5));
+                    Material ballMat;
+                    if(ball.getName().equals("gumBall_0"))
+                        ballMat = new Material("stoneBricks.jpg", 10f, 10f);
+                    else
+                        ballMat = new Material("color_" + randomColor() +".png", 10f, 10f);
+                    ball.addComponent(new MeshRender(sphere, ballMat)).addPhysicsComponent(new PhysicsComponent(new BoundingSphere(new Vector3f(distance * i + random(-2, 2), distance * j + 2f, distance * k + random(-2, 2)), 0.15f), new Vector3f(0, 0, 0), 5, 5));
                     //ball.getPhysicsComponent().setConstantAcceleration(new Vector3f(0, -9.8f, 0.0f));
                     //ball.getPhysicsComponent().getCollider().setResponse(new PerfectlyElasticResponse());
                    // ball.getTransform().getPos().set(distance * i, distance * j + 1, distance * k);
                     ball.getTransform().setScale(0.3f);
                     addEntity(ball);
+
+                    if(ball.getName().equals("gumBall_0"))
+                        ball.getPhysicsComponent().getCollider().getCenter().printVector("OBJ1's inital pos");
 
                     counter++;
                 }
@@ -101,14 +108,12 @@ public class BubbleGumSimulator extends Game{
         projectItem.getTransform().getPos().set(-10, 0, -10);
         projectItem.getTransform().getRot().set(new Quaternion(new Vector3f(0,1,0), 3.14/2));
 
-        addEntity(projectItem);
+        //addEntity(projectItem);
 
     }
 
-    public float random(){
+    public float random(int max, int min){
         Random rand = new Random();
-        double min = -2.0;
-        double max = 2;
         double randomValue = min + (max - min) * rand.nextDouble();
         return (float) randomValue;
     }

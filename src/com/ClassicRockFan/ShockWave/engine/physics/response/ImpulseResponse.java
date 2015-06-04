@@ -51,12 +51,12 @@ public class ImpulseResponse extends Response{
             }else
                 obj2.addForce(force.mul(1));
 
-            if(!printed){
-                totalMomentum.printVector("Initial Momentum");
-                force.printVector("Force imparted on the objects during the collision");
-                System.out.println("Delta = " + getInteractions().get(obj2));
-                printed = true;
-            }
+//            if(!printed){
+//                totalMomentum.printVector("Initial Momentum");
+//                force.printVector("Force imparted on the objects during the collision");
+//                System.out.println("Delta = " + getInteractions().get(obj2));
+//                printed = true;
+//            }
 
             resetTime(obj1, obj2);
         }
